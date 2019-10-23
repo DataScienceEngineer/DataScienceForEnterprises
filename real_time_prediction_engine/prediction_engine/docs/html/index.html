@@ -1,0 +1,447 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Welcome to Real Time Prediction Engine’s documentation! &#8212; Real Time Prediction Engine 1 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="welcome-to-real-time-prediction-engine-s-documentation">
+<h1>Welcome to Real Time Prediction Engine’s documentation!<a class="headerlink" href="#welcome-to-real-time-prediction-engine-s-documentation" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+<div class="section" id="prediction-service">
+<h2><strong>prediction_service</strong><a class="headerlink" href="#prediction-service" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-prediction_service.PredictionResolver">
+<span id="prediction-service-predictionresolver"></span><h3>prediction_service.PredictionResolver<a class="headerlink" href="#module-prediction_service.PredictionResolver" title="Permalink to this headline">¶</a></h3>
+<dl class="function">
+<dt id="prediction_service.PredictionResolver.predictorFactory">
+<code class="sig-prename descclassname">prediction_service.PredictionResolver.</code><code class="sig-name descname">predictorFactory</code><span class="sig-paren">(</span><em class="sig-param">implementation</em>, <em class="sig-param">dataFrame</em>, <em class="sig-param">pipelineFilename</em>, <em class="sig-param">requestArguments</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/prediction_service/PredictionResolver.html#predictorFactory"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#prediction_service.PredictionResolver.predictorFactory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resolve the Class based on the implementation and perform predictions on them
+and return the predictionContext object containing predictions as response</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>implementation</strong> – Type of the algorithm implementation</p></li>
+<li><p><strong>dataFrame</strong> – Dataframe of features</p></li>
+<li><p><strong>pipelineFilename</strong> – Name of the file to deserialize</p></li>
+<li><p><strong>requestArguments</strong> – Additional arguments</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>prediction context object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="prediction_service.PredictionResolver.resolve">
+<code class="sig-prename descclassname">prediction_service.PredictionResolver.</code><code class="sig-name descname">resolve</code><span class="sig-paren">(</span><em class="sig-param">data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/prediction_service/PredictionResolver.html#resolve"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#prediction_service.PredictionResolver.resolve" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method resolves the data based on the request parameters and returns response containing predictions in desired format</p>
+<p>1.Parse Request Data</p>
+<p>2.Resolve Deserialization and Prediction Class</p>
+<p>3.Prepare the output Dictionary for response</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data</strong> – Request Data json to be parsed and resolved</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>dict_pred: Dictionary of response after resolving request</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="prediction-service-deserializer-predictor-context">
+<h2><strong>prediction_service.deserializer_predictor.context</strong><a class="headerlink" href="#prediction-service-deserializer-predictor-context" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-prediction_service.deserializer_predictor.context.PipelinePredictionContext">
+<span id="prediction-service-deserializer-predictor-context-pipelinepredictioncontext"></span><h3>prediction_service.deserializer_predictor.context.PipelinePredictionContext<a class="headerlink" href="#module-prediction_service.deserializer_predictor.context.PipelinePredictionContext" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="prediction_service.deserializer_predictor.context.PipelinePredictionContext.PipelinePredictionContext">
+<em class="property">class </em><code class="sig-prename descclassname">prediction_service.deserializer_predictor.context.PipelinePredictionContext.</code><code class="sig-name descname">PipelinePredictionContext</code><a class="reference internal" href="_modules/prediction_service/deserializer_predictor/context/PipelinePredictionContext.html#PipelinePredictionContext"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#prediction_service.deserializer_predictor.context.PipelinePredictionContext.PipelinePredictionContext" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform Basic Load,Predict Labels and get probabilities distributions from a Pipeline.
+Override this class to perform predictions on a pipeline</p>
+<dl class="method">
+<dt id="prediction_service.deserializer_predictor.context.PipelinePredictionContext.PipelinePredictionContext.getLeafNumber">
+<code class="sig-name descname">getLeafNumber</code><span class="sig-paren">(</span><em class="sig-param">dataFrame</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/prediction_service/deserializer_predictor/context/PipelinePredictionContext.html#PipelinePredictionContext.getLeafNumber"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#prediction_service.deserializer_predictor.context.PipelinePredictionContext.PipelinePredictionContext.getLeafNumber" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return leaf numbers</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>dataFrame</strong> – get leafnumbers from dataframe</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>returns leaf numbers</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="prediction_service.deserializer_predictor.context.PipelinePredictionContext.PipelinePredictionContext.pipeline_load">
+<code class="sig-name descname">pipeline_load</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/prediction_service/deserializer_predictor/context/PipelinePredictionContext.html#PipelinePredictionContext.pipeline_load"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#prediction_service.deserializer_predictor.context.PipelinePredictionContext.PipelinePredictionContext.pipeline_load" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load the Pipeline via a LRU cache</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Pickle Object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="prediction_service.deserializer_predictor.context.PipelinePredictionContext.PipelinePredictionContext.pipeline_predictLabels">
+<code class="sig-name descname">pipeline_predictLabels</code><span class="sig-paren">(</span><em class="sig-param">dataFrame</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/prediction_service/deserializer_predictor/context/PipelinePredictionContext.html#PipelinePredictionContext.pipeline_predictLabels"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#prediction_service.deserializer_predictor.context.PipelinePredictionContext.PipelinePredictionContext.pipeline_predictLabels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform Predictions based on the dataFrame</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>dataFrame</strong> – feature list</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Prediction lables</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="prediction_service.deserializer_predictor.context.PipelinePredictionContext.PipelinePredictionContext.pipeline_probabilityDistribution">
+<code class="sig-name descname">pipeline_probabilityDistribution</code><span class="sig-paren">(</span><em class="sig-param">dataFrame</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/prediction_service/deserializer_predictor/context/PipelinePredictionContext.html#PipelinePredictionContext.pipeline_probabilityDistribution"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#prediction_service.deserializer_predictor.context.PipelinePredictionContext.PipelinePredictionContext.pipeline_probabilityDistribution" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fetch Prediction Probababilities</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>dataFrame</strong> – feature list</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Prediction Probabilities</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="prediction_service.deserializer_predictor.context.PipelinePredictionContext.PredictionContextError">
+<em class="property">exception </em><code class="sig-prename descclassname">prediction_service.deserializer_predictor.context.PipelinePredictionContext.</code><code class="sig-name descname">PredictionContextError</code><a class="reference internal" href="_modules/prediction_service/deserializer_predictor/context/PipelinePredictionContext.html#PredictionContextError"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#prediction_service.deserializer_predictor.context.PipelinePredictionContext.PredictionContextError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Custom Exception Class</p>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="prediction-service-deserializer-predictor">
+<h2><strong>prediction_service.deserializer_predictor</strong><a class="headerlink" href="#prediction-service-deserializer-predictor" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-prediction_service.deserializer_predictor.DefaultDeserializerPredictor">
+<span id="prediction-service-deserializer-predictor-defaultdeserializerpredictor"></span><h3>prediction_service.deserializer_predictor.DefaultDeserializerPredictor<a class="headerlink" href="#module-prediction_service.deserializer_predictor.DefaultDeserializerPredictor" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="prediction_service.deserializer_predictor.DefaultDeserializerPredictor.DefaultDeserializerPredictor">
+<em class="property">class </em><code class="sig-prename descclassname">prediction_service.deserializer_predictor.DefaultDeserializerPredictor.</code><code class="sig-name descname">DefaultDeserializerPredictor</code><a class="reference internal" href="_modules/prediction_service/deserializer_predictor/DefaultDeserializerPredictor.html#DefaultDeserializerPredictor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#prediction_service.deserializer_predictor.DefaultDeserializerPredictor.DefaultDeserializerPredictor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Scikit learn Algorithms Deserializer and Predictor</p>
+<dl class="method">
+<dt id="prediction_service.deserializer_predictor.DefaultDeserializerPredictor.DefaultDeserializerPredictor.performPredictions">
+<code class="sig-name descname">performPredictions</code><span class="sig-paren">(</span><em class="sig-param">dataFrame</em>, <em class="sig-param">pipelineFilename</em>, <em class="sig-param">requestArguments</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/prediction_service/deserializer_predictor/DefaultDeserializerPredictor.html#DefaultDeserializerPredictor.performPredictions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#prediction_service.deserializer_predictor.DefaultDeserializerPredictor.DefaultDeserializerPredictor.performPredictions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform predictions for all Scikit-learn algorithms and all Custom Algorithm implemented with Scikit-Learn pipelines</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataFrame</strong> – Dataframe to perform predictions on</p></li>
+<li><p><strong>pipelineFilename</strong> – Name of the serialized model pipeline filename to deserialize and predict.</p></li>
+<li><p><strong>requestArguments</strong> – Additional Arguments to consider that was send on request. Like to extract leaf_numbers from trees.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Prediction Context object containing predictions, probabilities and other prediction related things</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-prediction_service.deserializer_predictor.KerasDeserializerPredictor">
+<span id="prediction-service-deserializer-predictor-kerasdeserializerpredictor"></span><h3>prediction_service.deserializer_predictor.KerasDeserializerPredictor<a class="headerlink" href="#module-prediction_service.deserializer_predictor.KerasDeserializerPredictor" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="prediction_service.deserializer_predictor.KerasDeserializerPredictor.KerasDeserializerPredictor">
+<em class="property">class </em><code class="sig-prename descclassname">prediction_service.deserializer_predictor.KerasDeserializerPredictor.</code><code class="sig-name descname">KerasDeserializerPredictor</code><a class="reference internal" href="_modules/prediction_service/deserializer_predictor/KerasDeserializerPredictor.html#KerasDeserializerPredictor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#prediction_service.deserializer_predictor.KerasDeserializerPredictor.KerasDeserializerPredictor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Keras Algorithms Deserializer and Predictor</p>
+<dl class="method">
+<dt id="prediction_service.deserializer_predictor.KerasDeserializerPredictor.KerasDeserializerPredictor.performPredictions">
+<code class="sig-name descname">performPredictions</code><span class="sig-paren">(</span><em class="sig-param">dataFrame</em>, <em class="sig-param">pipelineFilename</em>, <em class="sig-param">requestArguments</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/prediction_service/deserializer_predictor/KerasDeserializerPredictor.html#KerasDeserializerPredictor.performPredictions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#prediction_service.deserializer_predictor.KerasDeserializerPredictor.KerasDeserializerPredictor.performPredictions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform predictions for all Keras based algorithms. This deserializer predictor requires thread and process lock to predict due to tensorflow sessions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataFrame</strong> – Dataframe to perform predictions on</p></li>
+<li><p><strong>pipelineFilename</strong> – Name of the serialized model pipeline filename to deserialize and predict.</p></li>
+<li><p><strong>requestArguments</strong> – Additional Arguments to consider that was send on request. Like to extract leaf_numbers from trees.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Prediction Context object containing predictions, probabilities and other prediction related things</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="prediction-service-algorithms">
+<h2><strong>prediction_service.algorithms</strong><a class="headerlink" href="#prediction-service-algorithms" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-prediction_service.algorithms.CustomAlgorithmScikitLearn">
+<span id="prediction-service-algorithms-customalgorithmscikitlearn"></span><h3>prediction_service.algorithms.CustomAlgorithmScikitLearn<a class="headerlink" href="#module-prediction_service.algorithms.CustomAlgorithmScikitLearn" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="prediction_service.algorithms.CustomAlgorithmScikitLearn.DummyClassifier">
+<em class="property">class </em><code class="sig-prename descclassname">prediction_service.algorithms.CustomAlgorithmScikitLearn.</code><code class="sig-name descname">DummyClassifier</code><a class="reference internal" href="_modules/prediction_service/algorithms/CustomAlgorithmScikitLearn.html#DummyClassifier"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#prediction_service.algorithms.CustomAlgorithmScikitLearn.DummyClassifier" title="Permalink to this definition">¶</a></dt>
+<dd><p>A Dummy Classifier algorithm extending BaseEstimator,ClassifierMixin from sklearn.base.
+It needs to override fit() and predict() method</p>
+<dl class="method">
+<dt id="prediction_service.algorithms.CustomAlgorithmScikitLearn.DummyClassifier.fit">
+<code class="sig-name descname">fit</code><span class="sig-paren">(</span><em class="sig-param">X</em>, <em class="sig-param">y=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/prediction_service/algorithms/CustomAlgorithmScikitLearn.html#DummyClassifier.fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#prediction_service.algorithms.CustomAlgorithmScikitLearn.DummyClassifier.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform fitting with X features and y variable and update model params</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> – X features</p></li>
+<li><p><strong>y</strong> – output variable</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="prediction_service.algorithms.CustomAlgorithmScikitLearn.DummyClassifier.predict">
+<code class="sig-name descname">predict</code><span class="sig-paren">(</span><em class="sig-param">X</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/prediction_service/algorithms/CustomAlgorithmScikitLearn.html#DummyClassifier.predict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#prediction_service.algorithms.CustomAlgorithmScikitLearn.DummyClassifier.predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform predictions for the fitted model</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>X</strong> – features to predict labels</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>predictions</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="prediction_service.algorithms.CustomAlgorithmScikitLearn.DummyClassifier.predict_proba">
+<code class="sig-name descname">predict_proba</code><span class="sig-paren">(</span><em class="sig-param">X</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/prediction_service/algorithms/CustomAlgorithmScikitLearn.html#DummyClassifier.predict_proba"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#prediction_service.algorithms.CustomAlgorithmScikitLearn.DummyClassifier.predict_proba" title="Permalink to this definition">¶</a></dt>
+<dd><p>Classification specific Function to generate probabilities of classes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>X</strong> – features to predict y</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>prediction probabilities</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="prediction_service.algorithms.CustomAlgorithmScikitLearn.DummyClassifier.xyz">
+<code class="sig-name descname">xyz</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/prediction_service/algorithms/CustomAlgorithmScikitLearn.html#DummyClassifier.xyz"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#prediction_service.algorithms.CustomAlgorithmScikitLearn.DummyClassifier.xyz" title="Permalink to this definition">¶</a></dt>
+<dd><p>User defined functions</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="prediction_service.algorithms.CustomAlgorithmScikitLearn.DummyRegressor">
+<em class="property">class </em><code class="sig-prename descclassname">prediction_service.algorithms.CustomAlgorithmScikitLearn.</code><code class="sig-name descname">DummyRegressor</code><a class="reference internal" href="_modules/prediction_service/algorithms/CustomAlgorithmScikitLearn.html#DummyRegressor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#prediction_service.algorithms.CustomAlgorithmScikitLearn.DummyRegressor" title="Permalink to this definition">¶</a></dt>
+<dd><p>A DummyRegressor algorithm extending BaseEstimator,RegressorMixin from sklearn.base.
+It needs to override fit() and predict() method</p>
+<dl class="method">
+<dt id="prediction_service.algorithms.CustomAlgorithmScikitLearn.DummyRegressor.fit">
+<code class="sig-name descname">fit</code><span class="sig-paren">(</span><em class="sig-param">X</em>, <em class="sig-param">y=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/prediction_service/algorithms/CustomAlgorithmScikitLearn.html#DummyRegressor.fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#prediction_service.algorithms.CustomAlgorithmScikitLearn.DummyRegressor.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform fitting with X features and y variable and update model params</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> – X features</p></li>
+<li><p><strong>y</strong> – output variable</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="prediction_service.algorithms.CustomAlgorithmScikitLearn.DummyRegressor.predict">
+<code class="sig-name descname">predict</code><span class="sig-paren">(</span><em class="sig-param">X</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/prediction_service/algorithms/CustomAlgorithmScikitLearn.html#DummyRegressor.predict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#prediction_service.algorithms.CustomAlgorithmScikitLearn.DummyRegressor.predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform predictions for the fitted model</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>X</strong> – features to predict labels</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>predictions</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="prediction_service.algorithms.CustomAlgorithmScikitLearn.Transform1">
+<em class="property">class </em><code class="sig-prename descclassname">prediction_service.algorithms.CustomAlgorithmScikitLearn.</code><code class="sig-name descname">Transform1</code><a class="reference internal" href="_modules/prediction_service/algorithms/CustomAlgorithmScikitLearn.html#Transform1"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#prediction_service.algorithms.CustomAlgorithmScikitLearn.Transform1" title="Permalink to this definition">¶</a></dt>
+<dd><p>An Example of custom Transformation. It must extend TransformerMixin class from sklearn.base and override fit() transform() method</p>
+<dl class="method">
+<dt id="prediction_service.algorithms.CustomAlgorithmScikitLearn.Transform1.fit">
+<code class="sig-name descname">fit</code><span class="sig-paren">(</span><em class="sig-param">*_</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/prediction_service/algorithms/CustomAlgorithmScikitLearn.html#Transform1.fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#prediction_service.algorithms.CustomAlgorithmScikitLearn.Transform1.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>fit() method</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>_</strong> – <a href="#id1"><span class="problematic" id="id2">*</span></a>_ ignore arguments if any</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>class object itself</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="prediction_service.algorithms.CustomAlgorithmScikitLearn.Transform1.transform">
+<code class="sig-name descname">transform</code><span class="sig-paren">(</span><em class="sig-param">X</em>, <em class="sig-param">*_</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/prediction_service/algorithms/CustomAlgorithmScikitLearn.html#Transform1.transform"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#prediction_service.algorithms.CustomAlgorithmScikitLearn.Transform1.transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>perform transformation on X and return the transformed value</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> – Input arguments</p></li>
+<li><p><strong>_</strong> – <a href="#id3"><span class="problematic" id="id4">*</span></a>_ ignore rest of the arguments if any</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Transformed value</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="prediction_service.algorithms.CustomAlgorithmScikitLearn.Transform2">
+<em class="property">class </em><code class="sig-prename descclassname">prediction_service.algorithms.CustomAlgorithmScikitLearn.</code><code class="sig-name descname">Transform2</code><a class="reference internal" href="_modules/prediction_service/algorithms/CustomAlgorithmScikitLearn.html#Transform2"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#prediction_service.algorithms.CustomAlgorithmScikitLearn.Transform2" title="Permalink to this definition">¶</a></dt>
+<dd><p>An Example of custom Transformation. It must extend TransformerMixin class from sklearn.base and override transform() method</p>
+<dl class="method">
+<dt id="prediction_service.algorithms.CustomAlgorithmScikitLearn.Transform2.fit">
+<code class="sig-name descname">fit</code><span class="sig-paren">(</span><em class="sig-param">*_</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/prediction_service/algorithms/CustomAlgorithmScikitLearn.html#Transform2.fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#prediction_service.algorithms.CustomAlgorithmScikitLearn.Transform2.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>fit() method</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>_</strong> – <a href="#id5"><span class="problematic" id="id6">*</span></a>_ ignore arguments if any</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>class object itself</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="prediction_service.algorithms.CustomAlgorithmScikitLearn.Transform2.transform">
+<code class="sig-name descname">transform</code><span class="sig-paren">(</span><em class="sig-param">X</em>, <em class="sig-param">*_</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/prediction_service/algorithms/CustomAlgorithmScikitLearn.html#Transform2.transform"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#prediction_service.algorithms.CustomAlgorithmScikitLearn.Transform2.transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>perform transformation on X and return the transformed value</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> – Input arguments</p></li>
+<li><p><strong>_</strong> – <a href="#id7"><span class="problematic" id="id8">*</span></a>_ ignore rest of the arguments if any</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Transformed value</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="#">Real Time Prediction Engine</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="#">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, chandim sett.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.1.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      
+      |
+      <a href="_sources/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

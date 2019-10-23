@@ -1,0 +1,440 @@
+[2019-10-11 18:35:52,269] {{logging_mixin.py:95}} INFO - [2019-10-11 18:35:52,269] {{settings.py:174}} INFO - setting.configure_orm(): Using pool settings. pool_size=5, pool_recycle=1800
+[2019-10-11 18:35:52,272] {{jobs.py:386}} INFO - Started process (PID=69) to work on /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:35:52,274] {{jobs.py:1796}} INFO - Processing file /usr/local/airflow/dags/housing_price_prediction_training.py for tasks to queue
+[2019-10-11 18:35:52,275] {{logging_mixin.py:95}} INFO - [2019-10-11 18:35:52,275] {{models.py:271}} INFO - Filling up the DagBag from /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:35:52,309] {{jobs.py:1808}} INFO - DAG(s) dict_keys(['housing_price_prediction_training']) retrieved from /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:35:52,394] {{jobs.py:1424}} INFO - Processing housing_price_prediction_training
+[2019-10-11 18:35:52,398] {{jobs.py:615}} INFO - Skipping SLA check for <DAG: housing_price_prediction_training> because no tasks in DAG have SLAs
+[2019-10-11 18:35:52,406] {{logging_mixin.py:95}} INFO - [2019-10-11 18:35:52,406] {{models.py:456}} INFO - Finding 'running' jobs without a recent heartbeat
+[2019-10-11 18:35:52,407] {{logging_mixin.py:95}} INFO - [2019-10-11 18:35:52,406] {{models.py:460}} INFO - Failing jobs without heartbeat after 2019-10-11 18:30:52.406621+00:00
+[2019-10-11 18:35:52,413] {{jobs.py:393}} INFO - Processing /usr/local/airflow/dags/housing_price_prediction_training.py took 0.141 seconds
+[2019-10-11 18:36:03,430] {{logging_mixin.py:95}} INFO - [2019-10-11 18:36:03,429] {{settings.py:174}} INFO - setting.configure_orm(): Using pool settings. pool_size=5, pool_recycle=1800
+[2019-10-11 18:36:03,433] {{jobs.py:386}} INFO - Started process (PID=95) to work on /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:36:03,439] {{jobs.py:1796}} INFO - Processing file /usr/local/airflow/dags/housing_price_prediction_training.py for tasks to queue
+[2019-10-11 18:36:03,440] {{logging_mixin.py:95}} INFO - [2019-10-11 18:36:03,440] {{models.py:271}} INFO - Filling up the DagBag from /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:36:03,478] {{jobs.py:1808}} INFO - DAG(s) dict_keys(['housing_price_prediction_training']) retrieved from /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:36:03,577] {{jobs.py:1424}} INFO - Processing housing_price_prediction_training
+[2019-10-11 18:36:03,583] {{jobs.py:615}} INFO - Skipping SLA check for <DAG: housing_price_prediction_training> because no tasks in DAG have SLAs
+[2019-10-11 18:36:03,591] {{logging_mixin.py:95}} INFO - [2019-10-11 18:36:03,591] {{models.py:456}} INFO - Finding 'running' jobs without a recent heartbeat
+[2019-10-11 18:36:03,593] {{logging_mixin.py:95}} INFO - [2019-10-11 18:36:03,592] {{models.py:460}} INFO - Failing jobs without heartbeat after 2019-10-11 18:31:03.592558+00:00
+[2019-10-11 18:36:03,599] {{jobs.py:393}} INFO - Processing /usr/local/airflow/dags/housing_price_prediction_training.py took 0.166 seconds
+[2019-10-11 18:36:14,830] {{logging_mixin.py:95}} INFO - [2019-10-11 18:36:14,830] {{settings.py:174}} INFO - setting.configure_orm(): Using pool settings. pool_size=5, pool_recycle=1800
+[2019-10-11 18:36:14,835] {{jobs.py:386}} INFO - Started process (PID=104) to work on /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:36:14,842] {{jobs.py:1796}} INFO - Processing file /usr/local/airflow/dags/housing_price_prediction_training.py for tasks to queue
+[2019-10-11 18:36:14,845] {{logging_mixin.py:95}} INFO - [2019-10-11 18:36:14,845] {{models.py:271}} INFO - Filling up the DagBag from /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:36:14,871] {{jobs.py:1808}} INFO - DAG(s) dict_keys(['housing_price_prediction_training']) retrieved from /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:36:14,978] {{jobs.py:1424}} INFO - Processing housing_price_prediction_training
+[2019-10-11 18:36:14,987] {{jobs.py:615}} INFO - Skipping SLA check for <DAG: housing_price_prediction_training> because no tasks in DAG have SLAs
+[2019-10-11 18:36:14,995] {{logging_mixin.py:95}} INFO - [2019-10-11 18:36:14,995] {{models.py:456}} INFO - Finding 'running' jobs without a recent heartbeat
+[2019-10-11 18:36:14,996] {{logging_mixin.py:95}} INFO - [2019-10-11 18:36:14,996] {{models.py:460}} INFO - Failing jobs without heartbeat after 2019-10-11 18:31:14.996112+00:00
+[2019-10-11 18:36:15,003] {{jobs.py:393}} INFO - Processing /usr/local/airflow/dags/housing_price_prediction_training.py took 0.168 seconds
+[2019-10-11 18:36:26,064] {{logging_mixin.py:95}} INFO - [2019-10-11 18:36:26,064] {{settings.py:174}} INFO - setting.configure_orm(): Using pool settings. pool_size=5, pool_recycle=1800
+[2019-10-11 18:36:26,068] {{jobs.py:386}} INFO - Started process (PID=123) to work on /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:36:26,073] {{jobs.py:1796}} INFO - Processing file /usr/local/airflow/dags/housing_price_prediction_training.py for tasks to queue
+[2019-10-11 18:36:26,075] {{logging_mixin.py:95}} INFO - [2019-10-11 18:36:26,075] {{models.py:271}} INFO - Filling up the DagBag from /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:36:26,108] {{jobs.py:1808}} INFO - DAG(s) dict_keys(['housing_price_prediction_training']) retrieved from /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:36:26,197] {{jobs.py:1424}} INFO - Processing housing_price_prediction_training
+[2019-10-11 18:36:26,204] {{jobs.py:615}} INFO - Skipping SLA check for <DAG: housing_price_prediction_training> because no tasks in DAG have SLAs
+[2019-10-11 18:36:26,213] {{logging_mixin.py:95}} INFO - [2019-10-11 18:36:26,213] {{models.py:456}} INFO - Finding 'running' jobs without a recent heartbeat
+[2019-10-11 18:36:26,214] {{logging_mixin.py:95}} INFO - [2019-10-11 18:36:26,214] {{models.py:460}} INFO - Failing jobs without heartbeat after 2019-10-11 18:31:26.214301+00:00
+[2019-10-11 18:36:26,223] {{jobs.py:393}} INFO - Processing /usr/local/airflow/dags/housing_price_prediction_training.py took 0.154 seconds
+[2019-10-11 18:36:37,321] {{logging_mixin.py:95}} INFO - [2019-10-11 18:36:37,320] {{settings.py:174}} INFO - setting.configure_orm(): Using pool settings. pool_size=5, pool_recycle=1800
+[2019-10-11 18:36:37,325] {{jobs.py:386}} INFO - Started process (PID=132) to work on /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:36:37,327] {{jobs.py:1796}} INFO - Processing file /usr/local/airflow/dags/housing_price_prediction_training.py for tasks to queue
+[2019-10-11 18:36:37,329] {{logging_mixin.py:95}} INFO - [2019-10-11 18:36:37,329] {{models.py:271}} INFO - Filling up the DagBag from /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:36:37,355] {{jobs.py:1808}} INFO - DAG(s) dict_keys(['housing_price_prediction_training']) retrieved from /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:36:37,473] {{jobs.py:1424}} INFO - Processing housing_price_prediction_training
+[2019-10-11 18:36:37,478] {{jobs.py:615}} INFO - Skipping SLA check for <DAG: housing_price_prediction_training> because no tasks in DAG have SLAs
+[2019-10-11 18:36:37,492] {{logging_mixin.py:95}} INFO - [2019-10-11 18:36:37,492] {{models.py:456}} INFO - Finding 'running' jobs without a recent heartbeat
+[2019-10-11 18:36:37,494] {{logging_mixin.py:95}} INFO - [2019-10-11 18:36:37,493] {{models.py:460}} INFO - Failing jobs without heartbeat after 2019-10-11 18:31:37.493662+00:00
+[2019-10-11 18:36:37,501] {{jobs.py:393}} INFO - Processing /usr/local/airflow/dags/housing_price_prediction_training.py took 0.176 seconds
+[2019-10-11 18:36:48,637] {{logging_mixin.py:95}} INFO - [2019-10-11 18:36:48,636] {{settings.py:174}} INFO - setting.configure_orm(): Using pool settings. pool_size=5, pool_recycle=1800
+[2019-10-11 18:36:48,641] {{jobs.py:386}} INFO - Started process (PID=141) to work on /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:36:48,646] {{jobs.py:1796}} INFO - Processing file /usr/local/airflow/dags/housing_price_prediction_training.py for tasks to queue
+[2019-10-11 18:36:48,647] {{logging_mixin.py:95}} INFO - [2019-10-11 18:36:48,646] {{models.py:271}} INFO - Filling up the DagBag from /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:36:48,683] {{jobs.py:1808}} INFO - DAG(s) dict_keys(['housing_price_prediction_training']) retrieved from /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:36:48,756] {{jobs.py:1424}} INFO - Processing housing_price_prediction_training
+[2019-10-11 18:36:48,760] {{jobs.py:615}} INFO - Skipping SLA check for <DAG: housing_price_prediction_training> because no tasks in DAG have SLAs
+[2019-10-11 18:36:48,770] {{logging_mixin.py:95}} INFO - [2019-10-11 18:36:48,770] {{models.py:456}} INFO - Finding 'running' jobs without a recent heartbeat
+[2019-10-11 18:36:48,770] {{logging_mixin.py:95}} INFO - [2019-10-11 18:36:48,770] {{models.py:460}} INFO - Failing jobs without heartbeat after 2019-10-11 18:31:48.770266+00:00
+[2019-10-11 18:36:48,777] {{jobs.py:393}} INFO - Processing /usr/local/airflow/dags/housing_price_prediction_training.py took 0.136 seconds
+[2019-10-11 18:36:59,911] {{logging_mixin.py:95}} INFO - [2019-10-11 18:36:59,911] {{settings.py:174}} INFO - setting.configure_orm(): Using pool settings. pool_size=5, pool_recycle=1800
+[2019-10-11 18:36:59,915] {{jobs.py:386}} INFO - Started process (PID=155) to work on /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:36:59,918] {{jobs.py:1796}} INFO - Processing file /usr/local/airflow/dags/housing_price_prediction_training.py for tasks to queue
+[2019-10-11 18:36:59,920] {{logging_mixin.py:95}} INFO - [2019-10-11 18:36:59,920] {{models.py:271}} INFO - Filling up the DagBag from /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:36:59,953] {{jobs.py:1808}} INFO - DAG(s) dict_keys(['housing_price_prediction_training']) retrieved from /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:37:00,029] {{jobs.py:1424}} INFO - Processing housing_price_prediction_training
+[2019-10-11 18:37:00,040] {{jobs.py:615}} INFO - Skipping SLA check for <DAG: housing_price_prediction_training> because no tasks in DAG have SLAs
+[2019-10-11 18:37:00,049] {{logging_mixin.py:95}} INFO - [2019-10-11 18:37:00,048] {{models.py:456}} INFO - Finding 'running' jobs without a recent heartbeat
+[2019-10-11 18:37:00,050] {{logging_mixin.py:95}} INFO - [2019-10-11 18:37:00,049] {{models.py:460}} INFO - Failing jobs without heartbeat after 2019-10-11 18:32:00.049788+00:00
+[2019-10-11 18:37:00,058] {{jobs.py:393}} INFO - Processing /usr/local/airflow/dags/housing_price_prediction_training.py took 0.143 seconds
+[2019-10-11 18:37:11,119] {{logging_mixin.py:95}} INFO - [2019-10-11 18:37:11,119] {{settings.py:174}} INFO - setting.configure_orm(): Using pool settings. pool_size=5, pool_recycle=1800
+[2019-10-11 18:37:11,123] {{jobs.py:386}} INFO - Started process (PID=164) to work on /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:37:11,126] {{jobs.py:1796}} INFO - Processing file /usr/local/airflow/dags/housing_price_prediction_training.py for tasks to queue
+[2019-10-11 18:37:11,127] {{logging_mixin.py:95}} INFO - [2019-10-11 18:37:11,127] {{models.py:271}} INFO - Filling up the DagBag from /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:37:11,158] {{jobs.py:1808}} INFO - DAG(s) dict_keys(['housing_price_prediction_training']) retrieved from /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:37:11,248] {{jobs.py:1424}} INFO - Processing housing_price_prediction_training
+[2019-10-11 18:37:11,253] {{jobs.py:615}} INFO - Skipping SLA check for <DAG: housing_price_prediction_training> because no tasks in DAG have SLAs
+[2019-10-11 18:37:11,262] {{logging_mixin.py:95}} INFO - [2019-10-11 18:37:11,262] {{models.py:456}} INFO - Finding 'running' jobs without a recent heartbeat
+[2019-10-11 18:37:11,264] {{logging_mixin.py:95}} INFO - [2019-10-11 18:37:11,263] {{models.py:460}} INFO - Failing jobs without heartbeat after 2019-10-11 18:32:11.263505+00:00
+[2019-10-11 18:37:11,272] {{jobs.py:393}} INFO - Processing /usr/local/airflow/dags/housing_price_prediction_training.py took 0.149 seconds
+[2019-10-11 18:37:23,440] {{logging_mixin.py:95}} INFO - [2019-10-11 18:37:23,440] {{settings.py:174}} INFO - setting.configure_orm(): Using pool settings. pool_size=5, pool_recycle=1800
+[2019-10-11 18:37:23,444] {{jobs.py:386}} INFO - Started process (PID=174) to work on /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:37:23,447] {{jobs.py:1796}} INFO - Processing file /usr/local/airflow/dags/housing_price_prediction_training.py for tasks to queue
+[2019-10-11 18:37:23,448] {{logging_mixin.py:95}} INFO - [2019-10-11 18:37:23,448] {{models.py:271}} INFO - Filling up the DagBag from /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:37:23,476] {{jobs.py:1808}} INFO - DAG(s) dict_keys(['housing_price_prediction_training']) retrieved from /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:37:23,622] {{jobs.py:1424}} INFO - Processing housing_price_prediction_training
+[2019-10-11 18:37:23,628] {{jobs.py:615}} INFO - Skipping SLA check for <DAG: housing_price_prediction_training> because no tasks in DAG have SLAs
+[2019-10-11 18:37:23,638] {{logging_mixin.py:95}} INFO - [2019-10-11 18:37:23,638] {{models.py:456}} INFO - Finding 'running' jobs without a recent heartbeat
+[2019-10-11 18:37:23,639] {{logging_mixin.py:95}} INFO - [2019-10-11 18:37:23,639] {{models.py:460}} INFO - Failing jobs without heartbeat after 2019-10-11 18:32:23.639129+00:00
+[2019-10-11 18:37:23,647] {{jobs.py:393}} INFO - Processing /usr/local/airflow/dags/housing_price_prediction_training.py took 0.203 seconds
+[2019-10-11 18:37:34,778] {{logging_mixin.py:95}} INFO - [2019-10-11 18:37:34,778] {{settings.py:174}} INFO - setting.configure_orm(): Using pool settings. pool_size=5, pool_recycle=1800
+[2019-10-11 18:37:34,781] {{jobs.py:386}} INFO - Started process (PID=188) to work on /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:37:34,786] {{jobs.py:1796}} INFO - Processing file /usr/local/airflow/dags/housing_price_prediction_training.py for tasks to queue
+[2019-10-11 18:37:34,788] {{logging_mixin.py:95}} INFO - [2019-10-11 18:37:34,788] {{models.py:271}} INFO - Filling up the DagBag from /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:37:34,816] {{jobs.py:1808}} INFO - DAG(s) dict_keys(['housing_price_prediction_training']) retrieved from /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:37:35,128] {{jobs.py:1424}} INFO - Processing housing_price_prediction_training
+[2019-10-11 18:37:35,135] {{jobs.py:615}} INFO - Skipping SLA check for <DAG: housing_price_prediction_training> because no tasks in DAG have SLAs
+[2019-10-11 18:37:35,152] {{logging_mixin.py:95}} INFO - [2019-10-11 18:37:35,151] {{models.py:456}} INFO - Finding 'running' jobs without a recent heartbeat
+[2019-10-11 18:37:35,154] {{logging_mixin.py:95}} INFO - [2019-10-11 18:37:35,154] {{models.py:460}} INFO - Failing jobs without heartbeat after 2019-10-11 18:32:35.154271+00:00
+[2019-10-11 18:37:35,165] {{jobs.py:393}} INFO - Processing /usr/local/airflow/dags/housing_price_prediction_training.py took 0.384 seconds
+[2019-10-11 18:37:46,228] {{logging_mixin.py:95}} INFO - [2019-10-11 18:37:46,227] {{settings.py:174}} INFO - setting.configure_orm(): Using pool settings. pool_size=5, pool_recycle=1800
+[2019-10-11 18:37:46,231] {{jobs.py:386}} INFO - Started process (PID=197) to work on /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:37:46,233] {{jobs.py:1796}} INFO - Processing file /usr/local/airflow/dags/housing_price_prediction_training.py for tasks to queue
+[2019-10-11 18:37:46,234] {{logging_mixin.py:95}} INFO - [2019-10-11 18:37:46,234] {{models.py:271}} INFO - Filling up the DagBag from /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:37:46,251] {{jobs.py:1808}} INFO - DAG(s) dict_keys(['housing_price_prediction_training']) retrieved from /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:37:46,321] {{jobs.py:1424}} INFO - Processing housing_price_prediction_training
+[2019-10-11 18:37:46,329] {{jobs.py:615}} INFO - Skipping SLA check for <DAG: housing_price_prediction_training> because no tasks in DAG have SLAs
+[2019-10-11 18:37:46,340] {{logging_mixin.py:95}} INFO - [2019-10-11 18:37:46,340] {{models.py:456}} INFO - Finding 'running' jobs without a recent heartbeat
+[2019-10-11 18:37:46,340] {{logging_mixin.py:95}} INFO - [2019-10-11 18:37:46,340] {{models.py:460}} INFO - Failing jobs without heartbeat after 2019-10-11 18:32:46.340313+00:00
+[2019-10-11 18:37:46,352] {{jobs.py:393}} INFO - Processing /usr/local/airflow/dags/housing_price_prediction_training.py took 0.121 seconds
+[2019-10-11 18:37:57,548] {{logging_mixin.py:95}} INFO - [2019-10-11 18:37:57,548] {{settings.py:174}} INFO - setting.configure_orm(): Using pool settings. pool_size=5, pool_recycle=1800
+[2019-10-11 18:37:57,551] {{jobs.py:386}} INFO - Started process (PID=211) to work on /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:37:57,554] {{jobs.py:1796}} INFO - Processing file /usr/local/airflow/dags/housing_price_prediction_training.py for tasks to queue
+[2019-10-11 18:37:57,555] {{logging_mixin.py:95}} INFO - [2019-10-11 18:37:57,555] {{models.py:271}} INFO - Filling up the DagBag from /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:37:57,575] {{jobs.py:1808}} INFO - DAG(s) dict_keys(['housing_price_prediction_training']) retrieved from /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:37:57,659] {{jobs.py:1424}} INFO - Processing housing_price_prediction_training
+[2019-10-11 18:37:57,665] {{jobs.py:615}} INFO - Skipping SLA check for <DAG: housing_price_prediction_training> because no tasks in DAG have SLAs
+[2019-10-11 18:37:57,686] {{logging_mixin.py:95}} INFO - [2019-10-11 18:37:57,686] {{models.py:456}} INFO - Finding 'running' jobs without a recent heartbeat
+[2019-10-11 18:37:57,688] {{logging_mixin.py:95}} INFO - [2019-10-11 18:37:57,687] {{models.py:460}} INFO - Failing jobs without heartbeat after 2019-10-11 18:32:57.687835+00:00
+[2019-10-11 18:37:57,696] {{jobs.py:393}} INFO - Processing /usr/local/airflow/dags/housing_price_prediction_training.py took 0.145 seconds
+[2019-10-11 18:38:08,738] {{logging_mixin.py:95}} INFO - [2019-10-11 18:38:08,738] {{settings.py:174}} INFO - setting.configure_orm(): Using pool settings. pool_size=5, pool_recycle=1800
+[2019-10-11 18:38:08,742] {{jobs.py:386}} INFO - Started process (PID=220) to work on /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:38:08,744] {{jobs.py:1796}} INFO - Processing file /usr/local/airflow/dags/housing_price_prediction_training.py for tasks to queue
+[2019-10-11 18:38:08,745] {{logging_mixin.py:95}} INFO - [2019-10-11 18:38:08,745] {{models.py:271}} INFO - Filling up the DagBag from /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:38:08,775] {{jobs.py:1808}} INFO - DAG(s) dict_keys(['housing_price_prediction_training']) retrieved from /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:38:08,867] {{jobs.py:1424}} INFO - Processing housing_price_prediction_training
+[2019-10-11 18:38:08,872] {{jobs.py:615}} INFO - Skipping SLA check for <DAG: housing_price_prediction_training> because no tasks in DAG have SLAs
+[2019-10-11 18:38:08,884] {{logging_mixin.py:95}} INFO - [2019-10-11 18:38:08,883] {{models.py:456}} INFO - Finding 'running' jobs without a recent heartbeat
+[2019-10-11 18:38:08,885] {{logging_mixin.py:95}} INFO - [2019-10-11 18:38:08,884] {{models.py:460}} INFO - Failing jobs without heartbeat after 2019-10-11 18:33:08.884827+00:00
+[2019-10-11 18:38:08,892] {{jobs.py:393}} INFO - Processing /usr/local/airflow/dags/housing_price_prediction_training.py took 0.151 seconds
+[2019-10-11 18:38:19,986] {{logging_mixin.py:95}} INFO - [2019-10-11 18:38:19,986] {{settings.py:174}} INFO - setting.configure_orm(): Using pool settings. pool_size=5, pool_recycle=1800
+[2019-10-11 18:38:19,989] {{jobs.py:386}} INFO - Started process (PID=229) to work on /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:38:19,992] {{jobs.py:1796}} INFO - Processing file /usr/local/airflow/dags/housing_price_prediction_training.py for tasks to queue
+[2019-10-11 18:38:19,993] {{logging_mixin.py:95}} INFO - [2019-10-11 18:38:19,993] {{models.py:271}} INFO - Filling up the DagBag from /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:38:20,021] {{jobs.py:1808}} INFO - DAG(s) dict_keys(['housing_price_prediction_training']) retrieved from /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:38:20,161] {{jobs.py:1424}} INFO - Processing housing_price_prediction_training
+[2019-10-11 18:38:20,168] {{jobs.py:615}} INFO - Skipping SLA check for <DAG: housing_price_prediction_training> because no tasks in DAG have SLAs
+[2019-10-11 18:38:20,194] {{logging_mixin.py:95}} INFO - [2019-10-11 18:38:20,194] {{models.py:456}} INFO - Finding 'running' jobs without a recent heartbeat
+[2019-10-11 18:38:20,196] {{logging_mixin.py:95}} INFO - [2019-10-11 18:38:20,196] {{models.py:460}} INFO - Failing jobs without heartbeat after 2019-10-11 18:33:20.196105+00:00
+[2019-10-11 18:38:20,204] {{jobs.py:393}} INFO - Processing /usr/local/airflow/dags/housing_price_prediction_training.py took 0.214 seconds
+[2019-10-11 18:38:31,327] {{logging_mixin.py:95}} INFO - [2019-10-11 18:38:31,327] {{settings.py:174}} INFO - setting.configure_orm(): Using pool settings. pool_size=5, pool_recycle=1800
+[2019-10-11 18:38:31,331] {{jobs.py:386}} INFO - Started process (PID=243) to work on /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:38:31,334] {{jobs.py:1796}} INFO - Processing file /usr/local/airflow/dags/housing_price_prediction_training.py for tasks to queue
+[2019-10-11 18:38:31,335] {{logging_mixin.py:95}} INFO - [2019-10-11 18:38:31,335] {{models.py:271}} INFO - Filling up the DagBag from /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:38:31,352] {{jobs.py:1808}} INFO - DAG(s) dict_keys(['housing_price_prediction_training']) retrieved from /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:38:31,437] {{jobs.py:1424}} INFO - Processing housing_price_prediction_training
+[2019-10-11 18:38:31,442] {{jobs.py:615}} INFO - Skipping SLA check for <DAG: housing_price_prediction_training> because no tasks in DAG have SLAs
+[2019-10-11 18:38:31,451] {{logging_mixin.py:95}} INFO - [2019-10-11 18:38:31,451] {{models.py:456}} INFO - Finding 'running' jobs without a recent heartbeat
+[2019-10-11 18:38:31,452] {{logging_mixin.py:95}} INFO - [2019-10-11 18:38:31,452] {{models.py:460}} INFO - Failing jobs without heartbeat after 2019-10-11 18:33:31.452304+00:00
+[2019-10-11 18:38:31,460] {{jobs.py:393}} INFO - Processing /usr/local/airflow/dags/housing_price_prediction_training.py took 0.129 seconds
+[2019-10-11 18:38:42,593] {{logging_mixin.py:95}} INFO - [2019-10-11 18:38:42,592] {{settings.py:174}} INFO - setting.configure_orm(): Using pool settings. pool_size=5, pool_recycle=1800
+[2019-10-11 18:38:42,597] {{jobs.py:386}} INFO - Started process (PID=252) to work on /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:38:42,600] {{jobs.py:1796}} INFO - Processing file /usr/local/airflow/dags/housing_price_prediction_training.py for tasks to queue
+[2019-10-11 18:38:42,601] {{logging_mixin.py:95}} INFO - [2019-10-11 18:38:42,600] {{models.py:271}} INFO - Filling up the DagBag from /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:38:42,617] {{jobs.py:1808}} INFO - DAG(s) dict_keys(['housing_price_prediction_training']) retrieved from /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:38:42,714] {{jobs.py:1424}} INFO - Processing housing_price_prediction_training
+[2019-10-11 18:38:42,720] {{jobs.py:615}} INFO - Skipping SLA check for <DAG: housing_price_prediction_training> because no tasks in DAG have SLAs
+[2019-10-11 18:38:42,728] {{logging_mixin.py:95}} INFO - [2019-10-11 18:38:42,728] {{models.py:456}} INFO - Finding 'running' jobs without a recent heartbeat
+[2019-10-11 18:38:42,728] {{logging_mixin.py:95}} INFO - [2019-10-11 18:38:42,728] {{models.py:460}} INFO - Failing jobs without heartbeat after 2019-10-11 18:33:42.728388+00:00
+[2019-10-11 18:38:42,736] {{jobs.py:393}} INFO - Processing /usr/local/airflow/dags/housing_price_prediction_training.py took 0.139 seconds
+[2019-10-11 18:38:53,814] {{logging_mixin.py:95}} INFO - [2019-10-11 18:38:53,814] {{settings.py:174}} INFO - setting.configure_orm(): Using pool settings. pool_size=5, pool_recycle=1800
+[2019-10-11 18:38:53,819] {{jobs.py:386}} INFO - Started process (PID=261) to work on /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:38:53,821] {{jobs.py:1796}} INFO - Processing file /usr/local/airflow/dags/housing_price_prediction_training.py for tasks to queue
+[2019-10-11 18:38:53,822] {{logging_mixin.py:95}} INFO - [2019-10-11 18:38:53,822] {{models.py:271}} INFO - Filling up the DagBag from /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:38:53,842] {{jobs.py:1808}} INFO - DAG(s) dict_keys(['housing_price_prediction_training']) retrieved from /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:38:53,935] {{jobs.py:1424}} INFO - Processing housing_price_prediction_training
+[2019-10-11 18:38:53,941] {{jobs.py:615}} INFO - Skipping SLA check for <DAG: housing_price_prediction_training> because no tasks in DAG have SLAs
+[2019-10-11 18:38:53,949] {{logging_mixin.py:95}} INFO - [2019-10-11 18:38:53,949] {{models.py:456}} INFO - Finding 'running' jobs without a recent heartbeat
+[2019-10-11 18:38:53,950] {{logging_mixin.py:95}} INFO - [2019-10-11 18:38:53,950] {{models.py:460}} INFO - Failing jobs without heartbeat after 2019-10-11 18:33:53.950346+00:00
+[2019-10-11 18:38:53,958] {{jobs.py:393}} INFO - Processing /usr/local/airflow/dags/housing_price_prediction_training.py took 0.139 seconds
+[2019-10-11 18:39:05,052] {{logging_mixin.py:95}} INFO - [2019-10-11 18:39:05,051] {{settings.py:174}} INFO - setting.configure_orm(): Using pool settings. pool_size=5, pool_recycle=1800
+[2019-10-11 18:39:05,056] {{jobs.py:386}} INFO - Started process (PID=275) to work on /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:39:05,061] {{jobs.py:1796}} INFO - Processing file /usr/local/airflow/dags/housing_price_prediction_training.py for tasks to queue
+[2019-10-11 18:39:05,062] {{logging_mixin.py:95}} INFO - [2019-10-11 18:39:05,062] {{models.py:271}} INFO - Filling up the DagBag from /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:39:05,082] {{jobs.py:1808}} INFO - DAG(s) dict_keys(['housing_price_prediction_training']) retrieved from /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:39:05,145] {{jobs.py:1424}} INFO - Processing housing_price_prediction_training
+[2019-10-11 18:39:05,151] {{jobs.py:615}} INFO - Skipping SLA check for <DAG: housing_price_prediction_training> because no tasks in DAG have SLAs
+[2019-10-11 18:39:05,161] {{logging_mixin.py:95}} INFO - [2019-10-11 18:39:05,161] {{models.py:456}} INFO - Finding 'running' jobs without a recent heartbeat
+[2019-10-11 18:39:05,163] {{logging_mixin.py:95}} INFO - [2019-10-11 18:39:05,162] {{models.py:460}} INFO - Failing jobs without heartbeat after 2019-10-11 18:34:05.162245+00:00
+[2019-10-11 18:39:05,170] {{jobs.py:393}} INFO - Processing /usr/local/airflow/dags/housing_price_prediction_training.py took 0.115 seconds
+[2019-10-11 18:39:16,284] {{logging_mixin.py:95}} INFO - [2019-10-11 18:39:16,283] {{settings.py:174}} INFO - setting.configure_orm(): Using pool settings. pool_size=5, pool_recycle=1800
+[2019-10-11 18:39:16,289] {{jobs.py:386}} INFO - Started process (PID=284) to work on /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:39:16,300] {{jobs.py:1796}} INFO - Processing file /usr/local/airflow/dags/housing_price_prediction_training.py for tasks to queue
+[2019-10-11 18:39:16,301] {{logging_mixin.py:95}} INFO - [2019-10-11 18:39:16,301] {{models.py:271}} INFO - Filling up the DagBag from /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:39:16,348] {{jobs.py:1808}} INFO - DAG(s) dict_keys(['housing_price_prediction_training']) retrieved from /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:39:16,434] {{jobs.py:1424}} INFO - Processing housing_price_prediction_training
+[2019-10-11 18:39:16,442] {{jobs.py:615}} INFO - Skipping SLA check for <DAG: housing_price_prediction_training> because no tasks in DAG have SLAs
+[2019-10-11 18:39:16,450] {{logging_mixin.py:95}} INFO - [2019-10-11 18:39:16,450] {{models.py:456}} INFO - Finding 'running' jobs without a recent heartbeat
+[2019-10-11 18:39:16,451] {{logging_mixin.py:95}} INFO - [2019-10-11 18:39:16,450] {{models.py:460}} INFO - Failing jobs without heartbeat after 2019-10-11 18:34:16.450825+00:00
+[2019-10-11 18:39:16,459] {{jobs.py:393}} INFO - Processing /usr/local/airflow/dags/housing_price_prediction_training.py took 0.170 seconds
+[2019-10-11 18:39:27,560] {{logging_mixin.py:95}} INFO - [2019-10-11 18:39:27,559] {{settings.py:174}} INFO - setting.configure_orm(): Using pool settings. pool_size=5, pool_recycle=1800
+[2019-10-11 18:39:27,570] {{jobs.py:386}} INFO - Started process (PID=298) to work on /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:39:27,573] {{jobs.py:1796}} INFO - Processing file /usr/local/airflow/dags/housing_price_prediction_training.py for tasks to queue
+[2019-10-11 18:39:27,575] {{logging_mixin.py:95}} INFO - [2019-10-11 18:39:27,575] {{models.py:271}} INFO - Filling up the DagBag from /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:39:27,595] {{jobs.py:1808}} INFO - DAG(s) dict_keys(['housing_price_prediction_training']) retrieved from /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:39:27,685] {{jobs.py:1424}} INFO - Processing housing_price_prediction_training
+[2019-10-11 18:39:27,693] {{jobs.py:615}} INFO - Skipping SLA check for <DAG: housing_price_prediction_training> because no tasks in DAG have SLAs
+[2019-10-11 18:39:27,703] {{logging_mixin.py:95}} INFO - [2019-10-11 18:39:27,703] {{models.py:456}} INFO - Finding 'running' jobs without a recent heartbeat
+[2019-10-11 18:39:27,704] {{logging_mixin.py:95}} INFO - [2019-10-11 18:39:27,704] {{models.py:460}} INFO - Failing jobs without heartbeat after 2019-10-11 18:34:27.704005+00:00
+[2019-10-11 18:39:27,713] {{jobs.py:393}} INFO - Processing /usr/local/airflow/dags/housing_price_prediction_training.py took 0.143 seconds
+[2019-10-11 18:39:38,811] {{logging_mixin.py:95}} INFO - [2019-10-11 18:39:38,811] {{settings.py:174}} INFO - setting.configure_orm(): Using pool settings. pool_size=5, pool_recycle=1800
+[2019-10-11 18:39:38,815] {{jobs.py:386}} INFO - Started process (PID=307) to work on /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:39:38,819] {{jobs.py:1796}} INFO - Processing file /usr/local/airflow/dags/housing_price_prediction_training.py for tasks to queue
+[2019-10-11 18:39:38,820] {{logging_mixin.py:95}} INFO - [2019-10-11 18:39:38,820] {{models.py:271}} INFO - Filling up the DagBag from /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:39:38,842] {{jobs.py:1808}} INFO - DAG(s) dict_keys(['housing_price_prediction_training']) retrieved from /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:39:38,920] {{jobs.py:1424}} INFO - Processing housing_price_prediction_training
+[2019-10-11 18:39:38,933] {{jobs.py:615}} INFO - Skipping SLA check for <DAG: housing_price_prediction_training> because no tasks in DAG have SLAs
+[2019-10-11 18:39:38,948] {{logging_mixin.py:95}} INFO - [2019-10-11 18:39:38,948] {{models.py:456}} INFO - Finding 'running' jobs without a recent heartbeat
+[2019-10-11 18:39:38,953] {{logging_mixin.py:95}} INFO - [2019-10-11 18:39:38,952] {{models.py:460}} INFO - Failing jobs without heartbeat after 2019-10-11 18:34:38.952539+00:00
+[2019-10-11 18:39:38,963] {{jobs.py:393}} INFO - Processing /usr/local/airflow/dags/housing_price_prediction_training.py took 0.148 seconds
+[2019-10-11 18:39:50,025] {{logging_mixin.py:95}} INFO - [2019-10-11 18:39:50,025] {{settings.py:174}} INFO - setting.configure_orm(): Using pool settings. pool_size=5, pool_recycle=1800
+[2019-10-11 18:39:50,028] {{jobs.py:386}} INFO - Started process (PID=316) to work on /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:39:50,034] {{jobs.py:1796}} INFO - Processing file /usr/local/airflow/dags/housing_price_prediction_training.py for tasks to queue
+[2019-10-11 18:39:50,036] {{logging_mixin.py:95}} INFO - [2019-10-11 18:39:50,036] {{models.py:271}} INFO - Filling up the DagBag from /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:39:50,068] {{jobs.py:1808}} INFO - DAG(s) dict_keys(['housing_price_prediction_training']) retrieved from /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:39:50,175] {{jobs.py:1424}} INFO - Processing housing_price_prediction_training
+[2019-10-11 18:39:50,181] {{jobs.py:615}} INFO - Skipping SLA check for <DAG: housing_price_prediction_training> because no tasks in DAG have SLAs
+[2019-10-11 18:39:50,190] {{logging_mixin.py:95}} INFO - [2019-10-11 18:39:50,190] {{models.py:456}} INFO - Finding 'running' jobs without a recent heartbeat
+[2019-10-11 18:39:50,191] {{logging_mixin.py:95}} INFO - [2019-10-11 18:39:50,191] {{models.py:460}} INFO - Failing jobs without heartbeat after 2019-10-11 18:34:50.191040+00:00
+[2019-10-11 18:39:50,198] {{jobs.py:393}} INFO - Processing /usr/local/airflow/dags/housing_price_prediction_training.py took 0.170 seconds
+[2019-10-11 18:40:01,313] {{logging_mixin.py:95}} INFO - [2019-10-11 18:40:01,312] {{settings.py:174}} INFO - setting.configure_orm(): Using pool settings. pool_size=5, pool_recycle=1800
+[2019-10-11 18:40:01,316] {{jobs.py:386}} INFO - Started process (PID=331) to work on /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:40:01,318] {{jobs.py:1796}} INFO - Processing file /usr/local/airflow/dags/housing_price_prediction_training.py for tasks to queue
+[2019-10-11 18:40:01,321] {{logging_mixin.py:95}} INFO - [2019-10-11 18:40:01,321] {{models.py:271}} INFO - Filling up the DagBag from /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:40:01,341] {{jobs.py:1808}} INFO - DAG(s) dict_keys(['housing_price_prediction_training']) retrieved from /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:40:01,448] {{jobs.py:1424}} INFO - Processing housing_price_prediction_training
+[2019-10-11 18:40:01,454] {{jobs.py:615}} INFO - Skipping SLA check for <DAG: housing_price_prediction_training> because no tasks in DAG have SLAs
+[2019-10-11 18:40:01,464] {{logging_mixin.py:95}} INFO - [2019-10-11 18:40:01,464] {{models.py:456}} INFO - Finding 'running' jobs without a recent heartbeat
+[2019-10-11 18:40:01,466] {{logging_mixin.py:95}} INFO - [2019-10-11 18:40:01,465] {{models.py:460}} INFO - Failing jobs without heartbeat after 2019-10-11 18:35:01.465258+00:00
+[2019-10-11 18:40:01,476] {{jobs.py:393}} INFO - Processing /usr/local/airflow/dags/housing_price_prediction_training.py took 0.160 seconds
+[2019-10-11 18:40:12,558] {{logging_mixin.py:95}} INFO - [2019-10-11 18:40:12,557] {{settings.py:174}} INFO - setting.configure_orm(): Using pool settings. pool_size=5, pool_recycle=1800
+[2019-10-11 18:40:12,562] {{jobs.py:386}} INFO - Started process (PID=340) to work on /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:40:12,571] {{jobs.py:1796}} INFO - Processing file /usr/local/airflow/dags/housing_price_prediction_training.py for tasks to queue
+[2019-10-11 18:40:12,574] {{logging_mixin.py:95}} INFO - [2019-10-11 18:40:12,574] {{models.py:271}} INFO - Filling up the DagBag from /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:40:12,617] {{jobs.py:1808}} INFO - DAG(s) dict_keys(['housing_price_prediction_training']) retrieved from /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:40:12,744] {{jobs.py:1424}} INFO - Processing housing_price_prediction_training
+[2019-10-11 18:40:12,748] {{jobs.py:615}} INFO - Skipping SLA check for <DAG: housing_price_prediction_training> because no tasks in DAG have SLAs
+[2019-10-11 18:40:12,756] {{logging_mixin.py:95}} INFO - [2019-10-11 18:40:12,756] {{models.py:456}} INFO - Finding 'running' jobs without a recent heartbeat
+[2019-10-11 18:40:12,757] {{logging_mixin.py:95}} INFO - [2019-10-11 18:40:12,756] {{models.py:460}} INFO - Failing jobs without heartbeat after 2019-10-11 18:35:12.756479+00:00
+[2019-10-11 18:40:12,765] {{jobs.py:393}} INFO - Processing /usr/local/airflow/dags/housing_price_prediction_training.py took 0.203 seconds
+[2019-10-11 18:40:24,013] {{logging_mixin.py:95}} INFO - [2019-10-11 18:40:24,013] {{settings.py:174}} INFO - setting.configure_orm(): Using pool settings. pool_size=5, pool_recycle=1800
+[2019-10-11 18:40:24,019] {{jobs.py:386}} INFO - Started process (PID=349) to work on /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:40:24,022] {{jobs.py:1796}} INFO - Processing file /usr/local/airflow/dags/housing_price_prediction_training.py for tasks to queue
+[2019-10-11 18:40:24,023] {{logging_mixin.py:95}} INFO - [2019-10-11 18:40:24,023] {{models.py:271}} INFO - Filling up the DagBag from /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:40:24,046] {{jobs.py:1808}} INFO - DAG(s) dict_keys(['housing_price_prediction_training']) retrieved from /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:40:24,130] {{jobs.py:1424}} INFO - Processing housing_price_prediction_training
+[2019-10-11 18:40:24,137] {{jobs.py:615}} INFO - Skipping SLA check for <DAG: housing_price_prediction_training> because no tasks in DAG have SLAs
+[2019-10-11 18:40:24,146] {{logging_mixin.py:95}} INFO - [2019-10-11 18:40:24,146] {{models.py:456}} INFO - Finding 'running' jobs without a recent heartbeat
+[2019-10-11 18:40:24,148] {{logging_mixin.py:95}} INFO - [2019-10-11 18:40:24,147] {{models.py:460}} INFO - Failing jobs without heartbeat after 2019-10-11 18:35:24.147565+00:00
+[2019-10-11 18:40:24,155] {{jobs.py:393}} INFO - Processing /usr/local/airflow/dags/housing_price_prediction_training.py took 0.136 seconds
+[2019-10-11 18:40:35,228] {{logging_mixin.py:95}} INFO - [2019-10-11 18:40:35,228] {{settings.py:174}} INFO - setting.configure_orm(): Using pool settings. pool_size=5, pool_recycle=1800
+[2019-10-11 18:40:35,231] {{jobs.py:386}} INFO - Started process (PID=363) to work on /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:40:35,235] {{jobs.py:1796}} INFO - Processing file /usr/local/airflow/dags/housing_price_prediction_training.py for tasks to queue
+[2019-10-11 18:40:35,238] {{logging_mixin.py:95}} INFO - [2019-10-11 18:40:35,238] {{models.py:271}} INFO - Filling up the DagBag from /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:40:35,261] {{jobs.py:1808}} INFO - DAG(s) dict_keys(['housing_price_prediction_training']) retrieved from /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:40:35,326] {{jobs.py:1424}} INFO - Processing housing_price_prediction_training
+[2019-10-11 18:40:35,332] {{jobs.py:615}} INFO - Skipping SLA check for <DAG: housing_price_prediction_training> because no tasks in DAG have SLAs
+[2019-10-11 18:40:35,345] {{logging_mixin.py:95}} INFO - [2019-10-11 18:40:35,345] {{models.py:456}} INFO - Finding 'running' jobs without a recent heartbeat
+[2019-10-11 18:40:35,346] {{logging_mixin.py:95}} INFO - [2019-10-11 18:40:35,346] {{models.py:460}} INFO - Failing jobs without heartbeat after 2019-10-11 18:35:35.346072+00:00
+[2019-10-11 18:40:35,356] {{jobs.py:393}} INFO - Processing /usr/local/airflow/dags/housing_price_prediction_training.py took 0.125 seconds
+[2019-10-11 18:40:46,564] {{logging_mixin.py:95}} INFO - [2019-10-11 18:40:46,564] {{settings.py:174}} INFO - setting.configure_orm(): Using pool settings. pool_size=5, pool_recycle=1800
+[2019-10-11 18:40:46,567] {{jobs.py:386}} INFO - Started process (PID=372) to work on /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:40:46,571] {{jobs.py:1796}} INFO - Processing file /usr/local/airflow/dags/housing_price_prediction_training.py for tasks to queue
+[2019-10-11 18:40:46,572] {{logging_mixin.py:95}} INFO - [2019-10-11 18:40:46,572] {{models.py:271}} INFO - Filling up the DagBag from /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:40:46,595] {{jobs.py:1808}} INFO - DAG(s) dict_keys(['housing_price_prediction_training']) retrieved from /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:40:46,696] {{jobs.py:1424}} INFO - Processing housing_price_prediction_training
+[2019-10-11 18:40:46,703] {{jobs.py:615}} INFO - Skipping SLA check for <DAG: housing_price_prediction_training> because no tasks in DAG have SLAs
+[2019-10-11 18:40:46,715] {{logging_mixin.py:95}} INFO - [2019-10-11 18:40:46,715] {{models.py:456}} INFO - Finding 'running' jobs without a recent heartbeat
+[2019-10-11 18:40:46,719] {{logging_mixin.py:95}} INFO - [2019-10-11 18:40:46,718] {{models.py:460}} INFO - Failing jobs without heartbeat after 2019-10-11 18:35:46.718908+00:00
+[2019-10-11 18:40:46,731] {{jobs.py:393}} INFO - Processing /usr/local/airflow/dags/housing_price_prediction_training.py took 0.164 seconds
+[2019-10-11 18:40:58,312] {{logging_mixin.py:95}} INFO - [2019-10-11 18:40:58,311] {{settings.py:174}} INFO - setting.configure_orm(): Using pool settings. pool_size=5, pool_recycle=1800
+[2019-10-11 18:40:58,315] {{jobs.py:386}} INFO - Started process (PID=386) to work on /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:40:58,319] {{jobs.py:1796}} INFO - Processing file /usr/local/airflow/dags/housing_price_prediction_training.py for tasks to queue
+[2019-10-11 18:40:58,320] {{logging_mixin.py:95}} INFO - [2019-10-11 18:40:58,320] {{models.py:271}} INFO - Filling up the DagBag from /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:40:58,340] {{jobs.py:1808}} INFO - DAG(s) dict_keys(['housing_price_prediction_training']) retrieved from /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:40:58,768] {{jobs.py:1424}} INFO - Processing housing_price_prediction_training
+[2019-10-11 18:40:58,778] {{jobs.py:615}} INFO - Skipping SLA check for <DAG: housing_price_prediction_training> because no tasks in DAG have SLAs
+[2019-10-11 18:40:58,788] {{logging_mixin.py:95}} INFO - [2019-10-11 18:40:58,788] {{models.py:456}} INFO - Finding 'running' jobs without a recent heartbeat
+[2019-10-11 18:40:58,789] {{logging_mixin.py:95}} INFO - [2019-10-11 18:40:58,789] {{models.py:460}} INFO - Failing jobs without heartbeat after 2019-10-11 18:35:58.789197+00:00
+[2019-10-11 18:40:58,797] {{jobs.py:393}} INFO - Processing /usr/local/airflow/dags/housing_price_prediction_training.py took 0.482 seconds
+[2019-10-11 18:41:09,973] {{logging_mixin.py:95}} INFO - [2019-10-11 18:41:09,973] {{settings.py:174}} INFO - setting.configure_orm(): Using pool settings. pool_size=5, pool_recycle=1800
+[2019-10-11 18:41:09,976] {{jobs.py:386}} INFO - Started process (PID=395) to work on /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:41:09,979] {{jobs.py:1796}} INFO - Processing file /usr/local/airflow/dags/housing_price_prediction_training.py for tasks to queue
+[2019-10-11 18:41:09,981] {{logging_mixin.py:95}} INFO - [2019-10-11 18:41:09,980] {{models.py:271}} INFO - Filling up the DagBag from /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:41:09,999] {{jobs.py:1808}} INFO - DAG(s) dict_keys(['housing_price_prediction_training']) retrieved from /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:41:10,101] {{jobs.py:1424}} INFO - Processing housing_price_prediction_training
+[2019-10-11 18:41:10,109] {{jobs.py:615}} INFO - Skipping SLA check for <DAG: housing_price_prediction_training> because no tasks in DAG have SLAs
+[2019-10-11 18:41:10,128] {{logging_mixin.py:95}} INFO - [2019-10-11 18:41:10,127] {{models.py:456}} INFO - Finding 'running' jobs without a recent heartbeat
+[2019-10-11 18:41:10,128] {{logging_mixin.py:95}} INFO - [2019-10-11 18:41:10,128] {{models.py:460}} INFO - Failing jobs without heartbeat after 2019-10-11 18:36:10.128235+00:00
+[2019-10-11 18:41:10,136] {{jobs.py:393}} INFO - Processing /usr/local/airflow/dags/housing_price_prediction_training.py took 0.160 seconds
+[2019-10-11 18:41:21,185] {{logging_mixin.py:95}} INFO - [2019-10-11 18:41:21,184] {{settings.py:174}} INFO - setting.configure_orm(): Using pool settings. pool_size=5, pool_recycle=1800
+[2019-10-11 18:41:21,188] {{jobs.py:386}} INFO - Started process (PID=404) to work on /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:41:21,191] {{jobs.py:1796}} INFO - Processing file /usr/local/airflow/dags/housing_price_prediction_training.py for tasks to queue
+[2019-10-11 18:41:21,194] {{logging_mixin.py:95}} INFO - [2019-10-11 18:41:21,194] {{models.py:271}} INFO - Filling up the DagBag from /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:41:21,220] {{jobs.py:1808}} INFO - DAG(s) dict_keys(['housing_price_prediction_training']) retrieved from /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:41:21,340] {{jobs.py:1424}} INFO - Processing housing_price_prediction_training
+[2019-10-11 18:41:21,347] {{jobs.py:615}} INFO - Skipping SLA check for <DAG: housing_price_prediction_training> because no tasks in DAG have SLAs
+[2019-10-11 18:41:21,355] {{logging_mixin.py:95}} INFO - [2019-10-11 18:41:21,355] {{models.py:456}} INFO - Finding 'running' jobs without a recent heartbeat
+[2019-10-11 18:41:21,357] {{logging_mixin.py:95}} INFO - [2019-10-11 18:41:21,356] {{models.py:460}} INFO - Failing jobs without heartbeat after 2019-10-11 18:36:21.356631+00:00
+[2019-10-11 18:41:21,364] {{jobs.py:393}} INFO - Processing /usr/local/airflow/dags/housing_price_prediction_training.py took 0.176 seconds
+[2019-10-11 18:41:32,624] {{logging_mixin.py:95}} INFO - [2019-10-11 18:41:32,624] {{settings.py:174}} INFO - setting.configure_orm(): Using pool settings. pool_size=5, pool_recycle=1800
+[2019-10-11 18:41:32,627] {{jobs.py:386}} INFO - Started process (PID=418) to work on /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:41:32,630] {{jobs.py:1796}} INFO - Processing file /usr/local/airflow/dags/housing_price_prediction_training.py for tasks to queue
+[2019-10-11 18:41:32,631] {{logging_mixin.py:95}} INFO - [2019-10-11 18:41:32,631] {{models.py:271}} INFO - Filling up the DagBag from /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:41:32,648] {{jobs.py:1808}} INFO - DAG(s) dict_keys(['housing_price_prediction_training']) retrieved from /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:41:32,739] {{jobs.py:1424}} INFO - Processing housing_price_prediction_training
+[2019-10-11 18:41:32,745] {{jobs.py:615}} INFO - Skipping SLA check for <DAG: housing_price_prediction_training> because no tasks in DAG have SLAs
+[2019-10-11 18:41:32,754] {{logging_mixin.py:95}} INFO - [2019-10-11 18:41:32,754] {{models.py:456}} INFO - Finding 'running' jobs without a recent heartbeat
+[2019-10-11 18:41:32,756] {{logging_mixin.py:95}} INFO - [2019-10-11 18:41:32,755] {{models.py:460}} INFO - Failing jobs without heartbeat after 2019-10-11 18:36:32.755475+00:00
+[2019-10-11 18:41:32,764] {{jobs.py:393}} INFO - Processing /usr/local/airflow/dags/housing_price_prediction_training.py took 0.137 seconds
+[2019-10-11 18:41:43,900] {{logging_mixin.py:95}} INFO - [2019-10-11 18:41:43,899] {{settings.py:174}} INFO - setting.configure_orm(): Using pool settings. pool_size=5, pool_recycle=1800
+[2019-10-11 18:41:43,903] {{jobs.py:386}} INFO - Started process (PID=427) to work on /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:41:43,905] {{jobs.py:1796}} INFO - Processing file /usr/local/airflow/dags/housing_price_prediction_training.py for tasks to queue
+[2019-10-11 18:41:43,906] {{logging_mixin.py:95}} INFO - [2019-10-11 18:41:43,906] {{models.py:271}} INFO - Filling up the DagBag from /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:41:43,925] {{jobs.py:1808}} INFO - DAG(s) dict_keys(['housing_price_prediction_training']) retrieved from /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:41:44,015] {{jobs.py:1424}} INFO - Processing housing_price_prediction_training
+[2019-10-11 18:41:44,020] {{jobs.py:615}} INFO - Skipping SLA check for <DAG: housing_price_prediction_training> because no tasks in DAG have SLAs
+[2019-10-11 18:41:44,029] {{logging_mixin.py:95}} INFO - [2019-10-11 18:41:44,029] {{models.py:456}} INFO - Finding 'running' jobs without a recent heartbeat
+[2019-10-11 18:41:44,030] {{logging_mixin.py:95}} INFO - [2019-10-11 18:41:44,029] {{models.py:460}} INFO - Failing jobs without heartbeat after 2019-10-11 18:36:44.029605+00:00
+[2019-10-11 18:41:44,036] {{jobs.py:393}} INFO - Processing /usr/local/airflow/dags/housing_price_prediction_training.py took 0.134 seconds
+[2019-10-11 18:41:55,150] {{logging_mixin.py:95}} INFO - [2019-10-11 18:41:55,150] {{settings.py:174}} INFO - setting.configure_orm(): Using pool settings. pool_size=5, pool_recycle=1800
+[2019-10-11 18:41:55,154] {{jobs.py:386}} INFO - Started process (PID=436) to work on /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:41:55,156] {{jobs.py:1796}} INFO - Processing file /usr/local/airflow/dags/housing_price_prediction_training.py for tasks to queue
+[2019-10-11 18:41:55,157] {{logging_mixin.py:95}} INFO - [2019-10-11 18:41:55,157] {{models.py:271}} INFO - Filling up the DagBag from /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:41:55,181] {{jobs.py:1808}} INFO - DAG(s) dict_keys(['housing_price_prediction_training']) retrieved from /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:41:55,271] {{jobs.py:1424}} INFO - Processing housing_price_prediction_training
+[2019-10-11 18:41:55,278] {{jobs.py:615}} INFO - Skipping SLA check for <DAG: housing_price_prediction_training> because no tasks in DAG have SLAs
+[2019-10-11 18:41:55,288] {{logging_mixin.py:95}} INFO - [2019-10-11 18:41:55,288] {{models.py:456}} INFO - Finding 'running' jobs without a recent heartbeat
+[2019-10-11 18:41:55,290] {{logging_mixin.py:95}} INFO - [2019-10-11 18:41:55,289] {{models.py:460}} INFO - Failing jobs without heartbeat after 2019-10-11 18:36:55.289406+00:00
+[2019-10-11 18:41:55,298] {{jobs.py:393}} INFO - Processing /usr/local/airflow/dags/housing_price_prediction_training.py took 0.144 seconds
+[2019-10-11 18:42:06,391] {{logging_mixin.py:95}} INFO - [2019-10-11 18:42:06,390] {{settings.py:174}} INFO - setting.configure_orm(): Using pool settings. pool_size=5, pool_recycle=1800
+[2019-10-11 18:42:06,397] {{jobs.py:386}} INFO - Started process (PID=450) to work on /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:42:06,400] {{jobs.py:1796}} INFO - Processing file /usr/local/airflow/dags/housing_price_prediction_training.py for tasks to queue
+[2019-10-11 18:42:06,401] {{logging_mixin.py:95}} INFO - [2019-10-11 18:42:06,401] {{models.py:271}} INFO - Filling up the DagBag from /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:42:06,427] {{jobs.py:1808}} INFO - DAG(s) dict_keys(['housing_price_prediction_training']) retrieved from /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:42:06,541] {{jobs.py:1424}} INFO - Processing housing_price_prediction_training
+[2019-10-11 18:42:06,546] {{jobs.py:615}} INFO - Skipping SLA check for <DAG: housing_price_prediction_training> because no tasks in DAG have SLAs
+[2019-10-11 18:42:06,555] {{logging_mixin.py:95}} INFO - [2019-10-11 18:42:06,555] {{models.py:456}} INFO - Finding 'running' jobs without a recent heartbeat
+[2019-10-11 18:42:06,556] {{logging_mixin.py:95}} INFO - [2019-10-11 18:42:06,556] {{models.py:460}} INFO - Failing jobs without heartbeat after 2019-10-11 18:37:06.556197+00:00
+[2019-10-11 18:42:06,563] {{jobs.py:393}} INFO - Processing /usr/local/airflow/dags/housing_price_prediction_training.py took 0.166 seconds
+[2019-10-11 18:42:17,753] {{logging_mixin.py:95}} INFO - [2019-10-11 18:42:17,753] {{settings.py:174}} INFO - setting.configure_orm(): Using pool settings. pool_size=5, pool_recycle=1800
+[2019-10-11 18:42:17,757] {{jobs.py:386}} INFO - Started process (PID=459) to work on /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:42:17,761] {{jobs.py:1796}} INFO - Processing file /usr/local/airflow/dags/housing_price_prediction_training.py for tasks to queue
+[2019-10-11 18:42:17,762] {{logging_mixin.py:95}} INFO - [2019-10-11 18:42:17,762] {{models.py:271}} INFO - Filling up the DagBag from /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:42:17,782] {{jobs.py:1808}} INFO - DAG(s) dict_keys(['housing_price_prediction_training']) retrieved from /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:42:17,845] {{jobs.py:1424}} INFO - Processing housing_price_prediction_training
+[2019-10-11 18:42:17,851] {{jobs.py:615}} INFO - Skipping SLA check for <DAG: housing_price_prediction_training> because no tasks in DAG have SLAs
+[2019-10-11 18:42:17,860] {{logging_mixin.py:95}} INFO - [2019-10-11 18:42:17,860] {{models.py:456}} INFO - Finding 'running' jobs without a recent heartbeat
+[2019-10-11 18:42:17,861] {{logging_mixin.py:95}} INFO - [2019-10-11 18:42:17,861] {{models.py:460}} INFO - Failing jobs without heartbeat after 2019-10-11 18:37:17.861197+00:00
+[2019-10-11 18:42:17,868] {{jobs.py:393}} INFO - Processing /usr/local/airflow/dags/housing_price_prediction_training.py took 0.111 seconds
+[2019-10-11 18:42:28,983] {{logging_mixin.py:95}} INFO - [2019-10-11 18:42:28,982] {{settings.py:174}} INFO - setting.configure_orm(): Using pool settings. pool_size=5, pool_recycle=1800
+[2019-10-11 18:42:28,986] {{jobs.py:386}} INFO - Started process (PID=475) to work on /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:42:28,989] {{jobs.py:1796}} INFO - Processing file /usr/local/airflow/dags/housing_price_prediction_training.py for tasks to queue
+[2019-10-11 18:42:28,991] {{logging_mixin.py:95}} INFO - [2019-10-11 18:42:28,991] {{models.py:271}} INFO - Filling up the DagBag from /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:42:29,015] {{jobs.py:1808}} INFO - DAG(s) dict_keys(['housing_price_prediction_training']) retrieved from /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:42:29,101] {{jobs.py:1424}} INFO - Processing housing_price_prediction_training
+[2019-10-11 18:42:29,107] {{jobs.py:615}} INFO - Skipping SLA check for <DAG: housing_price_prediction_training> because no tasks in DAG have SLAs
+[2019-10-11 18:42:29,134] {{logging_mixin.py:95}} INFO - [2019-10-11 18:42:29,134] {{models.py:456}} INFO - Finding 'running' jobs without a recent heartbeat
+[2019-10-11 18:42:29,138] {{logging_mixin.py:95}} INFO - [2019-10-11 18:42:29,138] {{models.py:460}} INFO - Failing jobs without heartbeat after 2019-10-11 18:37:29.138163+00:00
+[2019-10-11 18:42:29,147] {{jobs.py:393}} INFO - Processing /usr/local/airflow/dags/housing_price_prediction_training.py took 0.161 seconds
+[2019-10-11 18:42:40,134] {{logging_mixin.py:95}} INFO - [2019-10-11 18:42:40,133] {{settings.py:174}} INFO - setting.configure_orm(): Using pool settings. pool_size=5, pool_recycle=1800
+[2019-10-11 18:42:40,137] {{jobs.py:386}} INFO - Started process (PID=484) to work on /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:42:40,141] {{jobs.py:1796}} INFO - Processing file /usr/local/airflow/dags/housing_price_prediction_training.py for tasks to queue
+[2019-10-11 18:42:40,142] {{logging_mixin.py:95}} INFO - [2019-10-11 18:42:40,142] {{models.py:271}} INFO - Filling up the DagBag from /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:42:40,163] {{jobs.py:1808}} INFO - DAG(s) dict_keys(['housing_price_prediction_training']) retrieved from /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:42:40,225] {{jobs.py:1424}} INFO - Processing housing_price_prediction_training
+[2019-10-11 18:42:40,230] {{jobs.py:615}} INFO - Skipping SLA check for <DAG: housing_price_prediction_training> because no tasks in DAG have SLAs
+[2019-10-11 18:42:40,238] {{logging_mixin.py:95}} INFO - [2019-10-11 18:42:40,238] {{models.py:456}} INFO - Finding 'running' jobs without a recent heartbeat
+[2019-10-11 18:42:40,239] {{logging_mixin.py:95}} INFO - [2019-10-11 18:42:40,238] {{models.py:460}} INFO - Failing jobs without heartbeat after 2019-10-11 18:37:40.238927+00:00
+[2019-10-11 18:42:40,245] {{jobs.py:393}} INFO - Processing /usr/local/airflow/dags/housing_price_prediction_training.py took 0.108 seconds
+[2019-10-11 18:42:51,372] {{logging_mixin.py:95}} INFO - [2019-10-11 18:42:51,371] {{settings.py:174}} INFO - setting.configure_orm(): Using pool settings. pool_size=5, pool_recycle=1800
+[2019-10-11 18:42:51,377] {{jobs.py:386}} INFO - Started process (PID=493) to work on /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:42:51,380] {{jobs.py:1796}} INFO - Processing file /usr/local/airflow/dags/housing_price_prediction_training.py for tasks to queue
+[2019-10-11 18:42:51,381] {{logging_mixin.py:95}} INFO - [2019-10-11 18:42:51,381] {{models.py:271}} INFO - Filling up the DagBag from /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:42:51,398] {{jobs.py:1808}} INFO - DAG(s) dict_keys(['housing_price_prediction_training']) retrieved from /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:42:51,462] {{jobs.py:1424}} INFO - Processing housing_price_prediction_training
+[2019-10-11 18:42:51,468] {{jobs.py:615}} INFO - Skipping SLA check for <DAG: housing_price_prediction_training> because no tasks in DAG have SLAs
+[2019-10-11 18:42:51,478] {{logging_mixin.py:95}} INFO - [2019-10-11 18:42:51,478] {{models.py:456}} INFO - Finding 'running' jobs without a recent heartbeat
+[2019-10-11 18:42:51,479] {{logging_mixin.py:95}} INFO - [2019-10-11 18:42:51,479] {{models.py:460}} INFO - Failing jobs without heartbeat after 2019-10-11 18:37:51.479166+00:00
+[2019-10-11 18:42:51,487] {{jobs.py:393}} INFO - Processing /usr/local/airflow/dags/housing_price_prediction_training.py took 0.110 seconds
+[2019-10-11 18:43:02,661] {{logging_mixin.py:95}} INFO - [2019-10-11 18:43:02,661] {{settings.py:174}} INFO - setting.configure_orm(): Using pool settings. pool_size=5, pool_recycle=1800
+[2019-10-11 18:43:02,666] {{jobs.py:386}} INFO - Started process (PID=507) to work on /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:43:02,669] {{jobs.py:1796}} INFO - Processing file /usr/local/airflow/dags/housing_price_prediction_training.py for tasks to queue
+[2019-10-11 18:43:02,670] {{logging_mixin.py:95}} INFO - [2019-10-11 18:43:02,670] {{models.py:271}} INFO - Filling up the DagBag from /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:43:02,693] {{jobs.py:1808}} INFO - DAG(s) dict_keys(['housing_price_prediction_training']) retrieved from /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:43:02,967] {{jobs.py:1424}} INFO - Processing housing_price_prediction_training
+[2019-10-11 18:43:02,974] {{jobs.py:615}} INFO - Skipping SLA check for <DAG: housing_price_prediction_training> because no tasks in DAG have SLAs
+[2019-10-11 18:43:02,983] {{logging_mixin.py:95}} INFO - [2019-10-11 18:43:02,983] {{models.py:456}} INFO - Finding 'running' jobs without a recent heartbeat
+[2019-10-11 18:43:02,985] {{logging_mixin.py:95}} INFO - [2019-10-11 18:43:02,984] {{models.py:460}} INFO - Failing jobs without heartbeat after 2019-10-11 18:38:02.984719+00:00
+[2019-10-11 18:43:02,993] {{jobs.py:393}} INFO - Processing /usr/local/airflow/dags/housing_price_prediction_training.py took 0.327 seconds
+[2019-10-11 18:43:14,126] {{logging_mixin.py:95}} INFO - [2019-10-11 18:43:14,125] {{settings.py:174}} INFO - setting.configure_orm(): Using pool settings. pool_size=5, pool_recycle=1800
+[2019-10-11 18:43:14,130] {{jobs.py:386}} INFO - Started process (PID=516) to work on /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:43:14,137] {{jobs.py:1796}} INFO - Processing file /usr/local/airflow/dags/housing_price_prediction_training.py for tasks to queue
+[2019-10-11 18:43:14,138] {{logging_mixin.py:95}} INFO - [2019-10-11 18:43:14,138] {{models.py:271}} INFO - Filling up the DagBag from /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:43:14,157] {{jobs.py:1808}} INFO - DAG(s) dict_keys(['housing_price_prediction_training']) retrieved from /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:43:14,246] {{jobs.py:1424}} INFO - Processing housing_price_prediction_training
+[2019-10-11 18:43:14,252] {{jobs.py:615}} INFO - Skipping SLA check for <DAG: housing_price_prediction_training> because no tasks in DAG have SLAs
+[2019-10-11 18:43:14,261] {{logging_mixin.py:95}} INFO - [2019-10-11 18:43:14,260] {{models.py:456}} INFO - Finding 'running' jobs without a recent heartbeat
+[2019-10-11 18:43:14,262] {{logging_mixin.py:95}} INFO - [2019-10-11 18:43:14,261] {{models.py:460}} INFO - Failing jobs without heartbeat after 2019-10-11 18:38:14.261956+00:00
+[2019-10-11 18:43:14,269] {{jobs.py:393}} INFO - Processing /usr/local/airflow/dags/housing_price_prediction_training.py took 0.139 seconds
+[2019-10-11 18:43:25,359] {{logging_mixin.py:95}} INFO - [2019-10-11 18:43:25,357] {{settings.py:174}} INFO - setting.configure_orm(): Using pool settings. pool_size=5, pool_recycle=1800
+[2019-10-11 18:43:25,362] {{jobs.py:386}} INFO - Started process (PID=525) to work on /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:43:25,366] {{jobs.py:1796}} INFO - Processing file /usr/local/airflow/dags/housing_price_prediction_training.py for tasks to queue
+[2019-10-11 18:43:25,367] {{logging_mixin.py:95}} INFO - [2019-10-11 18:43:25,367] {{models.py:271}} INFO - Filling up the DagBag from /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:43:25,387] {{jobs.py:1808}} INFO - DAG(s) dict_keys(['housing_price_prediction_training']) retrieved from /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:43:25,484] {{jobs.py:1424}} INFO - Processing housing_price_prediction_training
+[2019-10-11 18:43:25,491] {{jobs.py:615}} INFO - Skipping SLA check for <DAG: housing_price_prediction_training> because no tasks in DAG have SLAs
+[2019-10-11 18:43:25,500] {{logging_mixin.py:95}} INFO - [2019-10-11 18:43:25,500] {{models.py:456}} INFO - Finding 'running' jobs without a recent heartbeat
+[2019-10-11 18:43:25,502] {{logging_mixin.py:95}} INFO - [2019-10-11 18:43:25,501] {{models.py:460}} INFO - Failing jobs without heartbeat after 2019-10-11 18:38:25.501873+00:00
+[2019-10-11 18:43:25,509] {{jobs.py:393}} INFO - Processing /usr/local/airflow/dags/housing_price_prediction_training.py took 0.147 seconds
+[2019-10-11 18:43:36,546] {{logging_mixin.py:95}} INFO - [2019-10-11 18:43:36,546] {{settings.py:174}} INFO - setting.configure_orm(): Using pool settings. pool_size=5, pool_recycle=1800
+[2019-10-11 18:43:36,550] {{jobs.py:386}} INFO - Started process (PID=539) to work on /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:43:36,554] {{jobs.py:1796}} INFO - Processing file /usr/local/airflow/dags/housing_price_prediction_training.py for tasks to queue
+[2019-10-11 18:43:36,555] {{logging_mixin.py:95}} INFO - [2019-10-11 18:43:36,555] {{models.py:271}} INFO - Filling up the DagBag from /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:43:36,584] {{jobs.py:1808}} INFO - DAG(s) dict_keys(['housing_price_prediction_training']) retrieved from /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:43:36,654] {{jobs.py:1424}} INFO - Processing housing_price_prediction_training
+[2019-10-11 18:43:36,659] {{jobs.py:615}} INFO - Skipping SLA check for <DAG: housing_price_prediction_training> because no tasks in DAG have SLAs
+[2019-10-11 18:43:36,670] {{logging_mixin.py:95}} INFO - [2019-10-11 18:43:36,670] {{models.py:456}} INFO - Finding 'running' jobs without a recent heartbeat
+[2019-10-11 18:43:36,671] {{logging_mixin.py:95}} INFO - [2019-10-11 18:43:36,670] {{models.py:460}} INFO - Failing jobs without heartbeat after 2019-10-11 18:38:36.670329+00:00
+[2019-10-11 18:43:36,678] {{jobs.py:393}} INFO - Processing /usr/local/airflow/dags/housing_price_prediction_training.py took 0.128 seconds
+[2019-10-11 18:43:47,726] {{logging_mixin.py:95}} INFO - [2019-10-11 18:43:47,725] {{settings.py:174}} INFO - setting.configure_orm(): Using pool settings. pool_size=5, pool_recycle=1800
+[2019-10-11 18:43:47,730] {{jobs.py:386}} INFO - Started process (PID=548) to work on /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:43:47,732] {{jobs.py:1796}} INFO - Processing file /usr/local/airflow/dags/housing_price_prediction_training.py for tasks to queue
+[2019-10-11 18:43:47,734] {{logging_mixin.py:95}} INFO - [2019-10-11 18:43:47,734] {{models.py:271}} INFO - Filling up the DagBag from /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:43:47,755] {{jobs.py:1808}} INFO - DAG(s) dict_keys(['housing_price_prediction_training']) retrieved from /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:43:47,818] {{jobs.py:1424}} INFO - Processing housing_price_prediction_training
+[2019-10-11 18:43:47,824] {{jobs.py:615}} INFO - Skipping SLA check for <DAG: housing_price_prediction_training> because no tasks in DAG have SLAs
+[2019-10-11 18:43:47,833] {{logging_mixin.py:95}} INFO - [2019-10-11 18:43:47,833] {{models.py:456}} INFO - Finding 'running' jobs without a recent heartbeat
+[2019-10-11 18:43:47,837] {{logging_mixin.py:95}} INFO - [2019-10-11 18:43:47,837] {{models.py:460}} INFO - Failing jobs without heartbeat after 2019-10-11 18:38:47.836987+00:00
+[2019-10-11 18:43:47,845] {{jobs.py:393}} INFO - Processing /usr/local/airflow/dags/housing_price_prediction_training.py took 0.115 seconds
+[2019-10-11 18:43:59,065] {{logging_mixin.py:95}} INFO - [2019-10-11 18:43:59,065] {{settings.py:174}} INFO - setting.configure_orm(): Using pool settings. pool_size=5, pool_recycle=1800
+[2019-10-11 18:43:59,070] {{jobs.py:386}} INFO - Started process (PID=562) to work on /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:43:59,072] {{jobs.py:1796}} INFO - Processing file /usr/local/airflow/dags/housing_price_prediction_training.py for tasks to queue
+[2019-10-11 18:43:59,073] {{logging_mixin.py:95}} INFO - [2019-10-11 18:43:59,073] {{models.py:271}} INFO - Filling up the DagBag from /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:43:59,096] {{jobs.py:1808}} INFO - DAG(s) dict_keys(['housing_price_prediction_training']) retrieved from /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-11 18:43:59,190] {{jobs.py:1424}} INFO - Processing housing_price_prediction_training
+[2019-10-11 18:43:59,197] {{jobs.py:615}} INFO - Skipping SLA check for <DAG: housing_price_prediction_training> because no tasks in DAG have SLAs
+[2019-10-11 18:43:59,207] {{logging_mixin.py:95}} INFO - [2019-10-11 18:43:59,207] {{models.py:456}} INFO - Finding 'running' jobs without a recent heartbeat
+[2019-10-11 18:43:59,208] {{logging_mixin.py:95}} INFO - [2019-10-11 18:43:59,208] {{models.py:460}} INFO - Failing jobs without heartbeat after 2019-10-11 18:38:59.208433+00:00
+[2019-10-11 18:43:59,216] {{jobs.py:393}} INFO - Processing /usr/local/airflow/dags/housing_price_prediction_training.py took 0.146 seconds

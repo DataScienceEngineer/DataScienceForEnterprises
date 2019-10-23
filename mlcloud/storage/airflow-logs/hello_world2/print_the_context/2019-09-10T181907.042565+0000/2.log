@@ -1,0 +1,79 @@
+[2019-09-10 18:20:33,920] {{models.py:1361}} INFO - Dependencies all met for <TaskInstance: hello_world2.print_the_context 2019-09-10T18:19:07.042565+00:00 [queued]>
+[2019-09-10 18:20:33,950] {{models.py:1361}} INFO - Dependencies all met for <TaskInstance: hello_world2.print_the_context 2019-09-10T18:19:07.042565+00:00 [queued]>
+[2019-09-10 18:20:33,950] {{models.py:1573}} INFO - 
+--------------------------------------------------------------------------------
+Starting attempt 2 of 2
+--------------------------------------------------------------------------------
+
+[2019-09-10 18:20:34,068] {{models.py:1595}} INFO - Executing <Task(PythonOperator): print_the_context> on 2019-09-10T18:19:07.042565+00:00
+[2019-09-10 18:20:34,068] {{base_task_runner.py:118}} INFO - Running: ['bash', '-c', 'airflow run hello_world2 print_the_context 2019-09-10T18:19:07.042565+00:00 --job_id 7 --raw -sd DAGS_FOLDER/Hello_world2.py --cfg_path /tmp/tmp1_itqgjm']
+[2019-09-10 18:20:34,647] {{base_task_runner.py:101}} INFO - Job 7: Subtask print_the_context [2019-09-10 18:20:34,646] {{settings.py:174}} INFO - setting.configure_orm(): Using pool settings. pool_size=5, pool_recycle=1800
+[2019-09-10 18:20:34,869] {{base_task_runner.py:101}} INFO - Job 7: Subtask print_the_context [2019-09-10 18:20:34,869] {{__init__.py:51}} INFO - Using executor LocalExecutor
+[2019-09-10 18:20:35,390] {{base_task_runner.py:101}} INFO - Job 7: Subtask print_the_context [2019-09-10 18:20:35,389] {{models.py:271}} INFO - Filling up the DagBag from /usr/local/airflow/dags/Hello_world2.py
+[2019-09-10 18:20:35,445] {{base_task_runner.py:101}} INFO - Job 7: Subtask print_the_context [2019-09-10 18:20:35,444] {{cli.py:484}} INFO - Running <TaskInstance: hello_world2.print_the_context 2019-09-10T18:19:07.042565+00:00 [running]> on host 4614e9db4b87
+[2019-09-10 18:20:35,476] {{logging_mixin.py:95}} INFO - [2019-09-10 18:20:35,476] {{configuration.py:255}} WARNING - section/key [smtp/smtp_user] not found in config
+[2019-09-10 18:20:35,485] {{models.py:1760}} ERROR - [Errno 99] Cannot assign requested address
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/airflow/models.py", line 1659, in _run_raw_task
+    result = task_copy.execute(context=context)
+  File "/usr/local/lib/python3.6/site-packages/airflow/operators/python_operator.py", line 95, in execute
+    return_value = self.execute_callable()
+  File "/usr/local/lib/python3.6/site-packages/airflow/operators/python_operator.py", line 100, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/usr/local/airflow/dags/Hello_world2.py", line 30, in print_context
+    send_email('saad.syed@highradius.com', "AIRFLOW", "Executed")
+  File "/usr/local/lib/python3.6/site-packages/airflow/utils/email.py", line 56, in send_email
+    mime_subtype=mime_subtype, mime_charset=mime_charset, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/airflow/utils/email.py", line 102, in send_email_smtp
+    send_MIME_email(SMTP_MAIL_FROM, recipients, msg, dryrun)
+  File "/usr/local/lib/python3.6/site-packages/airflow/utils/email.py", line 122, in send_MIME_email
+    s = smtplib.SMTP_SSL(SMTP_HOST, SMTP_PORT) if SMTP_SSL else smtplib.SMTP(SMTP_HOST, SMTP_PORT)
+  File "/usr/local/lib/python3.6/smtplib.py", line 251, in __init__
+    (code, msg) = self.connect(host, port)
+  File "/usr/local/lib/python3.6/smtplib.py", line 336, in connect
+    self.sock = self._get_socket(host, port, self.timeout)
+  File "/usr/local/lib/python3.6/smtplib.py", line 307, in _get_socket
+    self.source_address)
+  File "/usr/local/lib/python3.6/socket.py", line 724, in create_connection
+    raise err
+  File "/usr/local/lib/python3.6/socket.py", line 713, in create_connection
+    sock.connect(sa)
+OSError: [Errno 99] Cannot assign requested address
+[2019-09-10 18:20:35,521] {{models.py:1789}} INFO - All retries failed; marking task as FAILED
+[2019-09-10 18:20:35,576] {{base_task_runner.py:101}} INFO - Job 7: Subtask print_the_context Traceback (most recent call last):
+[2019-09-10 18:20:35,576] {{base_task_runner.py:101}} INFO - Job 7: Subtask print_the_context   File "/usr/local/bin/airflow", line 32, in <module>
+[2019-09-10 18:20:35,576] {{base_task_runner.py:101}} INFO - Job 7: Subtask print_the_context     args.func(args)
+[2019-09-10 18:20:35,576] {{base_task_runner.py:101}} INFO - Job 7: Subtask print_the_context   File "/usr/local/lib/python3.6/site-packages/airflow/utils/cli.py", line 74, in wrapper
+[2019-09-10 18:20:35,576] {{base_task_runner.py:101}} INFO - Job 7: Subtask print_the_context     return f(*args, **kwargs)
+[2019-09-10 18:20:35,576] {{base_task_runner.py:101}} INFO - Job 7: Subtask print_the_context   File "/usr/local/lib/python3.6/site-packages/airflow/bin/cli.py", line 490, in run
+[2019-09-10 18:20:35,576] {{base_task_runner.py:101}} INFO - Job 7: Subtask print_the_context     _run(args, dag, ti)
+[2019-09-10 18:20:35,576] {{base_task_runner.py:101}} INFO - Job 7: Subtask print_the_context   File "/usr/local/lib/python3.6/site-packages/airflow/bin/cli.py", line 406, in _run
+[2019-09-10 18:20:35,576] {{base_task_runner.py:101}} INFO - Job 7: Subtask print_the_context     pool=args.pool,
+[2019-09-10 18:20:35,576] {{base_task_runner.py:101}} INFO - Job 7: Subtask print_the_context   File "/usr/local/lib/python3.6/site-packages/airflow/utils/db.py", line 74, in wrapper
+[2019-09-10 18:20:35,576] {{base_task_runner.py:101}} INFO - Job 7: Subtask print_the_context     return func(*args, **kwargs)
+[2019-09-10 18:20:35,576] {{base_task_runner.py:101}} INFO - Job 7: Subtask print_the_context   File "/usr/local/lib/python3.6/site-packages/airflow/models.py", line 1659, in _run_raw_task
+[2019-09-10 18:20:35,576] {{base_task_runner.py:101}} INFO - Job 7: Subtask print_the_context     result = task_copy.execute(context=context)
+[2019-09-10 18:20:35,576] {{base_task_runner.py:101}} INFO - Job 7: Subtask print_the_context   File "/usr/local/lib/python3.6/site-packages/airflow/operators/python_operator.py", line 95, in execute
+[2019-09-10 18:20:35,576] {{base_task_runner.py:101}} INFO - Job 7: Subtask print_the_context     return_value = self.execute_callable()
+[2019-09-10 18:20:35,576] {{base_task_runner.py:101}} INFO - Job 7: Subtask print_the_context   File "/usr/local/lib/python3.6/site-packages/airflow/operators/python_operator.py", line 100, in execute_callable
+[2019-09-10 18:20:35,576] {{base_task_runner.py:101}} INFO - Job 7: Subtask print_the_context     return self.python_callable(*self.op_args, **self.op_kwargs)
+[2019-09-10 18:20:35,576] {{base_task_runner.py:101}} INFO - Job 7: Subtask print_the_context   File "/usr/local/airflow/dags/Hello_world2.py", line 30, in print_context
+[2019-09-10 18:20:35,576] {{base_task_runner.py:101}} INFO - Job 7: Subtask print_the_context     send_email('saad.syed@highradius.com', "AIRFLOW", "Executed")
+[2019-09-10 18:20:35,576] {{base_task_runner.py:101}} INFO - Job 7: Subtask print_the_context   File "/usr/local/lib/python3.6/site-packages/airflow/utils/email.py", line 56, in send_email
+[2019-09-10 18:20:35,576] {{base_task_runner.py:101}} INFO - Job 7: Subtask print_the_context     mime_subtype=mime_subtype, mime_charset=mime_charset, **kwargs)
+[2019-09-10 18:20:35,577] {{base_task_runner.py:101}} INFO - Job 7: Subtask print_the_context   File "/usr/local/lib/python3.6/site-packages/airflow/utils/email.py", line 102, in send_email_smtp
+[2019-09-10 18:20:35,577] {{base_task_runner.py:101}} INFO - Job 7: Subtask print_the_context     send_MIME_email(SMTP_MAIL_FROM, recipients, msg, dryrun)
+[2019-09-10 18:20:35,577] {{base_task_runner.py:101}} INFO - Job 7: Subtask print_the_context   File "/usr/local/lib/python3.6/site-packages/airflow/utils/email.py", line 122, in send_MIME_email
+[2019-09-10 18:20:35,577] {{base_task_runner.py:101}} INFO - Job 7: Subtask print_the_context     s = smtplib.SMTP_SSL(SMTP_HOST, SMTP_PORT) if SMTP_SSL else smtplib.SMTP(SMTP_HOST, SMTP_PORT)
+[2019-09-10 18:20:35,577] {{base_task_runner.py:101}} INFO - Job 7: Subtask print_the_context   File "/usr/local/lib/python3.6/smtplib.py", line 251, in __init__
+[2019-09-10 18:20:35,577] {{base_task_runner.py:101}} INFO - Job 7: Subtask print_the_context     (code, msg) = self.connect(host, port)
+[2019-09-10 18:20:35,577] {{base_task_runner.py:101}} INFO - Job 7: Subtask print_the_context   File "/usr/local/lib/python3.6/smtplib.py", line 336, in connect
+[2019-09-10 18:20:35,577] {{base_task_runner.py:101}} INFO - Job 7: Subtask print_the_context     self.sock = self._get_socket(host, port, self.timeout)
+[2019-09-10 18:20:35,577] {{base_task_runner.py:101}} INFO - Job 7: Subtask print_the_context   File "/usr/local/lib/python3.6/smtplib.py", line 307, in _get_socket
+[2019-09-10 18:20:35,577] {{base_task_runner.py:101}} INFO - Job 7: Subtask print_the_context     self.source_address)
+[2019-09-10 18:20:35,577] {{base_task_runner.py:101}} INFO - Job 7: Subtask print_the_context   File "/usr/local/lib/python3.6/socket.py", line 724, in create_connection
+[2019-09-10 18:20:35,577] {{base_task_runner.py:101}} INFO - Job 7: Subtask print_the_context     raise err
+[2019-09-10 18:20:35,577] {{base_task_runner.py:101}} INFO - Job 7: Subtask print_the_context   File "/usr/local/lib/python3.6/socket.py", line 713, in create_connection
+[2019-09-10 18:20:35,577] {{base_task_runner.py:101}} INFO - Job 7: Subtask print_the_context     sock.connect(sa)
+[2019-09-10 18:20:35,577] {{base_task_runner.py:101}} INFO - Job 7: Subtask print_the_context OSError: [Errno 99] Cannot assign requested address
+[2019-09-10 18:20:39,078] {{logging_mixin.py:95}} INFO - [2019-09-10 18:20:39,077] {{jobs.py:2627}} INFO - Task exited with return code 1

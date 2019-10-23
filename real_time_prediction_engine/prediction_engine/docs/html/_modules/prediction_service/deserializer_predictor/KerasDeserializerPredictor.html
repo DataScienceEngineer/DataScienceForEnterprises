@@ -1,0 +1,166 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>prediction_service.deserializer_predictor.KerasDeserializerPredictor &#8212; Real Time Prediction Engine 1 documentation</title>
+    <link rel="stylesheet" href="../../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+   
+  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for prediction_service.deserializer_predictor.KerasDeserializerPredictor</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">keras</span>
+<span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
+
+<span class="kn">import</span> <span class="nn">common_utils.ConfigurationSetups</span>
+<span class="kn">from</span> <span class="nn">prediction_service.constants</span> <span class="k">import</span> <span class="n">Constants</span>
+<span class="kn">from</span> <span class="nn">common_utils.MLLogger</span> <span class="k">import</span> <span class="n">MLLogging</span>
+
+<span class="kn">import</span> <span class="nn">prediction_service.constants</span>
+<span class="kn">from</span> <span class="nn">prediction_service.deserializer_predictor.context.PipelinePredictionContext</span> <span class="k">import</span> <span class="n">PipelinePredictionContext</span><span class="p">,</span><span class="n">PredictionContextError</span>
+<span class="kn">from</span> <span class="nn">common_utils</span> <span class="k">import</span> <span class="n">S3Util</span><span class="p">,</span> <span class="n">ServiceHelper</span>
+<span class="kn">import</span> <span class="nn">configurations</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">s3Config</span><span class="o">=</span> <span class="n">S3Util</span><span class="o">.</span><span class="n">S3Configuration</span><span class="p">()</span>
+<span class="n">logger</span><span class="o">=</span><span class="n">MLLogging</span><span class="o">.</span><span class="n">getLog</span><span class="p">()</span>
+
+<div class="viewcode-block" id="KerasDeserializerPredictor"><a class="viewcode-back" href="../../../index.html#prediction_service.deserializer_predictor.KerasDeserializerPredictor.KerasDeserializerPredictor">[docs]</a><span class="k">class</span> <span class="nc">KerasDeserializerPredictor</span><span class="p">(</span><span class="n">PipelinePredictionContext</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Keras Algorithms Deserializer and Predictor</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dataFrame</span><span class="o">=</span><span class="kc">None</span>
+<div class="viewcode-block" id="KerasDeserializerPredictor.performPredictions"><a class="viewcode-back" href="../../../index.html#prediction_service.deserializer_predictor.KerasDeserializerPredictor.KerasDeserializerPredictor.performPredictions">[docs]</a>    <span class="k">def</span> <span class="nf">performPredictions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">dataFrame</span><span class="p">,</span><span class="n">pipelineFilename</span><span class="p">,</span><span class="n">requestArguments</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Perform predictions for all Keras based algorithms. This deserializer predictor requires thread and process lock to predict due to tensorflow sessions.</span>
+
+<span class="sd">        :param dataFrame: Dataframe to perform predictions on</span>
+
+<span class="sd">        :param pipelineFilename: Name of the serialized model pipeline filename to deserialize and predict.</span>
+
+<span class="sd">        :param requestArguments: Additional Arguments to consider that was send on request. Like to extract leaf_numbers from trees.</span>
+
+<span class="sd">        :return: Prediction Context object containing predictions, probabilities and other prediction related things</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">keras</span><span class="o">.</span><span class="n">backend</span><span class="o">.</span><span class="n">clear_session</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dataFrame</span> <span class="o">=</span> <span class="n">dataFrame</span>
+            <span class="n">predContext</span> <span class="o">=</span> <span class="n">PipelinePredictionContext</span><span class="p">()</span>
+            <span class="n">predContext</span><span class="o">.</span><span class="n">pipeLineFileName</span> <span class="o">=</span> <span class="n">pipelineFilename</span>
+            <span class="n">predContext</span><span class="o">.</span><span class="n">modelFileName</span> <span class="o">=</span> <span class="n">ServiceHelper</span><span class="o">.</span><span class="n">getValFromDict</span><span class="p">(</span>
+                <span class="n">prediction_service</span><span class="o">.</span><span class="n">constants</span><span class="o">.</span><span class="n">Constants</span><span class="o">.</span><span class="n">MODEL_FILE_NAME</span><span class="p">,</span> <span class="n">requestArguments</span><span class="p">)</span>
+            <span class="n">ServiceHelper</span><span class="o">.</span><span class="n">fetchFileFromS3viaLocalApi</span><span class="p">(</span><span class="n">predContext</span><span class="o">.</span><span class="n">pipeLineFileName</span><span class="p">)</span>
+            <span class="n">ServiceHelper</span><span class="o">.</span><span class="n">fetchFileFromS3viaLocalApi</span><span class="p">(</span><span class="n">predContext</span><span class="o">.</span><span class="n">modelFileName</span><span class="p">)</span>
+            <span class="n">predContext</span><span class="o">.</span><span class="n">pipeline_load</span><span class="p">()</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Wait&quot;</span><span class="p">)</span>
+            <span class="k">with</span> <span class="n">common_utils</span><span class="o">.</span><span class="n">ConfigurationSetups</span><span class="o">.</span><span class="n">GlobalVariable</span><span class="o">.</span><span class="n">ThreadLock</span><span class="p">:</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Acquired Lock&quot;</span><span class="p">)</span>
+                <span class="n">session</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">backend</span><span class="o">.</span><span class="n">get_session</span><span class="p">()</span>
+                <span class="n">graph</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">get_default_graph</span><span class="p">()</span>
+                <span class="k">with</span> <span class="n">session</span><span class="o">.</span><span class="n">as_default</span><span class="p">():</span>
+                        <span class="k">with</span> <span class="n">graph</span><span class="o">.</span><span class="n">as_default</span><span class="p">():</span>
+                            <span class="n">predContext</span><span class="o">.</span><span class="n">loadedPipeLine</span><span class="o">.</span><span class="n">named_steps</span><span class="p">[</span><span class="n">Constants</span><span class="o">.</span><span class="n">PIPELINE_NAMED_STEP_MODEL</span><span class="p">]</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">ServiceHelper</span><span class="o">.</span><span class="n">load_h5_file</span><span class="p">(</span><span class="n">predContext</span><span class="o">.</span><span class="n">modelFileName</span><span class="p">)</span>
+                            <span class="n">predContext</span><span class="o">.</span><span class="n">pipeline_predictLabels</span><span class="p">(</span><span class="n">dataFrame</span><span class="p">)</span>
+                            <span class="k">try</span><span class="p">:</span>
+                                <span class="n">predContext</span><span class="o">.</span><span class="n">pipeline_probabilityDistribution</span><span class="p">(</span><span class="n">dataFrame</span><span class="p">)</span>
+                            <span class="k">except</span> <span class="n">PredictionContextError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                                <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Could not fetch the probability distribution and/or classes due to: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="o">.</span><span class="n">__name__</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+                                <span class="k">pass</span>
+                            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">predContext</span><span class="o">.</span><span class="n">predictionLabels</span><span class="p">))</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+                                <span class="n">predContext</span><span class="o">.</span><span class="n">predictionLabels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">predContext</span><span class="o">.</span><span class="n">predictionLabels</span><span class="p">)</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+                <span class="n">tf</span><span class="o">.</span><span class="n">reset_default_graph</span><span class="p">()</span>
+                <span class="n">keras</span><span class="o">.</span><span class="n">backend</span><span class="o">.</span><span class="n">clear_session</span><span class="p">()</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Caching pipeline: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">ServiceHelper</span><span class="o">.</span><span class="n">load_pipeline_cache</span><span class="o">.</span><span class="n">cache_info</span><span class="p">()))</span>
+                <span class="k">return</span> <span class="n">predContext</span>
+        <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;Missing key in the model file. Please check the input features or modify the file. Prediction failed due to: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="o">.</span><span class="n">__name__</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot; &quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;Null/NAN/infinity or incompatible data. Prediction failed due to: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="o">.</span><span class="n">__name__</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot; &quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;Failed to deserialize or Predict Keras Based Models: &quot;</span> <span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="o">.</span><span class="n">__name__</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot; &quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+        <span class="k">finally</span><span class="p">:</span>
+            <span class="n">tf</span><span class="o">.</span><span class="n">reset_default_graph</span><span class="p">()</span>
+            <span class="n">keras</span><span class="o">.</span><span class="n">backend</span><span class="o">.</span><span class="n">clear_session</span><span class="p">()</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Released Lock&quot;</span><span class="p">)</span></div></div>
+
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../index.html">Real Time Prediction Engine</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, chandim sett.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.1.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,69 @@
+[2019-10-08 18:29:06,637] {{models.py:1361}} INFO - Dependencies all met for <TaskInstance: housing_price_prediction_training.training_data_processing 2019-10-08T17:43:32.113975+00:00 [queued]>
+[2019-10-08 18:29:06,683] {{models.py:1361}} INFO - Dependencies all met for <TaskInstance: housing_price_prediction_training.training_data_processing 2019-10-08T17:43:32.113975+00:00 [queued]>
+[2019-10-08 18:29:06,683] {{models.py:1573}} INFO - 
+--------------------------------------------------------------------------------
+Starting attempt 15 of 15
+--------------------------------------------------------------------------------
+
+[2019-10-08 18:29:06,717] {{models.py:1595}} INFO - Executing <Task(PythonOperator): training_data_processing> on 2019-10-08T17:43:32.113975+00:00
+[2019-10-08 18:29:06,717] {{base_task_runner.py:118}} INFO - Running: ['bash', '-c', 'airflow run housing_price_prediction_training training_data_processing 2019-10-08T17:43:32.113975+00:00 --job_id 18 --raw -sd DAGS_FOLDER/housing_price_prediction_training.py --cfg_path /tmp/tmpetzh2x99']
+[2019-10-08 18:29:07,313] {{base_task_runner.py:101}} INFO - Job 18: Subtask training_data_processing [2019-10-08 18:29:07,313] {{settings.py:174}} INFO - setting.configure_orm(): Using pool settings. pool_size=5, pool_recycle=1800
+[2019-10-08 18:29:07,583] {{base_task_runner.py:101}} INFO - Job 18: Subtask training_data_processing [2019-10-08 18:29:07,583] {{__init__.py:51}} INFO - Using executor LocalExecutor
+[2019-10-08 18:29:08,360] {{base_task_runner.py:101}} INFO - Job 18: Subtask training_data_processing [2019-10-08 18:29:08,359] {{models.py:271}} INFO - Filling up the DagBag from /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-08 18:29:08,475] {{base_task_runner.py:101}} INFO - Job 18: Subtask training_data_processing [2019-10-08 18:29:08,475] {{cli.py:484}} INFO - Running <TaskInstance: housing_price_prediction_training.training_data_processing 2019-10-08T17:43:32.113975+00:00 [running]> on host 63734ffeb1b4
+[2019-10-08 18:29:08,557] {{logging_mixin.py:95}} INFO - a1751f77-1f5f-4ccf-9672-059866a89dbe
+[2019-10-08 18:29:08,557] {{logging_mixin.py:95}} INFO - http://192.168.0.102:5001/check/a1751f77-1f5f-4ccf-9672-059866a89dbe
+[2019-10-08 18:29:08,591] {{models.py:1760}} ERROR - ml_automation.core.DataProcessor TypeError string indices must be integersTraceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/ml_automation/core/DataProcessor.py", line 18, in DataProcessor
+    util.getValFromDict('raw_file_paths', raw_request))
+  File "/usr/local/lib/python3.6/site-packages/common_utils/ServiceHelper.py", line 210, in getValFromDict
+    if name in data and data[name] is not None:
+TypeError: string indices must be integers
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/airflow/models.py", line 1659, in _run_raw_task
+    result = task_copy.execute(context=context)
+  File "/usr/local/lib/python3.6/site-packages/airflow/operators/python_operator.py", line 95, in execute
+    return_value = self.execute_callable()
+  File "/usr/local/lib/python3.6/site-packages/airflow/operators/python_operator.py", line 100, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/usr/local/airflow/dags/housing_price_prediction_training.py", line 42, in training_data_processing
+    print(invoke_endpoint(training_data_processing_config))
+  File "/usr/local/airflow/dags/housing_price_prediction_training.py", line 36, in invoke_endpoint
+    raise Exception(response["Exception"])
+Exception: ml_automation.core.DataProcessor TypeError string indices must be integersTraceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/ml_automation/core/DataProcessor.py", line 18, in DataProcessor
+    util.getValFromDict('raw_file_paths', raw_request))
+  File "/usr/local/lib/python3.6/site-packages/common_utils/ServiceHelper.py", line 210, in getValFromDict
+    if name in data and data[name] is not None:
+TypeError: string indices must be integers
+
+[2019-10-08 18:29:08,594] {{models.py:1789}} INFO - All retries failed; marking task as FAILED
+[2019-10-08 18:29:08,649] {{base_task_runner.py:101}} INFO - Job 18: Subtask training_data_processing Traceback (most recent call last):
+[2019-10-08 18:29:08,649] {{base_task_runner.py:101}} INFO - Job 18: Subtask training_data_processing   File "/usr/local/bin/airflow", line 32, in <module>
+[2019-10-08 18:29:08,649] {{base_task_runner.py:101}} INFO - Job 18: Subtask training_data_processing     args.func(args)
+[2019-10-08 18:29:08,649] {{base_task_runner.py:101}} INFO - Job 18: Subtask training_data_processing   File "/usr/local/lib/python3.6/site-packages/airflow/utils/cli.py", line 74, in wrapper
+[2019-10-08 18:29:08,649] {{base_task_runner.py:101}} INFO - Job 18: Subtask training_data_processing     return f(*args, **kwargs)
+[2019-10-08 18:29:08,649] {{base_task_runner.py:101}} INFO - Job 18: Subtask training_data_processing   File "/usr/local/lib/python3.6/site-packages/airflow/bin/cli.py", line 490, in run
+[2019-10-08 18:29:08,649] {{base_task_runner.py:101}} INFO - Job 18: Subtask training_data_processing     _run(args, dag, ti)
+[2019-10-08 18:29:08,649] {{base_task_runner.py:101}} INFO - Job 18: Subtask training_data_processing   File "/usr/local/lib/python3.6/site-packages/airflow/bin/cli.py", line 406, in _run
+[2019-10-08 18:29:08,649] {{base_task_runner.py:101}} INFO - Job 18: Subtask training_data_processing     pool=args.pool,
+[2019-10-08 18:29:08,649] {{base_task_runner.py:101}} INFO - Job 18: Subtask training_data_processing   File "/usr/local/lib/python3.6/site-packages/airflow/utils/db.py", line 74, in wrapper
+[2019-10-08 18:29:08,649] {{base_task_runner.py:101}} INFO - Job 18: Subtask training_data_processing     return func(*args, **kwargs)
+[2019-10-08 18:29:08,649] {{base_task_runner.py:101}} INFO - Job 18: Subtask training_data_processing   File "/usr/local/lib/python3.6/site-packages/airflow/models.py", line 1659, in _run_raw_task
+[2019-10-08 18:29:08,649] {{base_task_runner.py:101}} INFO - Job 18: Subtask training_data_processing     result = task_copy.execute(context=context)
+[2019-10-08 18:29:08,649] {{base_task_runner.py:101}} INFO - Job 18: Subtask training_data_processing   File "/usr/local/lib/python3.6/site-packages/airflow/operators/python_operator.py", line 95, in execute
+[2019-10-08 18:29:08,649] {{base_task_runner.py:101}} INFO - Job 18: Subtask training_data_processing     return_value = self.execute_callable()
+[2019-10-08 18:29:08,649] {{base_task_runner.py:101}} INFO - Job 18: Subtask training_data_processing   File "/usr/local/lib/python3.6/site-packages/airflow/operators/python_operator.py", line 100, in execute_callable
+[2019-10-08 18:29:08,649] {{base_task_runner.py:101}} INFO - Job 18: Subtask training_data_processing     return self.python_callable(*self.op_args, **self.op_kwargs)
+[2019-10-08 18:29:08,649] {{base_task_runner.py:101}} INFO - Job 18: Subtask training_data_processing   File "/usr/local/airflow/dags/housing_price_prediction_training.py", line 42, in training_data_processing
+[2019-10-08 18:29:08,649] {{base_task_runner.py:101}} INFO - Job 18: Subtask training_data_processing     print(invoke_endpoint(training_data_processing_config))
+[2019-10-08 18:29:08,650] {{base_task_runner.py:101}} INFO - Job 18: Subtask training_data_processing   File "/usr/local/airflow/dags/housing_price_prediction_training.py", line 36, in invoke_endpoint
+[2019-10-08 18:29:08,650] {{base_task_runner.py:101}} INFO - Job 18: Subtask training_data_processing     raise Exception(response["Exception"])
+[2019-10-08 18:29:08,650] {{base_task_runner.py:101}} INFO - Job 18: Subtask training_data_processing Exception: ml_automation.core.DataProcessor TypeError string indices must be integersTraceback (most recent call last):
+[2019-10-08 18:29:08,650] {{base_task_runner.py:101}} INFO - Job 18: Subtask training_data_processing   File "/usr/local/lib/python3.6/site-packages/ml_automation/core/DataProcessor.py", line 18, in DataProcessor
+[2019-10-08 18:29:08,650] {{base_task_runner.py:101}} INFO - Job 18: Subtask training_data_processing     util.getValFromDict('raw_file_paths', raw_request))
+[2019-10-08 18:29:08,650] {{base_task_runner.py:101}} INFO - Job 18: Subtask training_data_processing   File "/usr/local/lib/python3.6/site-packages/common_utils/ServiceHelper.py", line 210, in getValFromDict
+[2019-10-08 18:29:08,650] {{base_task_runner.py:101}} INFO - Job 18: Subtask training_data_processing     if name in data and data[name] is not None:
+[2019-10-08 18:29:08,650] {{base_task_runner.py:101}} INFO - Job 18: Subtask training_data_processing TypeError: string indices must be integers
+[2019-10-08 18:29:08,650] {{base_task_runner.py:101}} INFO - Job 18: Subtask training_data_processing 
+[2019-10-08 18:29:11,660] {{logging_mixin.py:95}} INFO - [2019-10-08 18:29:11,659] {{jobs.py:2627}} INFO - Task exited with return code 1

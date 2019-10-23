@@ -1,0 +1,16 @@
+[2019-10-09 06:05:37,743] {{models.py:1361}} INFO - Dependencies all met for <TaskInstance: housing_price_prediction_testing.testing_data_processing 2019-10-09T05:58:05.761589+00:00 [queued]>
+[2019-10-09 06:05:37,775] {{models.py:1361}} INFO - Dependencies all met for <TaskInstance: housing_price_prediction_testing.testing_data_processing 2019-10-09T05:58:05.761589+00:00 [queued]>
+[2019-10-09 06:05:37,775] {{models.py:1573}} INFO - 
+--------------------------------------------------------------------------------
+Starting attempt 2 of 3
+--------------------------------------------------------------------------------
+
+[2019-10-09 06:05:37,805] {{models.py:1595}} INFO - Executing <Task(PythonOperator): testing_data_processing> on 2019-10-09T05:58:05.761589+00:00
+[2019-10-09 06:05:37,805] {{base_task_runner.py:118}} INFO - Running: ['bash', '-c', 'airflow run housing_price_prediction_testing testing_data_processing 2019-10-09T05:58:05.761589+00:00 --job_id 28 --raw -sd DAGS_FOLDER/housing_price_prediction_testing.py --cfg_path /tmp/tmpx_1vgrp0']
+[2019-10-09 06:05:38,357] {{base_task_runner.py:101}} INFO - Job 28: Subtask testing_data_processing [2019-10-09 06:05:38,356] {{settings.py:174}} INFO - setting.configure_orm(): Using pool settings. pool_size=5, pool_recycle=1800
+[2019-10-09 06:05:38,564] {{base_task_runner.py:101}} INFO - Job 28: Subtask testing_data_processing [2019-10-09 06:05:38,563] {{__init__.py:51}} INFO - Using executor LocalExecutor
+[2019-10-09 06:05:39,031] {{base_task_runner.py:101}} INFO - Job 28: Subtask testing_data_processing [2019-10-09 06:05:39,030] {{models.py:271}} INFO - Filling up the DagBag from /usr/local/airflow/dags/housing_price_prediction_testing.py
+[2019-10-09 06:05:39,086] {{base_task_runner.py:101}} INFO - Job 28: Subtask testing_data_processing [2019-10-09 06:05:39,085] {{cli.py:484}} INFO - Running <TaskInstance: housing_price_prediction_testing.testing_data_processing 2019-10-09T05:58:05.761589+00:00 [running]> on host 63734ffeb1b4
+[2019-10-09 06:05:41,225] {{logging_mixin.py:95}} INFO - {'1:House Price Predictions Testing Data Processing': {'status': 'Success', 'message': 'Preprocessing Completed'}}
+[2019-10-09 06:05:41,225] {{python_operator.py:96}} INFO - Done. Returned value was: None
+[2019-10-09 06:05:42,642] {{logging_mixin.py:95}} INFO - [2019-10-09 06:05:42,641] {{jobs.py:2627}} INFO - Task exited with return code 0

@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+    inference-engine:
+        build: ./
+        image: python-prediction-engine
+        container_name: predictionServer
+        environment:
+        - DEPLOY_ENV=production
+        - HOST=0.0.0.0
+        - PORT=8080
+        ports:
+        - 8080:8080
+        volumes:
+        - /ml_resources/storage/:/ml_webservice/storage/
+        - /ml_resources/logs/:/ml_webservice/logs/
+        - /ml_resources/credentials.properties:/ml_webservice/prediction_engine/configs/credentials.properties

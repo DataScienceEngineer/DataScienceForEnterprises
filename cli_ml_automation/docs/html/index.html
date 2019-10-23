@@ -1,0 +1,531 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Welcome to ml_automation’s documentation! &#8212; ml_automation 0.0.1 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="welcome-to-ml-automation-s-documentation">
+<h1>Welcome to ml_automation’s documentation!<a class="headerlink" href="#welcome-to-ml-automation-s-documentation" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+<div class="section" id="ml-automation">
+<h2><strong>ml_automation</strong><a class="headerlink" href="#ml-automation" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-ml_automation.core.AutomationProcessor">
+<span id="ml-automation-core-automationprocessor"></span><h3>ml_automation.core.AutomationProcessor<a class="headerlink" href="#module-ml_automation.core.AutomationProcessor" title="Permalink to this headline">¶</a></h3>
+<dl class="function">
+<dt id="ml_automation.core.AutomationProcessor.processFactory">
+<code class="sig-prename descclassname">ml_automation.core.AutomationProcessor.</code><code class="sig-name descname">processFactory</code><span class="sig-paren">(</span><em class="sig-param">raw_request</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ml_automation/core/AutomationProcessor.html#processFactory"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ml_automation.core.AutomationProcessor.processFactory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resolve the automation object from the raw_request dictionary</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>raw_request</strong> – input dictionary</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>resolved request objects</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-ml_automation.core.contexts">
+<span id="ml-automation-core-contexts"></span><h3>ml_automation.core.contexts<a class="headerlink" href="#module-ml_automation.core.contexts" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="ml_automation.core.contexts.DataProcessorContext">
+<em class="property">class </em><code class="sig-prename descclassname">ml_automation.core.contexts.</code><code class="sig-name descname">DataProcessorContext</code><a class="reference internal" href="_modules/ml_automation/core/contexts.html#DataProcessorContext"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ml_automation.core.contexts.DataProcessorContext" title="Permalink to this definition">¶</a></dt>
+<dd><p>Context for DataProcessor module</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="ml_automation.core.contexts.ModelGeneratorContext">
+<em class="property">class </em><code class="sig-prename descclassname">ml_automation.core.contexts.</code><code class="sig-name descname">ModelGeneratorContext</code><a class="reference internal" href="_modules/ml_automation/core/contexts.html#ModelGeneratorContext"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ml_automation.core.contexts.ModelGeneratorContext" title="Permalink to this definition">¶</a></dt>
+<dd><p>Context for ModelGenerator module</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="ml_automation.core.contexts.ModelPredictorContext">
+<em class="property">class </em><code class="sig-prename descclassname">ml_automation.core.contexts.</code><code class="sig-name descname">ModelPredictorContext</code><a class="reference internal" href="_modules/ml_automation/core/contexts.html#ModelPredictorContext"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ml_automation.core.contexts.ModelPredictorContext" title="Permalink to this definition">¶</a></dt>
+<dd><p>Context for ModelPredictor module</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-ml_automation.core.CustomFunction">
+<span id="ml-automation-core-customfunction"></span><h3>ml_automation.core.CustomFunction<a class="headerlink" href="#module-ml_automation.core.CustomFunction" title="Permalink to this headline">¶</a></h3>
+<dl class="function">
+<dt id="ml_automation.core.CustomFunction.CustomFunction">
+<code class="sig-prename descclassname">ml_automation.core.CustomFunction.</code><code class="sig-name descname">CustomFunction</code><span class="sig-paren">(</span><em class="sig-param">raw_request</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ml_automation/core/CustomFunction.html#CustomFunction"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ml_automation.core.CustomFunction.CustomFunction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Action: Perform a custom function</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>raw_request</strong> – request object to perform custom function with arguments</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Status of the object</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-ml_automation.core.DataProcessor">
+<span id="ml-automation-core-dataprocessor"></span><h3>ml_automation.core.DataProcessor<a class="headerlink" href="#module-ml_automation.core.DataProcessor" title="Permalink to this headline">¶</a></h3>
+<dl class="function">
+<dt id="ml_automation.core.DataProcessor.DataProcessor">
+<code class="sig-prename descclassname">ml_automation.core.DataProcessor.</code><code class="sig-name descname">DataProcessor</code><span class="sig-paren">(</span><em class="sig-param">raw_request</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ml_automation/core/DataProcessor.html#DataProcessor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ml_automation.core.DataProcessor.DataProcessor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Action: Perform Merging, then Preprocessing for the given objects</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>raw_request</strong> – request objects to perform merging and pre-processing of data</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>status of each object</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-ml_automation.core.ModelGenerator">
+<span id="ml-automation-core-modelgenerator"></span><h3>ml_automation.core.ModelGenerator<a class="headerlink" href="#module-ml_automation.core.ModelGenerator" title="Permalink to this headline">¶</a></h3>
+<dl class="function">
+<dt id="ml_automation.core.ModelGenerator.ModelGenerator">
+<code class="sig-prename descclassname">ml_automation.core.ModelGenerator.</code><code class="sig-name descname">ModelGenerator</code><span class="sig-paren">(</span><em class="sig-param">raw_request</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ml_automation/core/ModelGenerator.html#ModelGenerator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ml_automation.core.ModelGenerator.ModelGenerator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Action: Perform model generation functions for the given objects</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>raw_request</strong> – request objects to perform model generation on training data</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Status of each object</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-ml_automation.core.ModelPredictor">
+<span id="ml-automation-core-modelpredictor"></span><h3>ml_automation.core.ModelPredictor<a class="headerlink" href="#module-ml_automation.core.ModelPredictor" title="Permalink to this headline">¶</a></h3>
+<dl class="function">
+<dt id="ml_automation.core.ModelPredictor.ModelPredictor">
+<code class="sig-prename descclassname">ml_automation.core.ModelPredictor.</code><code class="sig-name descname">ModelPredictor</code><span class="sig-paren">(</span><em class="sig-param">raw_request</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ml_automation/core/ModelPredictor.html#ModelPredictor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ml_automation.core.ModelPredictor.ModelPredictor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Action: Perform model prediction functions for the given objects</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>raw_request</strong> – request objects to perform model predictions on testing data</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Status of each object</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-ml_automation.custom_functions.custom_function">
+<span id="ml-automation-custom-functions-custom-function"></span><h3>ml_automation.custom_functions.custom_function<a class="headerlink" href="#module-ml_automation.custom_functions.custom_function" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="ml_automation.custom_functions.custom_function.DummyCustomTemplate">
+<em class="property">class </em><code class="sig-prename descclassname">ml_automation.custom_functions.custom_function.</code><code class="sig-name descname">DummyCustomTemplate</code><a class="reference internal" href="_modules/ml_automation/custom_functions/custom_function.html#DummyCustomTemplate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ml_automation.custom_functions.custom_function.DummyCustomTemplate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implementation example of Custom Function by extending CustomFunctionTemplate</p>
+<dl class="method">
+<dt id="ml_automation.custom_functions.custom_function.DummyCustomTemplate.performOperation">
+<code class="sig-name descname">performOperation</code><span class="sig-paren">(</span><em class="sig-param">arguments: Dict</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ml_automation/custom_functions/custom_function.html#DummyCustomTemplate.performOperation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ml_automation.custom_functions.custom_function.DummyCustomTemplate.performOperation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform user defined operations in this function</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>arguments</strong> – Contains arguments for the function</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>optional string with arguments</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="id1">
+<h3>ml_automation.custom_functions.custom_function<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<span class="target" id="module-ml_automation.custom_functions.CustomFunctionTemplate"></span><dl class="class">
+<dt id="ml_automation.custom_functions.CustomFunctionTemplate.CustomFunctionTemplate">
+<em class="property">class </em><code class="sig-prename descclassname">ml_automation.custom_functions.CustomFunctionTemplate.</code><code class="sig-name descname">CustomFunctionTemplate</code><a class="reference internal" href="_modules/ml_automation/custom_functions/CustomFunctionTemplate.html#CustomFunctionTemplate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ml_automation.custom_functions.CustomFunctionTemplate.CustomFunctionTemplate" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="ml_automation.custom_functions.CustomFunctionTemplate.CustomFunctionTemplate.performOperation">
+<em class="property">abstract </em><code class="sig-name descname">performOperation</code><span class="sig-paren">(</span><em class="sig-param">arguments: Dict</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ml_automation/custom_functions/CustomFunctionTemplate.html#CustomFunctionTemplate.performOperation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ml_automation.custom_functions.CustomFunctionTemplate.CustomFunctionTemplate.performOperation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform user defined operations in this function</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>arguments</strong> – Contains arguments for the function</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>optional string with arguments</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-ml_automation.data_processing.custom_data_processor">
+<span id="ml-automation-data-processing-custom-data-processor"></span><h3>ml_automation.data_processing.custom_data_processor<a class="headerlink" href="#module-ml_automation.data_processing.custom_data_processor" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="ml_automation.data_processing.custom_data_processor.DummyMergingTemplate">
+<em class="property">class </em><code class="sig-prename descclassname">ml_automation.data_processing.custom_data_processor.</code><code class="sig-name descname">DummyMergingTemplate</code><a class="reference internal" href="_modules/ml_automation/data_processing/custom_data_processor.html#DummyMergingTemplate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ml_automation.data_processing.custom_data_processor.DummyMergingTemplate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implementation example of Merging by extending MergingTemplate</p>
+<dl class="method">
+<dt id="ml_automation.data_processing.custom_data_processor.DummyMergingTemplate.performMerging">
+<code class="sig-name descname">performMerging</code><span class="sig-paren">(</span><em class="sig-param">raw_dfs: Dict[str, pandas.core.frame.DataFrame], additional_params: Dict, data_processor_context: ml_automation.core.contexts.DataProcessorContext</em><span class="sig-paren">)</span> &#x2192; pandas.core.frame.DataFrame<a class="reference internal" href="_modules/ml_automation/data_processing/custom_data_processor.html#DummyMergingTemplate.performMerging"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ml_automation.data_processing.custom_data_processor.DummyMergingTemplate.performMerging" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform Preprocessing</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>raw_dfs</strong> – Contains raws Dataframes which are to be merged</p></li>
+<li><p><strong>additional_params</strong> – Contains Additional arguments</p></li>
+<li><p><strong>data_processor_context</strong> – Context variable to be passed across functions for a single call</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>merged dataframe</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ml_automation.data_processing.custom_data_processor.DummyPreprocessingTemplate">
+<em class="property">class </em><code class="sig-prename descclassname">ml_automation.data_processing.custom_data_processor.</code><code class="sig-name descname">DummyPreprocessingTemplate</code><a class="reference internal" href="_modules/ml_automation/data_processing/custom_data_processor.html#DummyPreprocessingTemplate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ml_automation.data_processing.custom_data_processor.DummyPreprocessingTemplate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implementation example of Preprocessing by extending PreprocessingTemplate</p>
+<dl class="method">
+<dt id="ml_automation.data_processing.custom_data_processor.DummyPreprocessingTemplate.performPreprocessing">
+<code class="sig-name descname">performPreprocessing</code><span class="sig-paren">(</span><em class="sig-param">merged_df: pandas.core.frame.DataFrame</em>, <em class="sig-param">additional_params: Dict</em>, <em class="sig-param">data_processor_context: ml_automation.core.contexts.DataProcessorContext</em><span class="sig-paren">)</span> &#x2192; pandas.core.frame.DataFrame<a class="reference internal" href="_modules/ml_automation/data_processing/custom_data_processor.html#DummyPreprocessingTemplate.performPreprocessing"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ml_automation.data_processing.custom_data_processor.DummyPreprocessingTemplate.performPreprocessing" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform Preprocessing</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>merged_df</strong> – Contains merged dataframe which is to be preprocessed</p></li>
+<li><p><strong>additional_params</strong> – Contains Additional arguments</p></li>
+<li><p><strong>data_processor_context</strong> – Context variable to be passed across functions for a single call</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>preprocessed dataframe</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ml_automation.data_processing.custom_data_processor.TestPreprocessingTemplate1">
+<em class="property">class </em><code class="sig-prename descclassname">ml_automation.data_processing.custom_data_processor.</code><code class="sig-name descname">TestPreprocessingTemplate1</code><a class="reference internal" href="_modules/ml_automation/data_processing/custom_data_processor.html#TestPreprocessingTemplate1"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ml_automation.data_processing.custom_data_processor.TestPreprocessingTemplate1" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implementation example of Preprocessing by extending PreprocessingTemplate</p>
+<dl class="method">
+<dt id="ml_automation.data_processing.custom_data_processor.TestPreprocessingTemplate1.performPreprocessing">
+<code class="sig-name descname">performPreprocessing</code><span class="sig-paren">(</span><em class="sig-param">merged_df: pandas.core.frame.DataFrame</em>, <em class="sig-param">additional_params: Dict</em>, <em class="sig-param">data_processor_context: ml_automation.core.contexts.DataProcessorContext</em><span class="sig-paren">)</span> &#x2192; pandas.core.frame.DataFrame<a class="reference internal" href="_modules/ml_automation/data_processing/custom_data_processor.html#TestPreprocessingTemplate1.performPreprocessing"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ml_automation.data_processing.custom_data_processor.TestPreprocessingTemplate1.performPreprocessing" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform Preprocessing</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>merged_df</strong> – Contains merged dataframe which is to be preprocessed</p></li>
+<li><p><strong>additional_params</strong> – Contains Additional arguments</p></li>
+<li><p><strong>data_processor_context</strong> – Context variable to be passed across functions for a single call</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>preprocessed dataframe</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-ml_automation.data_processing.DataProcessorTemplate">
+<span id="ml-automation-data-processing-dataprocessortemplate"></span><h3>ml_automation.data_processing.DataProcessorTemplate<a class="headerlink" href="#module-ml_automation.data_processing.DataProcessorTemplate" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="ml_automation.data_processing.DataProcessorTemplate.MergingTemplate">
+<em class="property">class </em><code class="sig-prename descclassname">ml_automation.data_processing.DataProcessorTemplate.</code><code class="sig-name descname">MergingTemplate</code><a class="reference internal" href="_modules/ml_automation/data_processing/DataProcessorTemplate.html#MergingTemplate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ml_automation.data_processing.DataProcessorTemplate.MergingTemplate" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="ml_automation.data_processing.DataProcessorTemplate.MergingTemplate.performMerging">
+<em class="property">abstract </em><code class="sig-name descname">performMerging</code><span class="sig-paren">(</span><em class="sig-param">raw_dfs: Dict[str, pandas.core.frame.DataFrame], additional_params: Dict, data_processor_context: ml_automation.core.contexts.DataProcessorContext</em><span class="sig-paren">)</span> &#x2192; pandas.core.frame.DataFrame<a class="reference internal" href="_modules/ml_automation/data_processing/DataProcessorTemplate.html#MergingTemplate.performMerging"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ml_automation.data_processing.DataProcessorTemplate.MergingTemplate.performMerging" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform Preprocessing</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>raw_dfs</strong> – Contains raws Dataframes which are to be merged</p></li>
+<li><p><strong>additional_params</strong> – Contains Additional arguments</p></li>
+<li><p><strong>data_processor_context</strong> – Context variable to be passed across functions for a single call</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>merged dataframe</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ml_automation.data_processing.DataProcessorTemplate.PreprocessingTemplate">
+<em class="property">class </em><code class="sig-prename descclassname">ml_automation.data_processing.DataProcessorTemplate.</code><code class="sig-name descname">PreprocessingTemplate</code><a class="reference internal" href="_modules/ml_automation/data_processing/DataProcessorTemplate.html#PreprocessingTemplate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ml_automation.data_processing.DataProcessorTemplate.PreprocessingTemplate" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="ml_automation.data_processing.DataProcessorTemplate.PreprocessingTemplate.performPreprocessing">
+<em class="property">abstract </em><code class="sig-name descname">performPreprocessing</code><span class="sig-paren">(</span><em class="sig-param">merged_df: pandas.core.frame.DataFrame</em>, <em class="sig-param">additional_params: Dict</em>, <em class="sig-param">data_processor_context: ml_automation.core.contexts.DataProcessorContext</em><span class="sig-paren">)</span> &#x2192; pandas.core.frame.DataFrame<a class="reference internal" href="_modules/ml_automation/data_processing/DataProcessorTemplate.html#PreprocessingTemplate.performPreprocessing"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ml_automation.data_processing.DataProcessorTemplate.PreprocessingTemplate.performPreprocessing" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform Preprocessing</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>merged_df</strong> – Contains merged dataframe which is to be preprocessed</p></li>
+<li><p><strong>additional_params</strong> – Contains Additional arguments</p></li>
+<li><p><strong>data_processor_context</strong> – Context variable to be passed across functions for a single call</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>preprocessed dataframe</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-ml_automation.model_predictors.custom_model_predictor">
+<span id="ml-automation-model-predictors-custom-model-predictor"></span><h3>ml_automation.model_predictors.custom_model_predictor<a class="headerlink" href="#module-ml_automation.model_predictors.custom_model_predictor" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="ml_automation.model_predictors.custom_model_predictor.TestModelPredictor">
+<em class="property">class </em><code class="sig-prename descclassname">ml_automation.model_predictors.custom_model_predictor.</code><code class="sig-name descname">TestModelPredictor</code><a class="reference internal" href="_modules/ml_automation/model_predictors/custom_model_predictor.html#TestModelPredictor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ml_automation.model_predictors.custom_model_predictor.TestModelPredictor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implementation example of ModelPredictor by extending ModelPredictorTemplate</p>
+<dl class="method">
+<dt id="ml_automation.model_predictors.custom_model_predictor.TestModelPredictor.performModelPredictions">
+<code class="sig-name descname">performModelPredictions</code><span class="sig-paren">(</span><em class="sig-param">model_file_paths: Dict</em>, <em class="sig-param">preprocessed_df: pandas.core.frame.DataFrame</em>, <em class="sig-param">additional_params: Dict</em>, <em class="sig-param">model_predictor_context: ml_automation.core.contexts.ModelPredictorContext</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ml_automation/model_predictors/custom_model_predictor.html#TestModelPredictor.performModelPredictions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ml_automation.model_predictors.custom_model_predictor.TestModelPredictor.performModelPredictions" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model_file_paths</strong> – Dictionary of file paths of models for this tasks</p></li>
+<li><p><strong>preprocessed_df</strong> – Preprocessed Dataframe to be used in model predictions</p></li>
+<li><p><strong>additional_params</strong> – Dictionary of additional arguments</p></li>
+<li><p><strong>model_predictor_context</strong> – Global Context variable accesible across functions</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Prediction Dataframes</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-ml_automation.model_predictors.ModelPredictorTemplate">
+<span id="ml-automation-model-predictors-modelpredictortemplate"></span><h3>ml_automation.model_predictors.ModelPredictorTemplate<a class="headerlink" href="#module-ml_automation.model_predictors.ModelPredictorTemplate" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="ml_automation.model_predictors.ModelPredictorTemplate.ModelPredictorTemplate">
+<em class="property">class </em><code class="sig-prename descclassname">ml_automation.model_predictors.ModelPredictorTemplate.</code><code class="sig-name descname">ModelPredictorTemplate</code><a class="reference internal" href="_modules/ml_automation/model_predictors/ModelPredictorTemplate.html#ModelPredictorTemplate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ml_automation.model_predictors.ModelPredictorTemplate.ModelPredictorTemplate" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="ml_automation.model_predictors.ModelPredictorTemplate.ModelPredictorTemplate.performModelPredictions">
+<em class="property">abstract </em><code class="sig-name descname">performModelPredictions</code><span class="sig-paren">(</span><em class="sig-param">model_file_paths: Dict</em>, <em class="sig-param">preprocessed_df: pandas.core.frame.DataFrame</em>, <em class="sig-param">additional_params: Dict</em>, <em class="sig-param">model_predictor_context: ml_automation.core.contexts.ModelPredictorContext</em><span class="sig-paren">)</span> &#x2192; pandas.core.frame.DataFrame<a class="reference internal" href="_modules/ml_automation/model_predictors/ModelPredictorTemplate.html#ModelPredictorTemplate.performModelPredictions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ml_automation.model_predictors.ModelPredictorTemplate.ModelPredictorTemplate.performModelPredictions" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model_file_paths</strong> – Dictionary of file paths of models for this tasks</p></li>
+<li><p><strong>preprocessed_df</strong> – Preprocessed Dataframe to be used in model predictions</p></li>
+<li><p><strong>additional_params</strong> – Dictionary of additional arguments</p></li>
+<li><p><strong>model_predictor_context</strong> – Global Context variable accesible across functions</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Prediction Dataframes</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-ml_automation.model_trainers.custom_model_trainer">
+<span id="ml-automation-model-trainers-custom-model-trainer"></span><h3>ml_automation.model_trainers.custom_model_trainer<a class="headerlink" href="#module-ml_automation.model_trainers.custom_model_trainer" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="ml_automation.model_trainers.custom_model_trainer.TestModelTrainer">
+<em class="property">class </em><code class="sig-prename descclassname">ml_automation.model_trainers.custom_model_trainer.</code><code class="sig-name descname">TestModelTrainer</code><a class="reference internal" href="_modules/ml_automation/model_trainers/custom_model_trainer.html#TestModelTrainer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ml_automation.model_trainers.custom_model_trainer.TestModelTrainer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implementation example of Modeltrainer by extending ModeltrainerTemplate</p>
+<dl class="method">
+<dt id="ml_automation.model_trainers.custom_model_trainer.TestModelTrainer.performModelTraining">
+<code class="sig-name descname">performModelTraining</code><span class="sig-paren">(</span><em class="sig-param">preprocessed_df: pandas.core.frame.DataFrame</em>, <em class="sig-param">model_target_file_path: str</em>, <em class="sig-param">additional_params: Dict</em>, <em class="sig-param">model_generator_context: ml_automation.core.contexts.ModelGeneratorContext</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ml_automation/model_trainers/custom_model_trainer.html#TestModelTrainer.performModelTraining"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ml_automation.model_trainers.custom_model_trainer.TestModelTrainer.performModelTraining" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>preprocessed_df</strong> – preprocessed dataframe for training</p></li>
+<li><p><strong>model_target_file_path</strong> – File path for saving the model</p></li>
+<li><p><strong>additional_params</strong> – Dictionary containing additional parameters</p></li>
+<li><p><strong>model_generator_context</strong> – Global Context variable accesible across functions</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Returns status If model is saved or not</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ml_automation.model_trainers.custom_model_trainer.TestModelTrainer2">
+<em class="property">class </em><code class="sig-prename descclassname">ml_automation.model_trainers.custom_model_trainer.</code><code class="sig-name descname">TestModelTrainer2</code><a class="reference internal" href="_modules/ml_automation/model_trainers/custom_model_trainer.html#TestModelTrainer2"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ml_automation.model_trainers.custom_model_trainer.TestModelTrainer2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implementation example of Modeltrainer by extending ModeltrainerTemplate</p>
+<dl class="method">
+<dt id="ml_automation.model_trainers.custom_model_trainer.TestModelTrainer2.performModelTraining">
+<code class="sig-name descname">performModelTraining</code><span class="sig-paren">(</span><em class="sig-param">preprocessed_df: pandas.core.frame.DataFrame</em>, <em class="sig-param">model_target_file_path: str</em>, <em class="sig-param">additional_params: Dict</em>, <em class="sig-param">model_generator_context: ml_automation.core.contexts.ModelGeneratorContext</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ml_automation/model_trainers/custom_model_trainer.html#TestModelTrainer2.performModelTraining"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ml_automation.model_trainers.custom_model_trainer.TestModelTrainer2.performModelTraining" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>preprocessed_df</strong> – preprocessed dataframe for training</p></li>
+<li><p><strong>model_target_file_path</strong> – File path for saving the model</p></li>
+<li><p><strong>additional_params</strong> – Dictionary containing additional parameters</p></li>
+<li><p><strong>model_generator_context</strong> – Global Context variable accesible across functions</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Returns status If model is saved or not</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ml_automation.model_trainers.custom_model_trainer.TestModelTrainer3">
+<em class="property">class </em><code class="sig-prename descclassname">ml_automation.model_trainers.custom_model_trainer.</code><code class="sig-name descname">TestModelTrainer3</code><a class="reference internal" href="_modules/ml_automation/model_trainers/custom_model_trainer.html#TestModelTrainer3"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ml_automation.model_trainers.custom_model_trainer.TestModelTrainer3" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implementation example of Modeltrainer by extending ModeltrainerTemplate</p>
+<dl class="method">
+<dt id="ml_automation.model_trainers.custom_model_trainer.TestModelTrainer3.performModelTraining">
+<code class="sig-name descname">performModelTraining</code><span class="sig-paren">(</span><em class="sig-param">preprocessed_df: pandas.core.frame.DataFrame</em>, <em class="sig-param">model_target_file_path: str</em>, <em class="sig-param">additional_params: Dict</em>, <em class="sig-param">model_generator_context: ml_automation.core.contexts.ModelGeneratorContext</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ml_automation/model_trainers/custom_model_trainer.html#TestModelTrainer3.performModelTraining"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ml_automation.model_trainers.custom_model_trainer.TestModelTrainer3.performModelTraining" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>preprocessed_df</strong> – preprocessed dataframe for training</p></li>
+<li><p><strong>model_target_file_path</strong> – File path for saving the model</p></li>
+<li><p><strong>additional_params</strong> – Dictionary containing additional parameters</p></li>
+<li><p><strong>model_generator_context</strong> – Global Context variable accesible across functions</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Returns status If model is saved or not</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-ml_automation.model_trainers.ModelTrainerTemplate">
+<span id="ml-automation-model-trainers-modeltrainertemplate"></span><h3>ml_automation.model_trainers.ModelTrainerTemplate<a class="headerlink" href="#module-ml_automation.model_trainers.ModelTrainerTemplate" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="ml_automation.model_trainers.ModelTrainerTemplate.ModeltrainerTemplate">
+<em class="property">class </em><code class="sig-prename descclassname">ml_automation.model_trainers.ModelTrainerTemplate.</code><code class="sig-name descname">ModeltrainerTemplate</code><a class="reference internal" href="_modules/ml_automation/model_trainers/ModelTrainerTemplate.html#ModeltrainerTemplate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ml_automation.model_trainers.ModelTrainerTemplate.ModeltrainerTemplate" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="ml_automation.model_trainers.ModelTrainerTemplate.ModeltrainerTemplate.performModelTraining">
+<em class="property">abstract </em><code class="sig-name descname">performModelTraining</code><span class="sig-paren">(</span><em class="sig-param">preprocessed_df: pandas.core.frame.DataFrame</em>, <em class="sig-param">model_target_file_path: str</em>, <em class="sig-param">additional_params: Dict</em>, <em class="sig-param">model_generator_context: ml_automation.core.contexts.ModelGeneratorContext</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ml_automation/model_trainers/ModelTrainerTemplate.html#ModeltrainerTemplate.performModelTraining"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ml_automation.model_trainers.ModelTrainerTemplate.ModeltrainerTemplate.performModelTraining" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>preprocessed_df</strong> – preprocessed dataframe for training</p></li>
+<li><p><strong>model_target_file_path</strong> – File path for saving the model</p></li>
+<li><p><strong>additional_params</strong> – Dictionary containing additional parameters</p></li>
+<li><p><strong>model_generator_context</strong> – Global Context variable accesible across functions</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Returns status If model is saved or not</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="#">ml_automation</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="#">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Data Science Engineer.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.1.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      
+      |
+      <a href="_sources/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

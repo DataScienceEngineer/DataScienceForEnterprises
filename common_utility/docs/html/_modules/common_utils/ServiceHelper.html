@@ -1,0 +1,382 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>common_utils.ServiceHelper &#8212; common_utils 0.0.1 documentation</title>
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for common_utils.ServiceHelper</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">importlib</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">stderr</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">stderr</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">stderr</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">devnull</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">keras</span> <span class="k">import</span> <span class="n">models</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">stderr</span> <span class="o">=</span> <span class="n">stderr</span>
+<span class="kn">from</span> <span class="nn">functools</span> <span class="k">import</span> <span class="n">lru_cache</span>
+<span class="kn">from</span> <span class="nn">common_utils</span> <span class="k">import</span> <span class="n">S3Util</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">sklearn.externals</span> <span class="k">import</span> <span class="n">joblib</span>
+<span class="kn">from</span> <span class="nn">common_utils.MLLogger</span> <span class="k">import</span> <span class="n">MLLogging</span>
+<span class="kn">from</span> <span class="nn">filelock</span> <span class="k">import</span> <span class="n">FileLock</span>
+<span class="kn">from</span> <span class="nn">threading</span> <span class="k">import</span> <span class="n">Lock</span>
+
+<span class="n">s3Config</span><span class="o">=</span> <span class="n">S3Util</span><span class="o">.</span><span class="n">S3Configuration</span><span class="p">()</span>
+<span class="n">logger</span><span class="o">=</span><span class="n">MLLogging</span><span class="o">.</span><span class="n">getLog</span><span class="p">()</span>
+
+<div class="viewcode-block" id="parseS3filePath"><a class="viewcode-back" href="../../index.html#common_utils.ServiceHelper.parseS3filePath">[docs]</a><span class="k">def</span> <span class="nf">parseS3filePath</span><span class="p">(</span><span class="n">s3FilePath</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Parse the S3 file Path and extract S3 Bucket name and S3 file location.</span>
+<span class="sd">    s3FilePath Convention: /s3-&lt;bucket-name&gt;/&lt;path/to/file/in/local/and/s3&gt;</span>
+<span class="sd">    If it is not parseable it will return the as is s3FilePath as the localFilePath(assuming the string is the S3 object key) and None as the bucketName</span>
+
+<span class="sd">    :param s3FilePath: the Complete File Path Location including S3 bucket and the file with directory location</span>
+
+<span class="sd">    :return: Splits the string to get bucket name and s3 file location according to the convention</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">bucketName</span><span class="o">=</span><span class="kc">None</span>
+    <span class="n">localFilePath</span><span class="o">=</span><span class="kc">None</span>
+    <span class="k">if</span> <span class="n">s3FilePath</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;/s3-&quot;</span><span class="p">):</span>
+        <span class="n">localFilePath</span><span class="o">=</span> <span class="n">s3FilePath</span><span class="p">[</span><span class="n">s3FilePath</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="mi">2</span><span class="p">:]</span>
+        <span class="n">bucketName</span><span class="o">=</span> <span class="n">s3FilePath</span><span class="p">[:</span><span class="n">s3FilePath</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">:]</span>
+    <span class="k">elif</span> <span class="n">s3FilePath</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;s3-&quot;</span><span class="p">):</span>
+        <span class="n">localFilePath</span> <span class="o">=</span> <span class="n">s3FilePath</span><span class="p">[</span><span class="n">s3FilePath</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:]</span>
+        <span class="n">bucketName</span> <span class="o">=</span> <span class="n">s3FilePath</span><span class="p">[:</span><span class="n">s3FilePath</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">localFilePath</span><span class="o">=</span><span class="n">s3FilePath</span>
+    <span class="k">return</span> <span class="n">bucketName</span><span class="p">,</span><span class="n">localFilePath</span></div>
+
+<div class="viewcode-block" id="makeDirectories"><a class="viewcode-back" href="../../index.html#common_utils.ServiceHelper.makeDirectories">[docs]</a><span class="k">def</span> <span class="nf">makeDirectories</span><span class="p">(</span><span class="n">localFileLocation</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Makes directories in the location of file prior to file creation</span>
+<span class="sd">    [FORMAT: &#39;folder1/folder2/filename&#39;]</span>
+
+<span class="sd">    :param localFileLocation: The location of file where the directories are to be created prior to file creation</span>
+
+<span class="sd">    :return: None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">localFilePath</span> <span class="o">=</span> <span class="n">localFileLocation</span><span class="p">[:</span><span class="n">localFileLocation</span><span class="o">.</span><span class="n">rindex</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)]</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">localFilePath</span><span class="p">):</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">localFilePath</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">FileExistsError</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Folders already Exists&quot;</span><span class="p">)</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="fetchFileFromS3viaLocalApi"><a class="viewcode-back" href="../../index.html#common_utils.ServiceHelper.fetchFileFromS3viaLocalApi">[docs]</a><span class="k">def</span> <span class="nf">fetchFileFromS3viaLocalApi</span><span class="p">(</span><span class="n">s3FullPath</span><span class="p">,</span><span class="n">s3Direct</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Takes S3fullPath and downloads the file and return localFileLocation</span>
+
+<span class="sd">    :param s3FullPath: S3 file location to download</span>
+
+<span class="sd">    :return: localFileLocation of the downloaded file</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">s3util</span> <span class="o">=</span> <span class="n">S3Util</span><span class="o">.</span><span class="n">S3LocalUtility</span><span class="p">()</span>
+        <span class="n">bucketName</span><span class="p">,</span> <span class="n">s3filePath</span> <span class="o">=</span> <span class="n">parseS3filePath</span><span class="p">(</span><span class="n">s3FullPath</span><span class="p">)</span>
+        <span class="n">localFileLocation</span> <span class="o">=</span> <span class="n">s3util</span><span class="o">.</span><span class="n">s3Config</span><span class="o">.</span><span class="n">s3_local_folder_path</span> <span class="o">+</span> <span class="n">s3filePath</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">localFileLocation</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">localFileLocation</span><span class="p">)</span> <span class="ow">and</span> <span class="n">s3Direct</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">localFileLocation</span>
+        <span class="k">if</span> <span class="n">bucketName</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span><span class="s2">&quot;Bucket not well defined according to format and no file was found in local file system&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">localFileLocation</span><span class="p">))</span>
+        <span class="n">makeDirectories</span><span class="p">(</span><span class="n">localFileLocation</span><span class="p">)</span>
+        <span class="k">with</span> <span class="n">FileLock</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">localFileLocation</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;.lock&quot;</span><span class="p">):</span>
+            <span class="k">with</span> <span class="n">Lock</span><span class="p">():</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">localFileLocation</span><span class="p">)</span> <span class="ow">or</span> <span class="n">s3Direct</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+                    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Downloading file from S3: Bucket: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">bucketName</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; S3 file path: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">s3filePath</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; via Local API&quot;</span><span class="p">)</span>
+                    <span class="n">s3util</span><span class="o">.</span><span class="n">downloadFileFromS3</span><span class="p">(</span><span class="n">s3filePath</span><span class="p">,</span> <span class="n">localFileLocation</span><span class="p">,</span> <span class="n">bucketName</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">localFileLocation</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;Exception While downloading file from S3 Utility: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="o">.</span><span class="n">__name__</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="load_pipeline_cache"><a class="viewcode-back" href="../../index.html#common_utils.ServiceHelper.load_pipeline_cache">[docs]</a><span class="nd">@lru_cache</span><span class="p">(</span><span class="n">maxsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">load_pipeline_cache</span><span class="p">(</span><span class="n">s3FullFilePath</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">    Load the file into the memory using a LRU Caching of maxsize by deriving location and appending local S3 storage path with relative s3 file path</span>
+
+<span class="sd">    :param s3FullFilePath: S3 file location for the model</span>
+
+<span class="sd">    :return: Pickle Object</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">bucketName</span><span class="p">,</span> <span class="n">s3FilePath</span> <span class="o">=</span> <span class="n">parseS3filePath</span><span class="p">(</span><span class="n">s3FullFilePath</span><span class="p">)</span>
+        <span class="n">localFileLocation</span> <span class="o">=</span> <span class="n">s3Config</span><span class="o">.</span><span class="n">s3_local_folder_path</span> <span class="o">+</span> <span class="n">s3FilePath</span>
+        <span class="k">return</span> <span class="n">joblib</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">localFileLocation</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;Exception While loading the model from a file: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="o">.</span><span class="n">__name__</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="load_h5_file"><a class="viewcode-back" href="../../index.html#common_utils.ServiceHelper.load_h5_file">[docs]</a><span class="k">def</span> <span class="nf">load_h5_file</span><span class="p">(</span><span class="n">s3FullFilePath</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Load the Keras specific h5 model file from the local file system</span>
+
+<span class="sd">    :param s3FullFilePath: S3 file location for the model</span>
+
+<span class="sd">    :return: keras model file</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">bucketName</span><span class="p">,</span> <span class="n">s3FilePath</span> <span class="o">=</span> <span class="n">parseS3filePath</span><span class="p">(</span><span class="n">s3FullFilePath</span><span class="p">)</span>
+        <span class="n">localFileLocation</span> <span class="o">=</span> <span class="n">s3Config</span><span class="o">.</span><span class="n">s3_local_folder_path</span> <span class="o">+</span> <span class="n">s3FilePath</span>
+        <span class="k">return</span> <span class="n">models</span><span class="o">.</span><span class="n">load_model</span><span class="p">(</span><span class="n">localFileLocation</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;Exception While loading the keras model configs from a h5 file: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="o">.</span><span class="n">__name__</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="readCsvFromS3"><a class="viewcode-back" href="../../index.html#common_utils.ServiceHelper.readCsvFromS3">[docs]</a><span class="k">def</span> <span class="nf">readCsvFromS3</span><span class="p">(</span><span class="n">s3FullPath</span><span class="p">,</span><span class="n">s3Direct</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Read csv file from S3 given the S3file path</span>
+
+<span class="sd">    :param s3FullPath: csv S3 file path</span>
+
+<span class="sd">    :param s3Direct: if True always downloads from S3, else searches in local and returns if found</span>
+
+<span class="sd">    :param kwargs: arguments to read_csv</span>
+
+<span class="sd">    :return: csv file</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">localFileLocation</span><span class="o">=</span><span class="n">fetchFileFromS3viaLocalApi</span><span class="p">(</span><span class="n">s3FullPath</span><span class="p">,</span><span class="n">s3Direct</span><span class="o">=</span><span class="n">s3Direct</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">localFileLocation</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;Exception While reading csv file from S3: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="o">.</span><span class="n">__name__</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="saveDftoS3"><a class="viewcode-back" href="../../index.html#common_utils.ServiceHelper.saveDftoS3">[docs]</a><span class="k">def</span> <span class="nf">saveDftoS3</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">s3FullPath</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Saves csv file in S3</span>
+
+<span class="sd">    :param df: Dataframe to save to S3</span>
+
+<span class="sd">    :param s3FullPath: S3 path to save the csv</span>
+
+<span class="sd">    :param kwargs: arguments to save csv</span>
+
+<span class="sd">    :return:</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">s3util</span> <span class="o">=</span> <span class="n">S3Util</span><span class="o">.</span><span class="n">S3LocalUtility</span><span class="p">()</span>
+        <span class="n">bucketName</span><span class="p">,</span> <span class="n">s3filePath</span> <span class="o">=</span> <span class="n">parseS3filePath</span><span class="p">(</span><span class="n">s3FullPath</span><span class="p">)</span>
+        <span class="n">localFileLocation</span> <span class="o">=</span> <span class="n">s3util</span><span class="o">.</span><span class="n">s3Config</span><span class="o">.</span><span class="n">s3_local_folder_path</span> <span class="o">+</span> <span class="n">s3filePath</span>
+        <span class="n">makeDirectories</span><span class="p">(</span><span class="n">localFileLocation</span><span class="p">)</span>
+        <span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">localFileLocation</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">s3util</span><span class="o">.</span><span class="n">uploadFileToS3</span><span class="p">(</span><span class="n">localFileLocation</span><span class="p">,</span> <span class="n">s3filePath</span><span class="p">,</span> <span class="n">bucketName</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;Exception While saving dataframe to csv file and uploading to S3: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="o">.</span><span class="n">__name__</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="readPickleFromS3"><a class="viewcode-back" href="../../index.html#common_utils.ServiceHelper.readPickleFromS3">[docs]</a><span class="k">def</span> <span class="nf">readPickleFromS3</span><span class="p">(</span><span class="n">s3FullPath</span><span class="p">,</span><span class="n">s3Direct</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Read pickle file from S3</span>
+
+<span class="sd">    :param s3FullPath: S3 path to read pickle from</span>
+
+<span class="sd">    :param s3Direct: if True always downloads from S3, else searches in local and returns if found</span>
+
+<span class="sd">    :param kwargs: arguments to save S3</span>
+
+<span class="sd">    :return: deserialized pickle object</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">localFileLocation</span> <span class="o">=</span> <span class="n">fetchFileFromS3viaLocalApi</span><span class="p">(</span><span class="n">s3FullPath</span><span class="p">,</span><span class="n">s3Direct</span><span class="o">=</span><span class="n">s3Direct</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">joblib</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">localFileLocation</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;Exception While reading pickle file from S3: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="o">.</span><span class="n">__name__</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="checkIfS3FileExist"><a class="viewcode-back" href="../../index.html#common_utils.ServiceHelper.checkIfS3FileExist">[docs]</a><span class="k">def</span> <span class="nf">checkIfS3FileExist</span><span class="p">(</span><span class="n">s3FullPath</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Check if S3 file exist or not</span>
+
+<span class="sd">    :param s3FullPath: S3 file path</span>
+
+<span class="sd">    :return: True/False</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">s3util</span> <span class="o">=</span> <span class="n">S3Util</span><span class="o">.</span><span class="n">S3LocalUtility</span><span class="p">()</span>
+    <span class="n">bucketName</span><span class="p">,</span> <span class="n">s3filePath</span> <span class="o">=</span> <span class="n">parseS3filePath</span><span class="p">(</span><span class="n">s3FullPath</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">s3util</span><span class="o">.</span><span class="n">ifS3FileExist</span><span class="p">(</span><span class="n">s3filePath</span><span class="p">,</span><span class="n">bucketName</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="getValFromDict"><a class="viewcode-back" href="../../index.html#common_utils.ServiceHelper.getValFromDict">[docs]</a><span class="k">def</span> <span class="nf">getValFromDict</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Get the value from the key from a given dictionary and return custom exception messages if not found</span>
+
+<span class="sd">    :param name: key to search</span>
+
+<span class="sd">    :param data: Dictionary to search from</span>
+
+<span class="sd">    :return: value for the given search key</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">data</span> <span class="ow">and</span> <span class="n">data</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">data</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
+    <span class="k">elif</span> <span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">name</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot; is not defined in the request parameter&quot;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">data</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">name</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot; cannot be None type&quot;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="loadDataFramesFromDict"><a class="viewcode-back" href="../../index.html#common_utils.ServiceHelper.loadDataFramesFromDict">[docs]</a><span class="k">def</span> <span class="nf">loadDataFramesFromDict</span><span class="p">(</span><span class="n">fileDict</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Load the dataframes from a given dictionary of file paths</span>
+
+<span class="sd">    :param fileDict: {key: &#39;filepath&#39;}</span>
+
+<span class="sd">    :return:{key: file}</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">dfs</span><span class="o">=</span><span class="p">{}</span>
+        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">fileDict</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+            <span class="n">dfs</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">fileDict</span><span class="p">[</span><span class="n">key</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">dfs</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">msg</span> <span class="o">=</span><span class="s2">&quot;Unable to load csv file(s) into dataframes: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="o">.</span><span class="n">__name__</span><span class="p">)</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="loadDataFramesFromList"><a class="viewcode-back" href="../../index.html#common_utils.ServiceHelper.loadDataFramesFromList">[docs]</a><span class="k">def</span> <span class="nf">loadDataFramesFromList</span><span class="p">(</span><span class="n">filePaths</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Load Dataframes from list</span>
+
+<span class="sd">    :param filePaths: list of file paths</span>
+
+<span class="sd">    :return: list of files</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">dfs</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">filePaths</span><span class="p">:</span>
+            <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+            <span class="n">dfs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">dfs</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Unable to load csv file(s) into dataframes: &quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="o">.</span><span class="n">__name__</span><span class="p">)</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="moduleClassFunctionInvoke"><a class="viewcode-back" href="../../index.html#common_utils.ServiceHelper.moduleClassFunctionInvoke">[docs]</a><span class="k">def</span> <span class="nf">moduleClassFunctionInvoke</span><span class="p">(</span><span class="n">moduleClassFunctionPath</span><span class="p">,</span> <span class="o">*</span><span class="n">arguments</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return a function call dynamically from a string function path.</span>
+<span class="sd">    It applies reflections to load the function from the given class and module from a string</span>
+
+<span class="sd">    :param moduleClassFunctionPath: full path of the module-class-function</span>
+
+<span class="sd">    :param arguments: arguments to pass to the function</span>
+
+<span class="sd">    :return: function invocation with arguments</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">extractPath</span><span class="o">=</span><span class="n">moduleClassFunctionPath</span><span class="o">.</span><span class="n">rsplit</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="n">module_name</span><span class="p">,</span><span class="n">py_class_name</span><span class="p">,</span><span class="n">function_name</span><span class="o">=</span><span class="n">extractPath</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">extractPath</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">extractPath</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+        <span class="n">module</span> <span class="o">=</span> <span class="n">importlib</span><span class="o">.</span><span class="n">import_module</span><span class="p">(</span><span class="n">module_name</span><span class="p">)</span>
+        <span class="n">py_class</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="n">py_class_name</span><span class="p">)()</span>
+        <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">py_class</span><span class="p">,</span> <span class="n">function_name</span><span class="p">)(</span><span class="o">*</span><span class="n">arguments</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Problem in invocation function: &quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="o">.</span><span class="n">__name__</span><span class="p">)</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="moduleClassType"><a class="viewcode-back" href="../../index.html#common_utils.ServiceHelper.moduleClassType">[docs]</a><span class="k">def</span> <span class="nf">moduleClassType</span><span class="p">(</span><span class="n">moduleClassFunctionPath</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Returns the type of a function dynamically from a string function path.</span>
+
+<span class="sd">    :param moduleClassFunctionPath: full path of the module-class-function</span>
+
+<span class="sd">    :return: type of the invoked function</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">extractPath</span><span class="o">=</span><span class="n">moduleClassFunctionPath</span><span class="o">.</span><span class="n">rsplit</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="n">module_name</span><span class="p">,</span><span class="n">py_class_name</span><span class="p">,</span><span class="n">function_name</span><span class="o">=</span><span class="n">extractPath</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">extractPath</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">extractPath</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+        <span class="n">module</span> <span class="o">=</span> <span class="n">importlib</span><span class="o">.</span><span class="n">import_module</span><span class="p">(</span><span class="n">module_name</span><span class="p">)</span>
+        <span class="n">py_class</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="n">py_class_name</span><span class="p">)()</span>
+        <span class="k">return</span> <span class="nb">type</span><span class="p">(</span><span class="n">py_class</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Problem in invocation function (Class checking failed):  &quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="o">.</span><span class="n">__name__</span><span class="p">)</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span></div>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">common_utils</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Data Science Engineer.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.1.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

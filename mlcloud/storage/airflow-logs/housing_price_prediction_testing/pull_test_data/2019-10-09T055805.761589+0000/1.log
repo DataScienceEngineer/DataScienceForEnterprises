@@ -1,0 +1,15 @@
+[2019-10-09 06:16:45,750] {{models.py:1361}} INFO - Dependencies all met for <TaskInstance: housing_price_prediction_testing.pull_test_data 2019-10-09T05:58:05.761589+00:00 [queued]>
+[2019-10-09 06:16:45,832] {{models.py:1361}} INFO - Dependencies all met for <TaskInstance: housing_price_prediction_testing.pull_test_data 2019-10-09T05:58:05.761589+00:00 [queued]>
+[2019-10-09 06:16:45,842] {{models.py:1573}} INFO - 
+--------------------------------------------------------------------------------
+Starting attempt 1 of 2
+--------------------------------------------------------------------------------
+
+[2019-10-09 06:16:45,959] {{models.py:1595}} INFO - Executing <Task(PythonOperator): pull_test_data> on 2019-10-09T05:58:05.761589+00:00
+[2019-10-09 06:16:45,960] {{base_task_runner.py:118}} INFO - Running: ['bash', '-c', 'airflow run housing_price_prediction_testing pull_test_data 2019-10-09T05:58:05.761589+00:00 --job_id 39 --raw -sd DAGS_FOLDER/housing_price_prediction_testing.py --cfg_path /tmp/tmprb8i6zpq']
+[2019-10-09 06:16:46,904] {{base_task_runner.py:101}} INFO - Job 39: Subtask pull_test_data [2019-10-09 06:16:46,904] {{settings.py:174}} INFO - setting.configure_orm(): Using pool settings. pool_size=5, pool_recycle=1800
+[2019-10-09 06:16:47,129] {{base_task_runner.py:101}} INFO - Job 39: Subtask pull_test_data [2019-10-09 06:16:47,128] {{__init__.py:51}} INFO - Using executor LocalExecutor
+[2019-10-09 06:16:47,561] {{base_task_runner.py:101}} INFO - Job 39: Subtask pull_test_data [2019-10-09 06:16:47,560] {{models.py:271}} INFO - Filling up the DagBag from /usr/local/airflow/dags/housing_price_prediction_testing.py
+[2019-10-09 06:16:48,470] {{base_task_runner.py:101}} INFO - Job 39: Subtask pull_test_data [2019-10-09 06:16:48,470] {{cli.py:484}} INFO - Running <TaskInstance: housing_price_prediction_testing.pull_test_data 2019-10-09T05:58:05.761589+00:00 [running]> on host 63734ffeb1b4
+[2019-10-09 06:16:49,916] {{python_operator.py:96}} INFO - Done. Returned value was: None
+[2019-10-09 06:16:50,811] {{logging_mixin.py:95}} INFO - [2019-10-09 06:16:50,810] {{jobs.py:2627}} INFO - Task exited with return code 0

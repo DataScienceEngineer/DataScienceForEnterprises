@@ -1,0 +1,31 @@
+[2019-10-08 18:08:11,187] {{models.py:1361}} INFO - Dependencies all met for <TaskInstance: housing_price_prediction_training.training_data_processing 2019-10-08T17:43:32.113975+00:00 [None]>
+[2019-10-08 18:08:11,207] {{models.py:1361}} INFO - Dependencies all met for <TaskInstance: housing_price_prediction_training.training_data_processing 2019-10-08T17:43:32.113975+00:00 [None]>
+[2019-10-08 18:08:11,208] {{models.py:1573}} INFO - 
+--------------------------------------------------------------------------------
+Starting attempt 8 of 9
+--------------------------------------------------------------------------------
+
+[2019-10-08 18:08:11,240] {{models.py:1595}} INFO - Executing <Task(PythonOperator): training_data_processing> on 2019-10-08T17:43:32.113975+00:00
+[2019-10-08 18:08:11,240] {{base_task_runner.py:118}} INFO - Running: ['bash', '-c', 'airflow run housing_price_prediction_training training_data_processing 2019-10-08T17:43:32.113975+00:00 --job_id 11 --raw -sd DAGS_FOLDER/housing_price_prediction_training.py --cfg_path /tmp/tmpv0v8cggp']
+[2019-10-08 18:08:11,932] {{base_task_runner.py:101}} INFO - Job 11: Subtask training_data_processing [2019-10-08 18:08:11,932] {{settings.py:174}} INFO - setting.configure_orm(): Using pool settings. pool_size=5, pool_recycle=1800
+[2019-10-08 18:08:12,308] {{base_task_runner.py:101}} INFO - Job 11: Subtask training_data_processing [2019-10-08 18:08:12,307] {{__init__.py:51}} INFO - Using executor LocalExecutor
+[2019-10-08 18:08:12,877] {{base_task_runner.py:101}} INFO - Job 11: Subtask training_data_processing [2019-10-08 18:08:12,877] {{models.py:271}} INFO - Filling up the DagBag from /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-08 18:08:12,948] {{base_task_runner.py:101}} INFO - Job 11: Subtask training_data_processing [2019-10-08 18:08:12,944] {{cli.py:484}} INFO - Running <TaskInstance: housing_price_prediction_training.training_data_processing 2019-10-08T17:43:32.113975+00:00 [running]> on host 63734ffeb1b4
+[2019-10-08 18:08:13,034] {{logging_mixin.py:95}} INFO - http://192.168.0.102:5001/mlAutomation/
+[2019-10-08 18:08:13,053] {{logging_mixin.py:95}} INFO - <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<title>404 Not Found</title>
+<h1>Not Found</h1>
+<p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>
+[2019-10-08 18:08:13,053] {{logging_mixin.py:95}} INFO - 
+[2019-10-08 18:08:13,053] {{logging_mixin.py:95}} INFO - http://192.168.0.102:5001/check/<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<title>404 Not Found</title>
+<h1>Not Found</h1>
+<p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>
+[2019-10-08 18:08:13,053] {{logging_mixin.py:95}} INFO - 
+[2019-10-08 18:08:13,112] {{logging_mixin.py:95}} INFO - <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<title>404 Not Found</title>
+<h1>Not Found</h1>
+<p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>
+[2019-10-08 18:08:13,112] {{logging_mixin.py:95}} INFO - 
+[2019-10-08 18:08:13,112] {{python_operator.py:96}} INFO - Done. Returned value was: None
+[2019-10-08 18:08:16,226] {{logging_mixin.py:95}} INFO - [2019-10-08 18:08:16,225] {{jobs.py:2627}} INFO - Task exited with return code 0

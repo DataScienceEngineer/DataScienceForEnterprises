@@ -1,0 +1,474 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Welcome to common_utils’s documentation! &#8212; common_utils 0.0.1 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="welcome-to-common-utils-s-documentation">
+<h1>Welcome to common_utils’s documentation!<a class="headerlink" href="#welcome-to-common-utils-s-documentation" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+<div class="section" id="common-utils">
+<h2><strong>common_utils</strong><a class="headerlink" href="#common-utils" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-common_utils.ConfigurationSetups">
+<span id="common-utils-configurationsetups"></span><h3>common_utils.ConfigurationSetups<a class="headerlink" href="#module-common_utils.ConfigurationSetups" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="common_utils.ConfigurationSetups.CredentialsConfigurations">
+<em class="property">class </em><code class="sig-prename descclassname">common_utils.ConfigurationSetups.</code><code class="sig-name descname">CredentialsConfigurations</code><span class="sig-paren">(</span><em class="sig-param">config_folder</em>, <em class="sig-param">credentials_properties_filename</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/common_utils/ConfigurationSetups.html#CredentialsConfigurations"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#common_utils.ConfigurationSetups.CredentialsConfigurations" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load the secret keys from the credentials file and store the configurations in this class object</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="common_utils.ConfigurationSetups.ProjectConfigurations">
+<em class="property">class </em><code class="sig-prename descclassname">common_utils.ConfigurationSetups.</code><code class="sig-name descname">ProjectConfigurations</code><span class="sig-paren">(</span><em class="sig-param">vm_env</em>, <em class="sig-param">config_folder</em>, <em class="sig-param">project_properties_filename</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/common_utils/ConfigurationSetups.html#ProjectConfigurations"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#common_utils.ConfigurationSetups.ProjectConfigurations" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load the project configurations in this class object</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="common_utils.ConfigurationSetups.Singleton">
+<em class="property">class </em><code class="sig-prename descclassname">common_utils.ConfigurationSetups.</code><code class="sig-name descname">Singleton</code><a class="reference internal" href="_modules/common_utils/ConfigurationSetups.html#Singleton"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#common_utils.ConfigurationSetups.Singleton" title="Permalink to this definition">¶</a></dt>
+<dd><p>Singleton Class. Extend this class to make a class a Singleton</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="common_utils.ConfigurationSetups.getEnv">
+<code class="sig-prename descclassname">common_utils.ConfigurationSetups.</code><code class="sig-name descname">getEnv</code><span class="sig-paren">(</span><em class="sig-param">env</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/common_utils/ConfigurationSetups.html#getEnv"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#common_utils.ConfigurationSetups.getEnv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fetch the value of the OS environment variable</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>env</strong> – OS environment key</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>OS environment value</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-common_utils.MLLogger">
+<span id="common-utils-mllogger"></span><h3>common_utils.MLLogger<a class="headerlink" href="#module-common_utils.MLLogger" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="common_utils.MLLogger.LoggingConfig">
+<em class="property">class </em><code class="sig-prename descclassname">common_utils.MLLogger.</code><code class="sig-name descname">LoggingConfig</code><a class="reference internal" href="_modules/common_utils/MLLogger.html#LoggingConfig"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#common_utils.MLLogger.LoggingConfig" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieve the Logger Configurations from the project properties</p>
+<dl class="method">
+<dt id="common_utils.MLLogger.LoggingConfig.getUniqueId">
+<code class="sig-name descname">getUniqueId</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/common_utils/MLLogger.html#LoggingConfig.getUniqueId"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#common_utils.MLLogger.LoggingConfig.getUniqueId" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the container Id from docker runtime. If not running on Docker get the process id</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>unique Id for logger name</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="common_utils.MLLogger.MLLogging">
+<em class="property">class </em><code class="sig-prename descclassname">common_utils.MLLogger.</code><code class="sig-name descname">MLLogging</code><a class="reference internal" href="_modules/common_utils/MLLogger.html#MLLogging"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#common_utils.MLLogger.MLLogging" title="Permalink to this definition">¶</a></dt>
+<dd><p>A Singleton Class to initialize Logger which is to be used the project modules</p>
+<dl class="method">
+<dt id="common_utils.MLLogger.MLLogging.getLog">
+<code class="sig-name descname">getLog</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/common_utils/MLLogger.html#MLLogging.getLog"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#common_utils.MLLogger.MLLogging.getLog" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the logger that was created</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>return the created logger object</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="common_utils.MLLogger.initloggerConfiguration">
+<code class="sig-prename descclassname">common_utils.MLLogger.</code><code class="sig-name descname">initloggerConfiguration</code><span class="sig-paren">(</span><em class="sig-param">logConfig=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/common_utils/MLLogger.html#initloggerConfiguration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#common_utils.MLLogger.initloggerConfiguration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize a logger object from the configuration properties</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>logConfig</strong> – logger configurations</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>logger object</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-common_utils.S3Util">
+<span id="common-utils-s3util"></span><h3>common_utils.S3Util<a class="headerlink" href="#module-common_utils.S3Util" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="common_utils.S3Util.S3Configuration">
+<em class="property">class </em><code class="sig-prename descclassname">common_utils.S3Util.</code><code class="sig-name descname">S3Configuration</code><a class="reference internal" href="_modules/common_utils/S3Util.html#S3Configuration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#common_utils.S3Util.S3Configuration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize S3 Configuration Object from the project properties file</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="common_utils.S3Util.S3LocalUtility">
+<em class="property">class </em><code class="sig-prename descclassname">common_utils.S3Util.</code><code class="sig-name descname">S3LocalUtility</code><span class="sig-paren">(</span><em class="sig-param">bucket=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/common_utils/S3Util.html#S3LocalUtility"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#common_utils.S3Util.S3LocalUtility" title="Permalink to this definition">¶</a></dt>
+<dd><p>S3 Local Utility</p>
+<dl class="method">
+<dt id="common_utils.S3Util.S3LocalUtility.downloadFileFromS3">
+<code class="sig-name descname">downloadFileFromS3</code><span class="sig-paren">(</span><em class="sig-param">s3fileLocation</em>, <em class="sig-param">localFileLocation</em>, <em class="sig-param">bucket=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/common_utils/S3Util.html#S3LocalUtility.downloadFileFromS3"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#common_utils.S3Util.S3LocalUtility.downloadFileFromS3" title="Permalink to this definition">¶</a></dt>
+<dd><p>Download file from S3 given the bucket name and S3 relative Path. After Downloading it will create the relative directories</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>s3fileLocation</strong> – S3 relative path</p></li>
+<li><p><strong>bucket</strong> – S3 bucket name</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="common_utils.S3Util.S3LocalUtility.ifS3FileExist">
+<code class="sig-name descname">ifS3FileExist</code><span class="sig-paren">(</span><em class="sig-param">key</em>, <em class="sig-param">bucket=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/common_utils/S3Util.html#S3LocalUtility.ifS3FileExist"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#common_utils.S3Util.S3LocalUtility.ifS3FileExist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if S3 file exists or not</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> – S3 file key to check</p></li>
+<li><p><strong>bucket</strong> – S3 bucket where the S3 file key resides</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True/False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="common_utils.S3Util.S3LocalUtility.uploadFileToS3">
+<code class="sig-name descname">uploadFileToS3</code><span class="sig-paren">(</span><em class="sig-param">fileName</em>, <em class="sig-param">key</em>, <em class="sig-param">bucket=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/common_utils/S3Util.html#S3LocalUtility.uploadFileToS3"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#common_utils.S3Util.S3LocalUtility.uploadFileToS3" title="Permalink to this definition">¶</a></dt>
+<dd><p>Upload file to S3</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fileName</strong> – file to upload</p></li>
+<li><p><strong>key</strong> – S3 upload file location</p></li>
+<li><p><strong>bucket</strong> – bucket where the file is to be uploaded</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-common_utils.ServiceHelper">
+<span id="common-utils-servicehelper"></span><h3>common_utils.ServiceHelper<a class="headerlink" href="#module-common_utils.ServiceHelper" title="Permalink to this headline">¶</a></h3>
+<dl class="function">
+<dt id="common_utils.ServiceHelper.checkIfS3FileExist">
+<code class="sig-prename descclassname">common_utils.ServiceHelper.</code><code class="sig-name descname">checkIfS3FileExist</code><span class="sig-paren">(</span><em class="sig-param">s3FullPath</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/common_utils/ServiceHelper.html#checkIfS3FileExist"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#common_utils.ServiceHelper.checkIfS3FileExist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if S3 file exist or not</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>s3FullPath</strong> – S3 file path</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True/False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="common_utils.ServiceHelper.fetchFileFromS3viaLocalApi">
+<code class="sig-prename descclassname">common_utils.ServiceHelper.</code><code class="sig-name descname">fetchFileFromS3viaLocalApi</code><span class="sig-paren">(</span><em class="sig-param">s3FullPath</em>, <em class="sig-param">s3Direct=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/common_utils/ServiceHelper.html#fetchFileFromS3viaLocalApi"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#common_utils.ServiceHelper.fetchFileFromS3viaLocalApi" title="Permalink to this definition">¶</a></dt>
+<dd><p>Takes S3fullPath and downloads the file and return localFileLocation</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>s3FullPath</strong> – S3 file location to download</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>localFileLocation of the downloaded file</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="common_utils.ServiceHelper.getValFromDict">
+<code class="sig-prename descclassname">common_utils.ServiceHelper.</code><code class="sig-name descname">getValFromDict</code><span class="sig-paren">(</span><em class="sig-param">name</em>, <em class="sig-param">data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/common_utils/ServiceHelper.html#getValFromDict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#common_utils.ServiceHelper.getValFromDict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the value from the key from a given dictionary and return custom exception messages if not found</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> – key to search</p></li>
+<li><p><strong>data</strong> – Dictionary to search from</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>value for the given search key</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="common_utils.ServiceHelper.loadDataFramesFromDict">
+<code class="sig-prename descclassname">common_utils.ServiceHelper.</code><code class="sig-name descname">loadDataFramesFromDict</code><span class="sig-paren">(</span><em class="sig-param">fileDict</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/common_utils/ServiceHelper.html#loadDataFramesFromDict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#common_utils.ServiceHelper.loadDataFramesFromDict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load the dataframes from a given dictionary of file paths</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>fileDict</strong> – {key: ‘filepath’}</p>
+</dd>
+</dl>
+<p>:return:{key: file}</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="common_utils.ServiceHelper.loadDataFramesFromList">
+<code class="sig-prename descclassname">common_utils.ServiceHelper.</code><code class="sig-name descname">loadDataFramesFromList</code><span class="sig-paren">(</span><em class="sig-param">filePaths</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/common_utils/ServiceHelper.html#loadDataFramesFromList"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#common_utils.ServiceHelper.loadDataFramesFromList" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load Dataframes from list</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filePaths</strong> – list of file paths</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>list of files</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="common_utils.ServiceHelper.load_h5_file">
+<code class="sig-prename descclassname">common_utils.ServiceHelper.</code><code class="sig-name descname">load_h5_file</code><span class="sig-paren">(</span><em class="sig-param">s3FullFilePath</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/common_utils/ServiceHelper.html#load_h5_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#common_utils.ServiceHelper.load_h5_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load the Keras specific h5 model file from the local file system</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>s3FullFilePath</strong> – S3 file location for the model</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>keras model file</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="common_utils.ServiceHelper.load_pipeline_cache">
+<code class="sig-prename descclassname">common_utils.ServiceHelper.</code><code class="sig-name descname">load_pipeline_cache</code><a class="reference internal" href="_modules/common_utils/ServiceHelper.html#load_pipeline_cache"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#common_utils.ServiceHelper.load_pipeline_cache" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load the file into the memory using a LRU Caching of maxsize by deriving location and appending local S3 storage path with relative s3 file path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>s3FullFilePath</strong> – S3 file location for the model</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Pickle Object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="common_utils.ServiceHelper.makeDirectories">
+<code class="sig-prename descclassname">common_utils.ServiceHelper.</code><code class="sig-name descname">makeDirectories</code><span class="sig-paren">(</span><em class="sig-param">localFileLocation</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/common_utils/ServiceHelper.html#makeDirectories"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#common_utils.ServiceHelper.makeDirectories" title="Permalink to this definition">¶</a></dt>
+<dd><p>Makes directories in the location of file prior to file creation
+[FORMAT: ‘folder1/folder2/filename’]</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>localFileLocation</strong> – The location of file where the directories are to be created prior to file creation</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="common_utils.ServiceHelper.moduleClassFunctionInvoke">
+<code class="sig-prename descclassname">common_utils.ServiceHelper.</code><code class="sig-name descname">moduleClassFunctionInvoke</code><span class="sig-paren">(</span><em class="sig-param">moduleClassFunctionPath</em>, <em class="sig-param">*arguments</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/common_utils/ServiceHelper.html#moduleClassFunctionInvoke"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#common_utils.ServiceHelper.moduleClassFunctionInvoke" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a function call dynamically from a string function path.
+It applies reflections to load the function from the given class and module from a string</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>moduleClassFunctionPath</strong> – full path of the module-class-function</p></li>
+<li><p><strong>arguments</strong> – arguments to pass to the function</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>function invocation with arguments</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="common_utils.ServiceHelper.moduleClassType">
+<code class="sig-prename descclassname">common_utils.ServiceHelper.</code><code class="sig-name descname">moduleClassType</code><span class="sig-paren">(</span><em class="sig-param">moduleClassFunctionPath</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/common_utils/ServiceHelper.html#moduleClassType"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#common_utils.ServiceHelper.moduleClassType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the type of a function dynamically from a string function path.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>moduleClassFunctionPath</strong> – full path of the module-class-function</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>type of the invoked function</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="common_utils.ServiceHelper.parseS3filePath">
+<code class="sig-prename descclassname">common_utils.ServiceHelper.</code><code class="sig-name descname">parseS3filePath</code><span class="sig-paren">(</span><em class="sig-param">s3FilePath</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/common_utils/ServiceHelper.html#parseS3filePath"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#common_utils.ServiceHelper.parseS3filePath" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse the S3 file Path and extract S3 Bucket name and S3 file location.
+s3FilePath Convention: /s3-&lt;bucket-name&gt;/&lt;path/to/file/in/local/and/s3&gt;
+If it is not parseable it will return the as is s3FilePath as the localFilePath(assuming the string is the S3 object key) and None as the bucketName</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>s3FilePath</strong> – the Complete File Path Location including S3 bucket and the file with directory location</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Splits the string to get bucket name and s3 file location according to the convention</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="common_utils.ServiceHelper.readCsvFromS3">
+<code class="sig-prename descclassname">common_utils.ServiceHelper.</code><code class="sig-name descname">readCsvFromS3</code><span class="sig-paren">(</span><em class="sig-param">s3FullPath</em>, <em class="sig-param">s3Direct=True</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/common_utils/ServiceHelper.html#readCsvFromS3"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#common_utils.ServiceHelper.readCsvFromS3" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read csv file from S3 given the S3file path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>s3FullPath</strong> – csv S3 file path</p></li>
+<li><p><strong>s3Direct</strong> – if True always downloads from S3, else searches in local and returns if found</p></li>
+<li><p><strong>kwargs</strong> – arguments to read_csv</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>csv file</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="common_utils.ServiceHelper.readPickleFromS3">
+<code class="sig-prename descclassname">common_utils.ServiceHelper.</code><code class="sig-name descname">readPickleFromS3</code><span class="sig-paren">(</span><em class="sig-param">s3FullPath</em>, <em class="sig-param">s3Direct=True</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/common_utils/ServiceHelper.html#readPickleFromS3"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#common_utils.ServiceHelper.readPickleFromS3" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read pickle file from S3</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>s3FullPath</strong> – S3 path to read pickle from</p></li>
+<li><p><strong>s3Direct</strong> – if True always downloads from S3, else searches in local and returns if found</p></li>
+<li><p><strong>kwargs</strong> – arguments to save S3</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>deserialized pickle object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="common_utils.ServiceHelper.saveDftoS3">
+<code class="sig-prename descclassname">common_utils.ServiceHelper.</code><code class="sig-name descname">saveDftoS3</code><span class="sig-paren">(</span><em class="sig-param">df</em>, <em class="sig-param">s3FullPath</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/common_utils/ServiceHelper.html#saveDftoS3"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#common_utils.ServiceHelper.saveDftoS3" title="Permalink to this definition">¶</a></dt>
+<dd><p>Saves csv file in S3</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> – Dataframe to save to S3</p></li>
+<li><p><strong>s3FullPath</strong> – S3 path to save the csv</p></li>
+<li><p><strong>kwargs</strong> – arguments to save csv</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="#">common_utils</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="#">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Data Science Engineer.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.1.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      
+      |
+      <a href="_sources/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

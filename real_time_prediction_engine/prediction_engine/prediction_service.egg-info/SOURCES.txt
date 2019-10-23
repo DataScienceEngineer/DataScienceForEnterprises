@@ -1,0 +1,15 @@
+setup.py
+prediction_service/PredictionResolver.py
+prediction_service/__init__.py
+prediction_service/constants.py
+prediction_service.egg-info/PKG-INFO
+prediction_service.egg-info/SOURCES.txt
+prediction_service.egg-info/dependency_links.txt
+prediction_service.egg-info/top_level.txt
+prediction_service/algorithms/CustomAlgorithm.py
+prediction_service/algorithms/__init__.py
+prediction_service/deserializer_predictor/DefaultDeserializerPredictor.py
+prediction_service/deserializer_predictor/KerasDeserializerPredictor.py
+prediction_service/deserializer_predictor/__init__.py
+prediction_service/deserializer_predictor/context/PipelinePredictionContext.py
+prediction_service/deserializer_predictor/context/__init__.py

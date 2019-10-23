@@ -1,0 +1,46 @@
+[2019-10-09 06:10:31,686] {{models.py:1361}} INFO - Dependencies all met for <TaskInstance: housing_price_prediction_testing.pull_predicted_labels 2019-10-09T05:58:05.761589+00:00 [queued]>
+[2019-10-09 06:10:31,716] {{models.py:1361}} INFO - Dependencies all met for <TaskInstance: housing_price_prediction_testing.pull_predicted_labels 2019-10-09T05:58:05.761589+00:00 [queued]>
+[2019-10-09 06:10:31,717] {{models.py:1573}} INFO - 
+--------------------------------------------------------------------------------
+Starting attempt 5 of 6
+--------------------------------------------------------------------------------
+
+[2019-10-09 06:10:31,756] {{models.py:1595}} INFO - Executing <Task(PythonOperator): pull_predicted_labels> on 2019-10-09T05:58:05.761589+00:00
+[2019-10-09 06:10:31,756] {{base_task_runner.py:118}} INFO - Running: ['bash', '-c', 'airflow run housing_price_prediction_testing pull_predicted_labels 2019-10-09T05:58:05.761589+00:00 --job_id 34 --raw -sd DAGS_FOLDER/housing_price_prediction_testing.py --cfg_path /tmp/tmp0zri55lb']
+[2019-10-09 06:10:32,838] {{base_task_runner.py:101}} INFO - Job 34: Subtask pull_predicted_labels [2019-10-09 06:10:32,838] {{settings.py:174}} INFO - setting.configure_orm(): Using pool settings. pool_size=5, pool_recycle=1800
+[2019-10-09 06:10:33,081] {{base_task_runner.py:101}} INFO - Job 34: Subtask pull_predicted_labels [2019-10-09 06:10:33,080] {{__init__.py:51}} INFO - Using executor LocalExecutor
+[2019-10-09 06:10:33,578] {{base_task_runner.py:101}} INFO - Job 34: Subtask pull_predicted_labels [2019-10-09 06:10:33,577] {{models.py:271}} INFO - Filling up the DagBag from /usr/local/airflow/dags/housing_price_prediction_testing.py
+[2019-10-09 06:10:33,735] {{base_task_runner.py:101}} INFO - Job 34: Subtask pull_predicted_labels [2019-10-09 06:10:33,735] {{cli.py:484}} INFO - Running <TaskInstance: housing_price_prediction_testing.pull_predicted_labels 2019-10-09T05:58:05.761589+00:00 [running]> on host 63734ffeb1b4
+[2019-10-09 06:10:35,064] {{models.py:1760}} ERROR - name 'pd' is not defined
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/airflow/models.py", line 1659, in _run_raw_task
+    result = task_copy.execute(context=context)
+  File "/usr/local/lib/python3.6/site-packages/airflow/operators/python_operator.py", line 95, in execute
+    return_value = self.execute_callable()
+  File "/usr/local/lib/python3.6/site-packages/airflow/operators/python_operator.py", line 100, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/usr/local/airflow/dags/housing_price_prediction_testing.py", line 52, in pull_predicted_labels
+    output_df=pd.DataFrame(output_dict)
+NameError: name 'pd' is not defined
+[2019-10-09 06:10:35,072] {{models.py:1783}} INFO - Marking task as UP_FOR_RETRY
+[2019-10-09 06:10:35,164] {{base_task_runner.py:101}} INFO - Job 34: Subtask pull_predicted_labels Traceback (most recent call last):
+[2019-10-09 06:10:35,164] {{base_task_runner.py:101}} INFO - Job 34: Subtask pull_predicted_labels   File "/usr/local/bin/airflow", line 32, in <module>
+[2019-10-09 06:10:35,164] {{base_task_runner.py:101}} INFO - Job 34: Subtask pull_predicted_labels     args.func(args)
+[2019-10-09 06:10:35,165] {{base_task_runner.py:101}} INFO - Job 34: Subtask pull_predicted_labels   File "/usr/local/lib/python3.6/site-packages/airflow/utils/cli.py", line 74, in wrapper
+[2019-10-09 06:10:35,165] {{base_task_runner.py:101}} INFO - Job 34: Subtask pull_predicted_labels     return f(*args, **kwargs)
+[2019-10-09 06:10:35,165] {{base_task_runner.py:101}} INFO - Job 34: Subtask pull_predicted_labels   File "/usr/local/lib/python3.6/site-packages/airflow/bin/cli.py", line 490, in run
+[2019-10-09 06:10:35,165] {{base_task_runner.py:101}} INFO - Job 34: Subtask pull_predicted_labels     _run(args, dag, ti)
+[2019-10-09 06:10:35,165] {{base_task_runner.py:101}} INFO - Job 34: Subtask pull_predicted_labels   File "/usr/local/lib/python3.6/site-packages/airflow/bin/cli.py", line 406, in _run
+[2019-10-09 06:10:35,165] {{base_task_runner.py:101}} INFO - Job 34: Subtask pull_predicted_labels     pool=args.pool,
+[2019-10-09 06:10:35,165] {{base_task_runner.py:101}} INFO - Job 34: Subtask pull_predicted_labels   File "/usr/local/lib/python3.6/site-packages/airflow/utils/db.py", line 74, in wrapper
+[2019-10-09 06:10:35,165] {{base_task_runner.py:101}} INFO - Job 34: Subtask pull_predicted_labels     return func(*args, **kwargs)
+[2019-10-09 06:10:35,165] {{base_task_runner.py:101}} INFO - Job 34: Subtask pull_predicted_labels   File "/usr/local/lib/python3.6/site-packages/airflow/models.py", line 1659, in _run_raw_task
+[2019-10-09 06:10:35,165] {{base_task_runner.py:101}} INFO - Job 34: Subtask pull_predicted_labels     result = task_copy.execute(context=context)
+[2019-10-09 06:10:35,165] {{base_task_runner.py:101}} INFO - Job 34: Subtask pull_predicted_labels   File "/usr/local/lib/python3.6/site-packages/airflow/operators/python_operator.py", line 95, in execute
+[2019-10-09 06:10:35,165] {{base_task_runner.py:101}} INFO - Job 34: Subtask pull_predicted_labels     return_value = self.execute_callable()
+[2019-10-09 06:10:35,165] {{base_task_runner.py:101}} INFO - Job 34: Subtask pull_predicted_labels   File "/usr/local/lib/python3.6/site-packages/airflow/operators/python_operator.py", line 100, in execute_callable
+[2019-10-09 06:10:35,165] {{base_task_runner.py:101}} INFO - Job 34: Subtask pull_predicted_labels     return self.python_callable(*self.op_args, **self.op_kwargs)
+[2019-10-09 06:10:35,165] {{base_task_runner.py:101}} INFO - Job 34: Subtask pull_predicted_labels   File "/usr/local/airflow/dags/housing_price_prediction_testing.py", line 52, in pull_predicted_labels
+[2019-10-09 06:10:35,165] {{base_task_runner.py:101}} INFO - Job 34: Subtask pull_predicted_labels     output_df=pd.DataFrame(output_dict)
+[2019-10-09 06:10:35,165] {{base_task_runner.py:101}} INFO - Job 34: Subtask pull_predicted_labels NameError: name 'pd' is not defined
+[2019-10-09 06:10:36,658] {{logging_mixin.py:95}} INFO - [2019-10-09 06:10:36,658] {{jobs.py:2627}} INFO - Task exited with return code 1

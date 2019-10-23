@@ -1,0 +1,40 @@
+[2019-10-08 17:43:50,974] {{models.py:1361}} INFO - Dependencies all met for <TaskInstance: housing_price_prediction_training.training_data_processing 2019-10-08T17:43:32.113975+00:00 [queued]>
+[2019-10-08 17:43:51,020] {{models.py:1361}} INFO - Dependencies all met for <TaskInstance: housing_price_prediction_training.training_data_processing 2019-10-08T17:43:32.113975+00:00 [queued]>
+[2019-10-08 17:43:51,020] {{models.py:1573}} INFO - 
+--------------------------------------------------------------------------------
+Starting attempt 1 of 2
+--------------------------------------------------------------------------------
+
+[2019-10-08 17:43:51,052] {{models.py:1595}} INFO - Executing <Task(PythonOperator): training_data_processing> on 2019-10-08T17:43:32.113975+00:00
+[2019-10-08 17:43:51,053] {{base_task_runner.py:118}} INFO - Running: ['bash', '-c', 'airflow run housing_price_prediction_training training_data_processing 2019-10-08T17:43:32.113975+00:00 --job_id 4 --raw -sd DAGS_FOLDER/housing_price_prediction_training.py --cfg_path /tmp/tmpck6_ha22']
+[2019-10-08 17:43:51,639] {{base_task_runner.py:101}} INFO - Job 4: Subtask training_data_processing [2019-10-08 17:43:51,638] {{settings.py:174}} INFO - setting.configure_orm(): Using pool settings. pool_size=5, pool_recycle=1800
+[2019-10-08 17:43:51,855] {{base_task_runner.py:101}} INFO - Job 4: Subtask training_data_processing [2019-10-08 17:43:51,855] {{__init__.py:51}} INFO - Using executor LocalExecutor
+[2019-10-08 17:43:52,265] {{base_task_runner.py:101}} INFO - Job 4: Subtask training_data_processing [2019-10-08 17:43:52,264] {{models.py:271}} INFO - Filling up the DagBag from /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-08 17:43:52,309] {{base_task_runner.py:101}} INFO - Job 4: Subtask training_data_processing [2019-10-08 17:43:52,309] {{cli.py:484}} INFO - Running <TaskInstance: housing_price_prediction_training.training_data_processing 2019-10-08T17:43:32.113975+00:00 [running]> on host 63734ffeb1b4
+[2019-10-08 17:43:52,370] {{python_operator.py:96}} INFO - Done. Returned value was: {'raw_file_paths':{'1':'/ml_worker/storage/house_prediction/train.csv'},
+          'processed_data_file_path':'/ml_worker/storage/house_prediction/train_processed.csv',
+          'data_processing_object_list':
+              [{'data_process_id':'1',
+               'data_process_shortname':'House Price Predictions Training Data Processing',
+               'python_function':'ml_automation.data_processing.house_prediction_data_processor.HousePredictionDataProcessor.performPreprocessing',
+               'additional_params':
+                    {'features':['MSSubClass','MSZoning','LotArea','LotShape','OverallQual','OverallCond','YearBuilt','YearRemodAdd','MasVnrArea','BsmtFinSF1','1stFlrSF','2ndFlrSF','GrLivArea','BsmtFullBath','FullBath','HalfBath','Functional','Fireplaces','GarageCars','WoodDeckSF','ScreenPorch','GarageYrBlt_na','LotFrontage'],
+                     'catvars':['MSZoning','LotShape','Functional'],
+                     'catvars':['MSZoning','LotShape','Functional'],
+                     'catvarspredictor':
+                         ['MSZoning','LotShape','Functional','SalePrice'],
+                     'temporalvars':['YearBuilt','YearRemodAdd'],
+                     'temporalvarspredictor':['YearBuilt','YearRemodAdd','YrSold'],
+                     'basevar':'YrSold',
+                     'numvars':
+                         ['MSSubClass','LotArea','OverallQual','OverallCond','MasVnrArea','BsmtFinSF1','1stFlrSF','2ndFlrSF','GrLivArea','BsmtFullBath','FullBath','HalfBath','Fireplaces','GarageCars','WoodDeckSF','ScreenPorch','LotFrontage'],
+                     'extravar':'GarageYrBlt_na','extra_new_var':'GarageYrBlt','skewedvars':
+                         ['LotFrontage','LotArea','1stFlrSF','GrLivArea','SalePrice'],
+                     'predictor_var':'SalePrice',
+                     'scaler_file':'/ml_worker/storage/house_prediction/scaler.pkl',
+                     'json_files':
+                         {'categorical_frequency_labels':'/ml_worker/storage/house_prediction/catfreqlabels.json',
+                          'ordinal_labels':'/ml_worker/storage/house_prediction/ordinal_labels.json',
+                          'mean_values':'/ml_worker/storage/house_prediction/meanvals.json'},
+                     'type':'train'}}]}
+[2019-10-08 17:43:56,013] {{logging_mixin.py:95}} INFO - [2019-10-08 17:43:56,012] {{jobs.py:2627}} INFO - Task exited with return code 0

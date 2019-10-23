@@ -1,0 +1,18 @@
+[2019-10-09 05:43:09,383] {{models.py:1361}} INFO - Dependencies all met for <TaskInstance: housing_price_prediction_training.training_data_processing 2019-10-08T17:43:32.113975+00:00 [queued]>
+[2019-10-09 05:43:09,414] {{models.py:1361}} INFO - Dependencies all met for <TaskInstance: housing_price_prediction_training.training_data_processing 2019-10-08T17:43:32.113975+00:00 [queued]>
+[2019-10-09 05:43:09,415] {{models.py:1573}} INFO - 
+--------------------------------------------------------------------------------
+Starting attempt 21 of 22
+--------------------------------------------------------------------------------
+
+[2019-10-09 05:43:09,456] {{models.py:1595}} INFO - Executing <Task(PythonOperator): training_data_processing> on 2019-10-08T17:43:32.113975+00:00
+[2019-10-09 05:43:09,456] {{base_task_runner.py:118}} INFO - Running: ['bash', '-c', 'airflow run housing_price_prediction_training training_data_processing 2019-10-08T17:43:32.113975+00:00 --job_id 24 --raw -sd DAGS_FOLDER/housing_price_prediction_training.py --cfg_path /tmp/tmpsf7d_sck']
+[2019-10-09 05:43:10,020] {{base_task_runner.py:101}} INFO - Job 24: Subtask training_data_processing [2019-10-09 05:43:10,020] {{settings.py:174}} INFO - setting.configure_orm(): Using pool settings. pool_size=5, pool_recycle=1800
+[2019-10-09 05:43:10,247] {{base_task_runner.py:101}} INFO - Job 24: Subtask training_data_processing [2019-10-09 05:43:10,246] {{__init__.py:51}} INFO - Using executor LocalExecutor
+[2019-10-09 05:43:10,693] {{base_task_runner.py:101}} INFO - Job 24: Subtask training_data_processing [2019-10-09 05:43:10,692] {{models.py:271}} INFO - Filling up the DagBag from /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-09 05:43:10,742] {{base_task_runner.py:101}} INFO - Job 24: Subtask training_data_processing [2019-10-09 05:43:10,741] {{cli.py:484}} INFO - Running <TaskInstance: housing_price_prediction_training.training_data_processing 2019-10-08T17:43:32.113975+00:00 [running]> on host 63734ffeb1b4
+[2019-10-09 05:43:10,817] {{logging_mixin.py:95}} INFO - 2f29f291-fdb2-4e02-9e4b-e4a50b7c22c3
+[2019-10-09 05:43:10,817] {{logging_mixin.py:95}} INFO - http://192.168.0.102:5001/check/2f29f291-fdb2-4e02-9e4b-e4a50b7c22c3
+[2019-10-09 05:43:12,871] {{logging_mixin.py:95}} INFO - {'1:House Price Predictions Training Data Processing': {'status': 'Success', 'message': 'Preprocessing Completed'}}
+[2019-10-09 05:43:12,871] {{python_operator.py:96}} INFO - Done. Returned value was: None
+[2019-10-09 05:43:14,404] {{logging_mixin.py:95}} INFO - [2019-10-09 05:43:14,404] {{jobs.py:2627}} INFO - Task exited with return code 0

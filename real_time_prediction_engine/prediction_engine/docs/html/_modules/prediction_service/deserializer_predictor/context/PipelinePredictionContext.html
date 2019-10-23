@@ -1,0 +1,157 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>prediction_service.deserializer_predictor.context.PipelinePredictionContext &#8212; Real Time Prediction Engine 1 documentation</title>
+    <link rel="stylesheet" href="../../../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+   
+  <link rel="stylesheet" href="../../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for prediction_service.deserializer_predictor.context.PipelinePredictionContext</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">common_utils</span> <span class="k">import</span> <span class="n">ServiceHelper</span>
+<span class="kn">from</span> <span class="nn">prediction_service.constants</span> <span class="k">import</span> <span class="n">Constants</span>
+
+
+<div class="viewcode-block" id="PipelinePredictionContext"><a class="viewcode-back" href="../../../../index.html#prediction_service.deserializer_predictor.context.PipelinePredictionContext.PipelinePredictionContext">[docs]</a><span class="k">class</span> <span class="nc">PipelinePredictionContext</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Perform Basic Load,Predict Labels and get probabilities distributions from a Pipeline.</span>
+<span class="sd">     Override this class to perform predictions on a pipeline&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pipeLineFileName</span><span class="o">=</span><span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">loadedPipeLine</span><span class="o">=</span><span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">predictionLabels</span><span class="o">=</span><span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">predictionProbabilities</span><span class="o">=</span><span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">classes</span><span class="o">=</span><span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">leafNumber</span><span class="o">=</span><span class="kc">None</span>
+
+<div class="viewcode-block" id="PipelinePredictionContext.pipeline_load"><a class="viewcode-back" href="../../../../index.html#prediction_service.deserializer_predictor.context.PipelinePredictionContext.PipelinePredictionContext.pipeline_load">[docs]</a>    <span class="k">def</span> <span class="nf">pipeline_load</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Load the Pipeline via a LRU cache</span>
+
+<span class="sd">        :return: Pickle Object</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">loadedPipeLine</span><span class="o">=</span> <span class="n">ServiceHelper</span><span class="o">.</span><span class="n">load_pipeline_cache</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pipeLineFileName</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="PipelinePredictionContext.pipeline_predictLabels"><a class="viewcode-back" href="../../../../index.html#prediction_service.deserializer_predictor.context.PipelinePredictionContext.PipelinePredictionContext.pipeline_predictLabels">[docs]</a>    <span class="k">def</span> <span class="nf">pipeline_predictLabels</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">dataFrame</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Perform Predictions based on the dataFrame</span>
+
+<span class="sd">        :param dataFrame: feature list</span>
+
+<span class="sd">        :return: Prediction lables</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">loadedPipeLine</span><span class="p">,</span><span class="s1">&#39;predict&#39;</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">predictionLabels</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">loadedPipeLine</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">dataFrame</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">PredictionContextError</span><span class="p">(</span><span class="s2">&quot;predict method is not defined in the estimator algorithm &quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">loadedPipeLine</span><span class="o">.</span><span class="n">named_steps</span><span class="p">[</span><span class="n">Constants</span><span class="o">.</span><span class="n">PIPELINE_NAMED_STEP_MODEL</span><span class="p">])))</span></div>
+
+<div class="viewcode-block" id="PipelinePredictionContext.pipeline_probabilityDistribution"><a class="viewcode-back" href="../../../../index.html#prediction_service.deserializer_predictor.context.PipelinePredictionContext.PipelinePredictionContext.pipeline_probabilityDistribution">[docs]</a>    <span class="k">def</span> <span class="nf">pipeline_probabilityDistribution</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">dataFrame</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Fetch Prediction Probababilities</span>
+
+<span class="sd">        :param dataFrame: feature list</span>
+
+<span class="sd">        :return: Prediction Probabilities</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">loadedPipeLine</span><span class="p">,</span> <span class="s2">&quot;predict_proba&quot;</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">predictionProbabilities</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">loadedPipeLine</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">dataFrame</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">PredictionContextError</span><span class="p">(</span><span class="s2">&quot;predict_proba method is not defined in the estimator algorithm &quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">loadedPipeLine</span><span class="o">.</span><span class="n">named_steps</span><span class="p">[</span><span class="n">Constants</span><span class="o">.</span><span class="n">PIPELINE_NAMED_STEP_MODEL</span><span class="p">])))</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">loadedPipeLine</span><span class="o">.</span><span class="n">named_steps</span><span class="p">[</span><span class="n">Constants</span><span class="o">.</span><span class="n">PIPELINE_NAMED_STEP_MODEL</span><span class="p">],</span> <span class="s2">&quot;classes_&quot;</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">classes</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">loadedPipeLine</span><span class="o">.</span><span class="n">named_steps</span><span class="p">[</span><span class="n">Constants</span><span class="o">.</span><span class="n">PIPELINE_NAMED_STEP_MODEL</span><span class="p">]</span><span class="o">.</span><span class="n">classes_</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">PredictionContextError</span><span class="p">(</span><span class="s2">&quot;classes_ variable is not defined in the estimator algorithm &quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">loadedPipeLine</span><span class="o">.</span><span class="n">named_steps</span><span class="p">[</span><span class="n">Constants</span><span class="o">.</span><span class="n">PIPELINE_NAMED_STEP_MODEL</span><span class="p">])))</span></div>
+
+<div class="viewcode-block" id="PipelinePredictionContext.getLeafNumber"><a class="viewcode-back" href="../../../../index.html#prediction_service.deserializer_predictor.context.PipelinePredictionContext.PipelinePredictionContext.getLeafNumber">[docs]</a>    <span class="k">def</span> <span class="nf">getLeafNumber</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">dataFrame</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return leaf numbers</span>
+
+<span class="sd">        :param dataFrame: get leafnumbers from dataframe</span>
+
+<span class="sd">        :return: returns leaf numbers</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">loadedPipeLine</span><span class="o">.</span><span class="n">named_steps</span><span class="p">[</span><span class="n">Constants</span><span class="o">.</span><span class="n">PIPELINE_NAMED_STEP_MODEL</span><span class="p">],</span><span class="s2">&quot;apply&quot;</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">leafNumber</span> <span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">loadedPipeLine</span><span class="o">.</span><span class="n">named_steps</span><span class="p">[</span><span class="n">Constants</span><span class="o">.</span><span class="n">PIPELINE_NAMED_STEP_MODEL</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">loadedPipeLine</span><span class="o">.</span><span class="n">named_steps</span><span class="p">[</span><span class="n">Constants</span><span class="o">.</span><span class="n">PIPELINE_NAMED_STEP_MAPPER</span><span class="p">]</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">dataFrame</span><span class="p">))</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">PredictionContextError</span><span class="p">(</span><span class="s2">&quot;apply method is not defined in the estimator algorithm &quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">loadedPipeLine</span><span class="o">.</span><span class="n">named_steps</span><span class="p">[</span><span class="n">Constants</span><span class="o">.</span><span class="n">PIPELINE_NAMED_STEP_MODEL</span><span class="p">])))</span></div></div>
+
+<div class="viewcode-block" id="PredictionContextError"><a class="viewcode-back" href="../../../../index.html#prediction_service.deserializer_predictor.context.PipelinePredictionContext.PredictionContextError">[docs]</a><span class="k">class</span> <span class="nc">PredictionContextError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Custom Exception Class</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../../index.html">Real Time Prediction Engine</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, chandim sett.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.1.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,6 @@
+from common_utils.ConfigurationSetups import CredentialsConfigurations, ProjectConfigurations
+from common_utils.constants import Constants
+projectConfigurations= ProjectConfigurations(Constants.VM_ENVIRONMENT_VARIABLE, Constants.CONFIGURATION_FOLDER, Constants.PROJECT_PROPERTIES_FILENAME)
+credentialsConfiguration= CredentialsConfigurations(Constants.CONFIGURATION_FOLDER, Constants.CREDENTIALS_PROPERTIES_FILENAME)
+
+

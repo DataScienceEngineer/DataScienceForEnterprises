@@ -1,0 +1,172 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>prediction_service.PredictionResolver &#8212; Real Time Prediction Engine 1 documentation</title>
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for prediction_service.PredictionResolver</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">common_utils.MLLogger</span> <span class="k">import</span> <span class="n">MLLogging</span>
+<span class="kn">import</span> <span class="nn">configurations</span>
+<span class="kn">import</span> <span class="nn">prediction_service.constants</span>
+<span class="kn">from</span> <span class="nn">prediction_service.deserializer_predictor.KerasDeserializerPredictor</span> <span class="k">import</span> \
+    <span class="n">KerasDeserializerPredictor</span>
+<span class="kn">from</span> <span class="nn">prediction_service.deserializer_predictor.DefaultDeserializerPredictor</span> <span class="k">import</span> \
+    <span class="n">DefaultDeserializerPredictor</span>
+<span class="kn">from</span> <span class="nn">common_utils</span> <span class="k">import</span> <span class="n">ServiceHelper</span>
+
+<span class="n">logger</span><span class="o">=</span><span class="n">MLLogging</span><span class="o">.</span><span class="n">getLog</span><span class="p">()</span>
+
+<div class="viewcode-block" id="predictorFactory"><a class="viewcode-back" href="../../index.html#prediction_service.PredictionResolver.predictorFactory">[docs]</a><span class="k">def</span> <span class="nf">predictorFactory</span><span class="p">(</span><span class="n">implementation</span><span class="p">,</span> <span class="n">dataFrame</span><span class="p">,</span> <span class="n">pipelineFilename</span><span class="p">,</span> <span class="n">requestArguments</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Resolve the Class based on the implementation and perform predictions on them</span>
+<span class="sd">    and return the predictionContext object containing predictions as response</span>
+
+<span class="sd">    :param implementation: Type of the algorithm implementation</span>
+
+<span class="sd">    :param dataFrame: Dataframe of features</span>
+
+<span class="sd">    :param pipelineFilename: Name of the file to deserialize</span>
+
+<span class="sd">    :param requestArguments: Additional arguments</span>
+
+<span class="sd">    :return: prediction context object</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">implementation</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;keras&#39;</span><span class="p">:</span>
+            <span class="n">DeserializerPredictor</span> <span class="o">=</span> <span class="n">KerasDeserializerPredictor</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">DeserializerPredictor</span> <span class="o">=</span> <span class="n">DefaultDeserializerPredictor</span><span class="p">()</span>
+        <span class="n">predictionContext</span> <span class="o">=</span> <span class="n">DeserializerPredictor</span><span class="o">.</span><span class="n">performPredictions</span><span class="p">(</span><span class="n">dataFrame</span><span class="p">,</span> <span class="n">pipelineFilename</span><span class="p">,</span> <span class="n">requestArguments</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">predictionContext</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Failed to do predictions in Predictor Factory: &quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="o">.</span><span class="n">__name__</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot; &quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="resolve"><a class="viewcode-back" href="../../index.html#prediction_service.PredictionResolver.resolve">[docs]</a><span class="k">def</span> <span class="nf">resolve</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This method resolves the data based on the request parameters and returns response containing predictions in desired format</span>
+
+<span class="sd">    1.Parse Request Data</span>
+
+<span class="sd">    2.Resolve Deserialization and Prediction Class</span>
+
+<span class="sd">    3.Prepare the output Dictionary for response</span>
+
+<span class="sd">    :param data: Request Data json to be parsed and resolved</span>
+
+<span class="sd">    :return: dict_pred: Dictionary of response after resolving request</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">dict_pred</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">implementation</span><span class="o">=</span> <span class="n">ServiceHelper</span><span class="o">.</span><span class="n">getValFromDict</span><span class="p">(</span><span class="n">prediction_service</span><span class="o">.</span><span class="n">constants</span><span class="o">.</span><span class="n">Constants</span><span class="o">.</span><span class="n">IMPLEMENTATION</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+        <span class="n">payload</span> <span class="o">=</span> <span class="n">ServiceHelper</span><span class="o">.</span><span class="n">getValFromDict</span><span class="p">(</span><span class="n">prediction_service</span><span class="o">.</span><span class="n">constants</span><span class="o">.</span><span class="n">Constants</span><span class="o">.</span><span class="n">PAYLOAD</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+        <span class="n">pipelineFilename</span> <span class="o">=</span> <span class="n">ServiceHelper</span><span class="o">.</span><span class="n">getValFromDict</span><span class="p">(</span><span class="n">prediction_service</span><span class="o">.</span><span class="n">constants</span><span class="o">.</span><span class="n">Constants</span><span class="o">.</span><span class="n">PIPELINE_FILE_NAME</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+        <span class="n">requestArguments</span> <span class="o">=</span> <span class="n">ServiceHelper</span><span class="o">.</span><span class="n">getValFromDict</span><span class="p">(</span><span class="n">prediction_service</span><span class="o">.</span><span class="n">constants</span><span class="o">.</span><span class="n">Constants</span><span class="o">.</span><span class="n">REQUEST_ARGUMENTS</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span> <span class="k">if</span> <span class="n">prediction_service</span><span class="o">.</span><span class="n">constants</span><span class="o">.</span><span class="n">Constants</span><span class="o">.</span><span class="n">REQUEST_ARGUMENTS</span> <span class="ow">in</span> <span class="n">data</span> <span class="k">else</span> <span class="kc">None</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Request arguments:&quot;</span> <span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">requestArguments</span><span class="p">))</span>
+        <span class="n">dataFrame</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">payload</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Length of payload: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">dataFrame</span><span class="p">)))</span>
+        <span class="n">predictionContext</span><span class="o">=</span><span class="n">predictorFactory</span><span class="p">(</span><span class="n">implementation</span><span class="o">=</span><span class="n">implementation</span><span class="p">,</span> <span class="n">dataFrame</span><span class="o">=</span><span class="n">dataFrame</span><span class="p">,</span> <span class="n">pipelineFilename</span><span class="o">=</span><span class="n">pipelineFilename</span><span class="p">,</span> <span class="n">requestArguments</span><span class="o">=</span><span class="n">requestArguments</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">predictionContext</span><span class="p">,</span> <span class="s1">&#39;predictionLabels&#39;</span><span class="p">)</span> <span class="ow">and</span>  <span class="n">predictionContext</span><span class="o">.</span><span class="n">predictionLabels</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">dict_pred</span><span class="p">[</span><span class="n">prediction_service</span><span class="o">.</span><span class="n">constants</span><span class="o">.</span><span class="n">Constants</span><span class="o">.</span><span class="n">PREDICTIONS</span><span class="p">]</span> <span class="o">=</span> <span class="n">predictionContext</span><span class="o">.</span><span class="n">predictionLabels</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">predictionContext</span><span class="p">,</span> <span class="s1">&#39;predictionProbabilities&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">predictionContext</span><span class="o">.</span><span class="n">predictionProbabilities</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">predictionContext</span><span class="o">.</span><span class="n">classes</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">dict_pred</span><span class="p">[</span><span class="n">prediction_service</span><span class="o">.</span><span class="n">constants</span><span class="o">.</span><span class="n">Constants</span><span class="o">.</span><span class="n">PREDICTIONS_PROBABILITIES</span><span class="p">]</span> <span class="o">=</span> <span class="n">predictionContext</span><span class="o">.</span><span class="n">predictionProbabilities</span>
+            <span class="n">dict_pred</span><span class="p">[</span><span class="n">prediction_service</span><span class="o">.</span><span class="n">constants</span><span class="o">.</span><span class="n">Constants</span><span class="o">.</span><span class="n">CLASSES</span><span class="p">]</span><span class="o">=</span><span class="n">predictionContext</span><span class="o">.</span><span class="n">classes</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">predictionContext</span><span class="p">,</span> <span class="s1">&#39;responseArguments&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">predictionContext</span><span class="o">.</span><span class="n">responseArguments</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">bool</span><span class="p">(</span><span class="n">predictionContext</span><span class="o">.</span><span class="n">responseArguments</span><span class="p">):</span>
+            <span class="n">dict_pred</span><span class="p">[</span><span class="n">prediction_service</span><span class="o">.</span><span class="n">constants</span><span class="o">.</span><span class="n">Constants</span><span class="o">.</span><span class="n">RESPONSE_ARGUMENTS</span><span class="p">]</span> <span class="o">=</span> <span class="n">predictionContext</span><span class="o">.</span><span class="n">responseArguments</span>
+        <span class="k">return</span> <span class="n">dict_pred</span>
+    <span class="k">except</span> <span class="ne">TypeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;API Request has None type values: &quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="o">.</span><span class="n">__name__</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot; &quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;All relevant keys must be present in API request. Missing key: &quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="o">.</span><span class="n">__name__</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot; &quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Unable to resolve in Prediction Resolver: &quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="o">.</span><span class="n">__name__</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot; &quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span></div>
+
+
+
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">Real Time Prediction Engine</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, chandim sett.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.1.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

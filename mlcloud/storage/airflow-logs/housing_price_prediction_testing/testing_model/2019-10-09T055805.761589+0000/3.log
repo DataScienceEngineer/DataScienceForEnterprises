@@ -1,0 +1,16 @@
+[2019-10-09 06:16:32,978] {{models.py:1361}} INFO - Dependencies all met for <TaskInstance: housing_price_prediction_testing.testing_model 2019-10-09T05:58:05.761589+00:00 [queued]>
+[2019-10-09 06:16:33,020] {{models.py:1361}} INFO - Dependencies all met for <TaskInstance: housing_price_prediction_testing.testing_model 2019-10-09T05:58:05.761589+00:00 [queued]>
+[2019-10-09 06:16:33,020] {{models.py:1573}} INFO - 
+--------------------------------------------------------------------------------
+Starting attempt 3 of 4
+--------------------------------------------------------------------------------
+
+[2019-10-09 06:16:33,075] {{models.py:1595}} INFO - Executing <Task(PythonOperator): testing_model> on 2019-10-09T05:58:05.761589+00:00
+[2019-10-09 06:16:33,075] {{base_task_runner.py:118}} INFO - Running: ['bash', '-c', 'airflow run housing_price_prediction_testing testing_model 2019-10-09T05:58:05.761589+00:00 --job_id 37 --raw -sd DAGS_FOLDER/housing_price_prediction_testing.py --cfg_path /tmp/tmpoh8qbppp']
+[2019-10-09 06:16:33,616] {{base_task_runner.py:101}} INFO - Job 37: Subtask testing_model [2019-10-09 06:16:33,616] {{settings.py:174}} INFO - setting.configure_orm(): Using pool settings. pool_size=5, pool_recycle=1800
+[2019-10-09 06:16:33,840] {{base_task_runner.py:101}} INFO - Job 37: Subtask testing_model [2019-10-09 06:16:33,839] {{__init__.py:51}} INFO - Using executor LocalExecutor
+[2019-10-09 06:16:34,304] {{base_task_runner.py:101}} INFO - Job 37: Subtask testing_model [2019-10-09 06:16:34,303] {{models.py:271}} INFO - Filling up the DagBag from /usr/local/airflow/dags/housing_price_prediction_testing.py
+[2019-10-09 06:16:34,596] {{base_task_runner.py:101}} INFO - Job 37: Subtask testing_model [2019-10-09 06:16:34,596] {{cli.py:484}} INFO - Running <TaskInstance: housing_price_prediction_testing.testing_model 2019-10-09T05:58:05.761589+00:00 [running]> on host 63734ffeb1b4
+[2019-10-09 06:16:35,736] {{logging_mixin.py:95}} INFO - {'1:House Price Predictions Testing': {'status': 'Success', 'message': 'Predictions Successfully Saved'}}
+[2019-10-09 06:16:35,737] {{python_operator.py:96}} INFO - Done. Returned value was: None
+[2019-10-09 06:16:37,978] {{logging_mixin.py:95}} INFO - [2019-10-09 06:16:37,977] {{jobs.py:2627}} INFO - Task exited with return code 0

@@ -1,0 +1,209 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis
+  labels:
+    app: redis
+    role: master
+    tier: backend
+spec:
+  type: ClusterIP
+  ports:
+  - port: 6379
+    targetPort: 6379
+  selector:
+    app: redis
+    role: master
+    tier: backend
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: ml-api-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: ml-api
+  ports:
+    - port: 30000
+      targetPort: 5001
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: ml-monitor-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: ml-monitor
+  ports:
+    - port: 30001
+      targetPort: 5555
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+   name: mlaas-configs
+data:
+  CELERY_BROKER_URL: redis://redis.default.svc.cluster.local:6379/0
+  CELERY_RESULT_BACKEND: redis://redis.default.svc.cluster.local:6379/0
+  C_FORCE_ROOT:
+
+  HOST: 0.0.0.0
+  PORT: "5001"
+  DEBUG: "true"
+  DEPLOY_ENV: developement
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: redis
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: redis
+        role: master
+        tier: backend
+    spec:
+      containers:
+      - name: redis
+        image: redis
+        resources:
+          requests:
+            cpu: 100m
+            memory: 100Mi
+        ports:
+        - containerPort: 6379
+---
+kind: Deployment
+apiVersion: extensions/v1beta1
+metadata:
+  name: ml-api-deployment
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      #maxSurge: 2
+      maxUnavailable: 1
+  selector:
+    matchLabels:
+      app: ml-api
+  template:
+    metadata:
+      name: ml-api-pod
+      labels:
+        app: ml-api
+      annotations:
+        commitVersion: "2"
+    spec:
+      volumes:
+        - name: storage
+          hostPath:
+            path:  /E/ml_resources/storage
+        - name: logs
+          hostPath:
+            path:  /E/ml_resources/logs
+        - name: credentials-properties
+          hostPath:
+            path:  /E/ml_resources/credentials.properties
+      containers:
+        - name: mlaas-web
+          imagePullPolicy: "Always"
+          image: 127.0.0.1:5000/mlaas_web
+          envFrom:
+            - configMapRef:
+               name: mlaas-configs
+          volumeMounts:
+            - name: storage
+              mountPath: /ml_api/storage/
+            - name: logs
+              mountPath: /ml_api/logs/
+            - name: credentials-properties
+              mountPath: /ml_api/configs/credentials.properties
+          ports:
+            - containerPort: 5001
+---
+kind: Deployment
+apiVersion: extensions/v1beta1
+metadata:
+  name: ml-worker-deployment
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      #maxSurge: 2
+      maxUnavailable: 1
+  selector:
+    matchLabels:
+      app: ml-worker
+  template:
+    metadata:
+      name: ml-worker-pod
+      labels:
+        app: ml-worker
+      annotations:
+        commitVersion: "2"
+    spec:
+      volumes:
+        - name: storage
+          hostPath:
+            path:  /E/ml_resources/storage
+        - name: logs
+          hostPath:
+            path:  /E/ml_resources/logs
+        - name: credentials-properties
+          hostPath:
+            path:  /E/ml_resources/credentials.properties
+      containers:
+        - name: mlaas-worker
+          imagePullPolicy: "Always"
+          image: 127.0.0.1:5000/mlaas_worker
+          envFrom:
+            - configMapRef:
+               name: mlaas-configs
+          volumeMounts:
+            - name: storage
+              mountPath: /ml_worker/storage/
+            - name: logs
+              mountPath: /ml_worker/logs/
+            - name: credentials-properties
+              mountPath: /ml_worker/configs/credentials.properties
+
+---
+kind: Deployment
+apiVersion: extensions/v1beta1
+metadata:
+  name: ml-monitor-deployment
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      #maxSurge: 2
+      maxUnavailable: 1
+  selector:
+    matchLabels:
+      app: ml-monitor
+  template:
+    metadata:
+      name: ml-monitor-pod
+      labels:
+        app: ml-monitor
+      annotations:
+        commitVersion: "2"
+    spec:
+      containers:
+        - name: mlaas-monitor
+          imagePullPolicy: "Always"
+          image: 127.0.0.1:5000/mlaas_monitor
+          envFrom:
+            - configMapRef:
+               name: mlaas-configs
+          ports:
+            - containerPort: 5555
+          command: ["flower"]
+          args: ["-A", "tasks", "--port=5555", "--broker=redis://redis.default.svc.cluster.local:6379/0"]

@@ -1,0 +1,77 @@
+version: '3.1'
+services:
+    filebrowser:
+        image: filebrowser/filebrowser
+        volumes:
+           - ${STACK_PATH}\mlcloud\storage:/srv
+        ports:
+           - "8085:80"
+    textEditor:
+        image: wernight/codiad:latest
+        volumes:
+           - textEditorConfigs_volume:/code
+           - ${STACK_PATH}\mlcloud\source_codes:/src_codes
+           - ${STACK_PATH}\mlcloud\storage:/storage
+        ports:
+           - "8090:80"
+    postgres:
+        image: postgres:9.6
+        environment:
+            - POSTGRES_USER=airflow
+            - POSTGRES_PASSWORD=airflow
+            - PGDATA=/var/lib/postgresql/data/pgdata
+        volumes:
+            - postgres_volume:/var/lib/postgresql/data/
+    adminer:
+        image: adminer
+        ports:
+          - 9050:8080
+    airflowServer:
+        image: puckel/docker-airflow:1.10.1
+        depends_on:
+            - postgres
+        environment:
+            - LOAD_EX=n
+            - AIRFLOW__CORE__LOAD_EXAMPLES=False
+            - EXECUTOR=Local
+            - AIRFLOW__CORE__SQL_ALCHEMY_CONN=postgresql+psycopg2://airflow:airflow@postgres:5432/airflow
+            - AIRFLOW__CORE__EXECUTOR=LocalExecutor
+            - AIRFLOW__CORE__FERNET_KEY=C0lOof0zpa1tDcD2quwJL5fiY-taMD-uuI7lcnGCry4=
+            - AIRFLOW__SCHEDULER__CATCHUP_BY_DEFAULT=False
+            - AIRFLOW__WEBSERVER__WORKER_REFRESH_BATCH_SIZE=0
+            - AIRFLOW__SCHEDULER__DAG_DIR_LIST_INTERVAL=60
+            - AIRFLOW__SCHEDULER__MIN_FILE_PROCESS_INTERVAL=10
+
+        volumes:
+            - ${STACK_PATH}\mlcloud\source_codes\airflow_dags:/usr/local/airflow/dags
+            - ${STACK_PATH}\mlcloud\storage:/storage
+            - ${STACK_PATH}\mlcloud\source_codes:/src_codes
+            - ${STACK_PATH}\mlcloud\deployment\airflow\requirements_airflow_server.txt:/requirements.txt
+            - ${STACK_PATH}\mlcloud\storage\airflow-logs:/usr/local/airflow/logs
+            # Uncomment to include custom plugins
+            # - ./plugins:/usr/local/airflow/plugins
+        ports:
+            - "8080:8080"
+        command: webserver
+        healthcheck:
+            test: ["CMD-SHELL", "[ -f /usr/local/airflow/airflow-webserver.pid ]"]
+            interval: 30s
+            timeout: 30s
+            retries: 3
+    dash-visualisation-engine:
+        build:
+            context: ./visualization
+            dockerfile: Dockerfile_visualisation_engine
+        image: dash-visualisation-engine
+        container_name: dashVisualisationEngine
+        environment:
+        - HR_ENV=default
+        ports:
+        - 8050:8050
+        volumes:
+        - ${STACK_PATH}\mlcloud\source_codes\visualization_codes\static:/visualisation_engine/static
+        - ${STACK_PATH}\mlcloud\source_codes\visualization_codes\visuals:/visualisation_engine/visuals
+        - ${STACK_PATH}\mlcloud\storage:/storage
+volumes:
+  postgres_volume:
+  textEditorConfigs_volume:

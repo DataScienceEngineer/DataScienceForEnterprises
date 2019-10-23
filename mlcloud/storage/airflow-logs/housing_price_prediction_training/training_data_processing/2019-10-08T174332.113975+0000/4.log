@@ -1,0 +1,18 @@
+[2019-10-08 17:56:35,726] {{models.py:1361}} INFO - Dependencies all met for <TaskInstance: housing_price_prediction_training.training_data_processing 2019-10-08T17:43:32.113975+00:00 [queued]>
+[2019-10-08 17:56:35,745] {{models.py:1361}} INFO - Dependencies all met for <TaskInstance: housing_price_prediction_training.training_data_processing 2019-10-08T17:43:32.113975+00:00 [queued]>
+[2019-10-08 17:56:35,745] {{models.py:1573}} INFO - 
+--------------------------------------------------------------------------------
+Starting attempt 4 of 5
+--------------------------------------------------------------------------------
+
+[2019-10-08 17:56:35,779] {{models.py:1595}} INFO - Executing <Task(PythonOperator): training_data_processing> on 2019-10-08T17:43:32.113975+00:00
+[2019-10-08 17:56:35,779] {{base_task_runner.py:118}} INFO - Running: ['bash', '-c', 'airflow run housing_price_prediction_training training_data_processing 2019-10-08T17:43:32.113975+00:00 --job_id 7 --raw -sd DAGS_FOLDER/housing_price_prediction_training.py --cfg_path /tmp/tmpmg09pm1k']
+[2019-10-08 17:56:36,360] {{base_task_runner.py:101}} INFO - Job 7: Subtask training_data_processing [2019-10-08 17:56:36,360] {{settings.py:174}} INFO - setting.configure_orm(): Using pool settings. pool_size=5, pool_recycle=1800
+[2019-10-08 17:56:36,577] {{base_task_runner.py:101}} INFO - Job 7: Subtask training_data_processing [2019-10-08 17:56:36,576] {{__init__.py:51}} INFO - Using executor LocalExecutor
+[2019-10-08 17:56:37,064] {{base_task_runner.py:101}} INFO - Job 7: Subtask training_data_processing [2019-10-08 17:56:37,064] {{models.py:271}} INFO - Filling up the DagBag from /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-08 17:56:37,134] {{base_task_runner.py:101}} INFO - Job 7: Subtask training_data_processing [2019-10-08 17:56:37,133] {{cli.py:484}} INFO - Running <TaskInstance: housing_price_prediction_training.training_data_processing 2019-10-08T17:43:32.113975+00:00 [running]> on host 63734ffeb1b4
+[2019-10-08 17:56:37,194] {{logging_mixin.py:95}} INFO - c44c4be7-47c0-4202-829f-5f9c8dcad273
+[2019-10-08 17:56:37,194] {{logging_mixin.py:95}} INFO - http://192.168.0.102:5001/check/c44c4be7-47c0-4202-829f-5f9c8dcad273
+[2019-10-08 17:56:37,266] {{logging_mixin.py:95}} INFO - {'Exception': 'ml_automation.core.DataProcessor TypeError string indices must be integersTraceback (most recent call last):\n  File "/usr/local/lib/python3.6/site-packages/ml_automation/core/DataProcessor.py", line 18, in DataProcessor\n    util.getValFromDict(\'raw_file_paths\', raw_request))\n  File "/usr/local/lib/python3.6/site-packages/common_utils/ServiceHelper.py", line 210, in getValFromDict\n    if name in data and data[name] is not None:\nTypeError: string indices must be integers\n'}
+[2019-10-08 17:56:37,266] {{python_operator.py:96}} INFO - Done. Returned value was: None
+[2019-10-08 17:56:40,740] {{logging_mixin.py:95}} INFO - [2019-10-08 17:56:40,739] {{jobs.py:2627}} INFO - Task exited with return code 0

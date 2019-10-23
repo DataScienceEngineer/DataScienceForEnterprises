@@ -1,0 +1,54 @@
+#!flask/bin/python
+import json
+import traceback
+
+import flask
+import pandas as pd
+from flask import request
+
+from com.highradius.common_utils.HRCLogger import HRCLogFactory
+from com.highradius.prediction_service import configurations
+from com.highradius.prediction_service.service_helper import PredictionResolver
+import logging
+app = flask.Flask(__name__)
+
+logger=HRCLogFactory.getLog()
+
+@app.route('/ping', methods=['GET'])
+def ping():
+    """Health check for the webservice
+    :return: (200,OK) if the server is running
+    """
+    health = True
+    status = 200 if health else 404
+    return flask.Response(response='Ok', status=status, mimetype='application/json')
+
+@app.route('/', methods=['GET'])
+def index():
+    """Usage Page
+    """
+    message="<h3 style='color:blue;'>Welcome to the Prediction Service in python</h3><p><strong>Usage:</strong></p><div>1. Example URL: http://webserviceURL.com/invocations</div><div>2. The Request should be POST type with content-type header set as application/json</div><div>3. Message Body:</div><div><tt>&nbsp; &nbsp; &nbsp; &nbsp;{&quot;payload&quot;: [{&quot;feature1&quot;:&quot;featureValue1&quot;,&quot;feature2&quot;:&quot;featureValue2&quot;},</tt></div><div><tt>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{&quot;feature1&quot;:&quot;featureValue1&quot;,&quot;feature2&quot;:&quot;featureValue2&quot;}],</tt></div><div><tt>&nbsp; &nbsp; &nbsp; &nbsp; &quot;pipelineFilename&quot;: &quot;s3hrc-flask-test/cms/filename.pickle&quot;, &quot;algorithm&quot;: &quot;tree&quot;}</tt></div><div>4. Predictions will be returned in json with &quot;<tt>predictions</tt>&quot; as key, and the probabilities can be obtained from &quot;<tt>predictions_prob</tt>&quot; key.</div><div>&nbsp;</div><div><i>- DataScience, Highradius Corporation</i></div>"
+    return message
+
+@app.route('/invocations', methods=['POST'])
+def get_prediction():
+    """
+    Prediction Inference Engine Endpoint. Expects POST arguments containing payload and model artifacts as JSON
+    :return: (200,predictions in Json format) else return (501,"Exception message") in case of error
+    """
+    global logger
+    try:
+        data = request.json
+        logger.info("Request received")
+        dict_pred= PredictionResolver.resolve(data)
+        dict_pred=json.dumps(dict_pred)
+        logger.info("Returning predictions")
+    except Exception as e:
+        msg="Failed to perform predictions::"+str(e)
+        logger.error(msg)
+        if HRCLogFactory.loggerConfig.logFileHandlerLevel == logging.DEBUG or HRCLogFactory.loggerConfig.logStreamHandlerLevel == logging.DEBUG:
+            logger.error(str(traceback.format_exc()))
+        return flask.Response(response=msg, status=501, mimetype='text')
+    finally:
+        pass
+    return flask.Response(response=dict_pred, status=200, mimetype='application/json')

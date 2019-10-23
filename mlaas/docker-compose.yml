@@ -1,0 +1,52 @@
+version: "3"
+services:
+  redis:
+     image: redis
+  api-server:
+    image: 127.0.0.1:5000/mlaas_web
+    build:
+      context: ./api-server
+      dockerfile: Dockerfile
+    ports:
+     - "5001:5001"
+    environment:
+      CELERY_BROKER_URL: redis://redis:6379/0
+      CELERY_RESULT_BACKEND: redis://redis:6379/0
+      C_FORCE_ROOT: "true"
+      HOST: 127.0.0.1
+      PORT: 5001
+      DEBUG: "true"
+      DEPLOY_ENV: developement
+    volumes:
+      - E:/ml_resources/storage/:/ml_api/storage/
+      - E:/ml_resources/logs/:/ml_api/logs/
+      - E:/ml_resources/credentials.properties:/ml_api/configs/credentials.properties
+    links:
+    - redis
+  worker-queue:
+    image: 127.0.0.1:5000/mlaas_worker
+    build:
+      context: ./worker-queue
+      dockerfile: Dockerfile
+    environment:
+      CELERY_BROKER_URL: redis://redis:6379/0
+      CELERY_RESULT_BACKEND: redis://redis:6379/0
+      C_FORCE_ROOT: "true"
+      DEPLOY_ENV: developement
+    volumes:
+      - E:/ml_resources/storage/:/ml_worker/storage/
+      - E:/ml_resources/logs/:/ml_worker/logs/
+      - E:/ml_resources/credentials.properties:/ml_worker/configs/credentials.properties
+    links:
+    - redis
+  monitor:
+    image: 127.0.0.1:5000/mlaas_monitor
+    build:
+      context: ./worker-queue
+      dockerfile: Dockerfile
+    ports:
+     - "5555:5555"
+    entrypoint: flower
+    command: -A tasks --port=5555 --broker=redis://redis:6379/0
+    links:
+    - redis

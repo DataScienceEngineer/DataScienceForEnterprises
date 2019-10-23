@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>DataScience Visualization Index</title>
+	<style>
+	html { margin:0; padding:0; font-size:62.5%; }
+	body { max-width:800px; min-width:300px; margin:0 auto; padding:20px 10px; font-size:14px; font-size:1.4em; }
+	h1 { font-size:1.8em; }
+	.ajaxRequestDiv { overflow:auto; border:1.5px solid; margin-right:10%;}
+	body {
+  font-size: 1.5em; /* currently ems cause chrome bug misinterpreting rems on body element */
+  line-height: 1.6;
+  font-weight: 400;
+  font-family: "Open Sans", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: rgb(50, 50, 50); }
+	</style>
+	<link rel="stylesheet" href="./dist/themes/default/style.min.css" />
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div style="margin-left:15%">
+	<h1 align="center">DataScience Visualizations Index</h1>
+    <input class="search-input form-control" ></input>
+	<div class="panel panel-default" id="ajaxDataRequest" class="ajaxRequestDiv" style="border-style: solid;"></div>
+	<br>
+	</div>
+	<div id="nodeCreatePanel" class="panel" align="center" style="padding:2px; position: fixed;float: right; right:5%; top:15%; max-width:300">
+	<form class="form-inline">
+	<div id="addHeading"class="well well-sm"><b>Add Entry Resolution</b></div>
+	<input type="text" class="form-control" placeholder="Name"  id="NodeText"/></br>
+	<input type="text" class="form-control" placeholder="Address" id="NodeAddress"/></br>
+	<input type="button" id="NodeButton" class="btn btn-info"  onclick="node_create(this.formValueId)" value="Add"></input>
+	</form>
+	</div>
+	
+	<div id="nodeEditDelete" class="panel" align="center" style="padding:2px;position: fixed;float: right; right:1%; top:15%;max-width:300">
+	<form class="form-inline">
+	<div id="editHeading" class="well well-sm"><b>Edit Entry Resolution</b></div>
+	<div class="form-group">
+	<input type="text" class="form-control" placeholder="Name" id="editNodeText"/>
+	<input type="text" class="form-control" placeholder="Address" id="editNodeAddress"/>
+	<input type="button" id="editNode" class="btn btn-success" onclick="edit_node()" value="Update" />
+	</div>
+	<div class="form-group">	
+	<input type="button" id="DeleteNode" class="btn btn-danger" onclick="delete_node()" value="Delete"/>
+	</div>
+	</form>
+	</div>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+	<script src="./dist/jstree.min.js"></script>
+	
+	<script>
+	function validate(nodeText,nodeAddress){
+		if (!nodeText.match(/^[0-9\s-_a-zA-Z]+$/) || !nodeAddress.match(/^[0-9\/_a-zA-Z]+$/)){
+				if(nodeText=="" || nodeAddress=="")
+				{
+					alert("Entries should not be empty!");
+					return false;
+				}
+				alert("Name Entries can contain alphanumerics, spaces, dash, underscore. Address entries an contain alphanumerics, underscores, and front slashes");
+				return false;
+			}
+		return true;
+	}
+	function delete_node()
+	{
+		var deleteNode= $('#DeleteNode').attr('nodeId');
+		$('#ajaxDataRequest').jstree().delete_node(deleteNode);
+		//$('#ajaxDataRequest').jstree("refresh");
+		$(function() {
+				info="deleteNode="+deleteNode
+				$.ajax({
+					type: "GET",
+					url: "/deleteNode/",
+					data:  info,
+					success: function(response){alert("Successfully Removed the Entry!");$("#nodeEditDelete").hide();},
+					error: function(error) {console.log(error);}
+				});
+		});
+	}
+	function edit_node(){
+		var editnodeText=$('#editNodeText').val().trim();
+		var editnodeAddress=$('#editNodeAddress').val().trim();
+		if(!validate(editnodeText,editnodeAddress)){return;}
+		var editedNode=$('#ajaxDataRequest').jstree('get_selected',true)[0];
+		var editedNodeId=editedNode.id;
+		var editedNodeParentId=editedNode.parent;
+		var newNode = { type: "link", text: editnodeText, a_attr: {href: editnodeAddress}, id: editedNodeId, parent: editedNodeParentId};
+		console.log("Hi"+JSON.stringify(newNode, null, '\t'));
+		$(function() {
+				$.ajax({
+					type: "POST",
+					url: "/editNode/",
+					data:  JSON.stringify(newNode, null, '\t'),
+					contentType: 'application/json;charset=UTF-8',
+					success: function(response){alert(newNode.text+" was successfully updated");$('#ajaxDataRequest').jstree("refresh");},
+					error: function(error) {console.log(error);}
+				});
+			});
+	}
+	function node_create(){
+			var nodeText=$('#NodeText').val().trim();
+			var nodeAddress=$('#NodeAddress').val().trim();
+			if(!validate(nodeText,nodeAddress))return;
+			var parentNode=$('#ajaxDataRequest').jstree('get_selected');
+			var parentNodeId=$('#ajaxDataRequest').jstree('get_selected',true)[0].id;
+			var newNode = { type: "link", text: nodeText, a_attr: {href: nodeAddress} };
+			sel=$('#ajaxDataRequest').jstree().create_node(parentNode, newNode, 'last');
+			newNode['id']=sel
+			newNode['parent']=parentNodeId
+			if(sel){
+				//$('#ajaxDataRequest').jstree().edit(sel);
+			}
+			$(function() {
+				$.ajax({
+					type: "POST",
+					url: "/createNode/",
+					data:  JSON.stringify(newNode, null, '\t'),
+					contentType: 'application/json;charset=UTF-8',
+					success: function(response){alert(newNode.text+" was successfully created");},
+					error: function(error) {console.log(error);}
+				});
+			});
+	}
+	 $(function() {
+		 $("#nodeEditDelete").hide();
+		 $("#nodeCreatePanel").hide();
+		 $(".search-input").keyup(function() {
+
+			var searchString = $(this).val();
+			console.log(searchString);
+			$('#ajaxDataRequest').jstree('search', searchString);
+		});
+		$('#ajaxDataRequest').jstree({
+			'core' : {
+				'data' : {
+					"url" : "./root.json",
+					"dataType" : "json", // needed only if you do not supply JSON headers
+					 "cache" : false
+				},
+				'check_callback': true
+			},types: {
+				"link": {"icon" : "./chart.png"},
+				"default": {"icon" : "./folder.png"},
+				"root":{"icon" : "./root.png"}
+			},
+			"search": {
+				"case_insensitive": true,
+				"show_only_matches" : true
+			},
+			plugins: [ "dnd", "state", "wholerow","search", "themes", "types"]
+		}).bind("select_node.jstree", function (e, data) {
+			//document.location.href = data.node.a_attr.href;
+			if(data.node.type != 'root' && data.node.type != 'link'){
+				$("#nodeCreatePanel").show();
+				$("#addHeading").html("<b>Add Resolution Entry under:<br> "+data.node.text +"</b>");
+				//$("#NodeButton").prop('value', "Create under: "+data.node.text );
+			}else{
+				$("#nodeCreatePanel").hide();
+			}
+			if(data.node.type =='link'){
+				$("#nodeEditDelete").show();
+				$("#editHeading").html("<b>Edit/Delete Resolution Entry for:<br> "+data.node.text +"</b>");
+				//$("#editNode").prop('value', "Save "+data.node.text );
+				$("#editNodeText").prop('value', data.node.text );
+				$("#editNodeAddress").prop('value', data.node.a_attr.href );
+				$("#DeleteNode").attr('nodeId', data.node.id );
+			}else{
+				$("#nodeEditDelete").hide();
+			}
+		}).bind("dblclick.jstree", function (event) {
+			var tree = $(this).jstree();
+			var node = tree.get_node(event.target);
+			document.location.href = node.a_attr.href;
+		}).on('delete_node.jstree', function (e, data) {
+			//data.instance.refresh();
+		});
+	});
+	
+	</script>
+</body>
+</html>

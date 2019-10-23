@@ -1,0 +1,18 @@
+#!flask/bin/python
+import sys
+import os
+sys.path.insert(0, os.path.join(os.getcwd()))
+from com.highradius.prediction_service import configurations
+from com.highradius.common_utils.HRCLogger import HRCLogFactory
+logger = HRCLogFactory.getLog()
+from com.highradius.prediction_service.inference_engine import app
+import traceback
+
+
+if __name__ == '__main__':
+    try:
+        serverConfig = configurations.serverConfigurations.config
+        app.run(port=int(serverConfig['Server']['port']), host=serverConfig['Server']['host'], threaded=True)
+    except Exception:
+        logger.info("Exception occurred while starting the server: " + str(traceback.format_exc()))
+

@@ -1,0 +1,156 @@
+[2019-10-08 17:46:27,947] {{models.py:1361}} INFO - Dependencies all met for <TaskInstance: housing_price_prediction_training.training_data_processing 2019-10-08T17:43:32.113975+00:00 [queued]>
+[2019-10-08 17:46:27,972] {{models.py:1361}} INFO - Dependencies all met for <TaskInstance: housing_price_prediction_training.training_data_processing 2019-10-08T17:43:32.113975+00:00 [queued]>
+[2019-10-08 17:46:27,972] {{models.py:1573}} INFO - 
+--------------------------------------------------------------------------------
+Starting attempt 2 of 3
+--------------------------------------------------------------------------------
+
+[2019-10-08 17:46:28,012] {{models.py:1595}} INFO - Executing <Task(PythonOperator): training_data_processing> on 2019-10-08T17:43:32.113975+00:00
+[2019-10-08 17:46:28,012] {{base_task_runner.py:118}} INFO - Running: ['bash', '-c', 'airflow run housing_price_prediction_training training_data_processing 2019-10-08T17:43:32.113975+00:00 --job_id 5 --raw -sd DAGS_FOLDER/housing_price_prediction_training.py --cfg_path /tmp/tmpugkm7kdy']
+[2019-10-08 17:46:28,728] {{base_task_runner.py:101}} INFO - Job 5: Subtask training_data_processing [2019-10-08 17:46:28,727] {{settings.py:174}} INFO - setting.configure_orm(): Using pool settings. pool_size=5, pool_recycle=1800
+[2019-10-08 17:46:29,011] {{base_task_runner.py:101}} INFO - Job 5: Subtask training_data_processing [2019-10-08 17:46:29,010] {{__init__.py:51}} INFO - Using executor LocalExecutor
+[2019-10-08 17:46:29,532] {{base_task_runner.py:101}} INFO - Job 5: Subtask training_data_processing [2019-10-08 17:46:29,531] {{models.py:271}} INFO - Filling up the DagBag from /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-08 17:46:29,583] {{base_task_runner.py:101}} INFO - Job 5: Subtask training_data_processing [2019-10-08 17:46:29,582] {{cli.py:484}} INFO - Running <TaskInstance: housing_price_prediction_training.training_data_processing 2019-10-08T17:43:32.113975+00:00 [running]> on host 63734ffeb1b4
+[2019-10-08 17:46:29,905] {{models.py:1760}} ERROR - HTTPConnectionPool(host='localhost', port=5001): Max retries exceeded with url: /mlAutomation (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fb998783940>: Failed to establish a new connection: [Errno 111] Connection refused',))
+Traceback (most recent call last):
+  File "/usr/local/airflow/.local/lib/python3.6/site-packages/urllib3/connection.py", line 141, in _new_conn
+    (self.host, self.port), self.timeout, **extra_kw)
+  File "/usr/local/airflow/.local/lib/python3.6/site-packages/urllib3/util/connection.py", line 83, in create_connection
+    raise err
+  File "/usr/local/airflow/.local/lib/python3.6/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/airflow/.local/lib/python3.6/site-packages/urllib3/connectionpool.py", line 601, in urlopen
+    chunked=chunked)
+  File "/usr/local/airflow/.local/lib/python3.6/site-packages/urllib3/connectionpool.py", line 357, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "/usr/local/lib/python3.6/http/client.py", line 1254, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "/usr/local/lib/python3.6/http/client.py", line 1300, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "/usr/local/lib/python3.6/http/client.py", line 1249, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/usr/local/lib/python3.6/http/client.py", line 1036, in _send_output
+    self.send(msg)
+  File "/usr/local/lib/python3.6/http/client.py", line 974, in send
+    self.connect()
+  File "/usr/local/airflow/.local/lib/python3.6/site-packages/urllib3/connection.py", line 166, in connect
+    conn = self._new_conn()
+  File "/usr/local/airflow/.local/lib/python3.6/site-packages/urllib3/connection.py", line 150, in _new_conn
+    self, "Failed to establish a new connection: %s" % e)
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x7fb998783940>: Failed to establish a new connection: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/airflow/.local/lib/python3.6/site-packages/requests/adapters.py", line 440, in send
+    timeout=timeout
+  File "/usr/local/airflow/.local/lib/python3.6/site-packages/urllib3/connectionpool.py", line 639, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "/usr/local/airflow/.local/lib/python3.6/site-packages/urllib3/util/retry.py", line 388, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='localhost', port=5001): Max retries exceeded with url: /mlAutomation (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fb998783940>: Failed to establish a new connection: [Errno 111] Connection refused',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/airflow/models.py", line 1659, in _run_raw_task
+    result = task_copy.execute(context=context)
+  File "/usr/local/lib/python3.6/site-packages/airflow/operators/python_operator.py", line 95, in execute
+    return_value = self.execute_callable()
+  File "/usr/local/lib/python3.6/site-packages/airflow/operators/python_operator.py", line 100, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/usr/local/airflow/dags/housing_price_prediction_training.py", line 27, in training_data_processing
+    response=requests.post('http://localhost:5001/mlAutomation', json=training_data_processing_config)
+  File "/usr/local/airflow/.local/lib/python3.6/site-packages/requests/api.py", line 112, in post
+    return request('post', url, data=data, json=json, **kwargs)
+  File "/usr/local/airflow/.local/lib/python3.6/site-packages/requests/api.py", line 58, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "/usr/local/airflow/.local/lib/python3.6/site-packages/requests/sessions.py", line 508, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/usr/local/airflow/.local/lib/python3.6/site-packages/requests/sessions.py", line 618, in send
+    r = adapter.send(request, **kwargs)
+  File "/usr/local/airflow/.local/lib/python3.6/site-packages/requests/adapters.py", line 508, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='localhost', port=5001): Max retries exceeded with url: /mlAutomation (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fb998783940>: Failed to establish a new connection: [Errno 111] Connection refused',))
+[2019-10-08 17:46:29,911] {{models.py:1783}} INFO - Marking task as UP_FOR_RETRY
+[2019-10-08 17:46:30,108] {{base_task_runner.py:101}} INFO - Job 5: Subtask training_data_processing Traceback (most recent call last):
+[2019-10-08 17:46:30,109] {{base_task_runner.py:101}} INFO - Job 5: Subtask training_data_processing   File "/usr/local/airflow/.local/lib/python3.6/site-packages/urllib3/connection.py", line 141, in _new_conn
+[2019-10-08 17:46:30,109] {{base_task_runner.py:101}} INFO - Job 5: Subtask training_data_processing     (self.host, self.port), self.timeout, **extra_kw)
+[2019-10-08 17:46:30,109] {{base_task_runner.py:101}} INFO - Job 5: Subtask training_data_processing   File "/usr/local/airflow/.local/lib/python3.6/site-packages/urllib3/util/connection.py", line 83, in create_connection
+[2019-10-08 17:46:30,109] {{base_task_runner.py:101}} INFO - Job 5: Subtask training_data_processing     raise err
+[2019-10-08 17:46:30,109] {{base_task_runner.py:101}} INFO - Job 5: Subtask training_data_processing   File "/usr/local/airflow/.local/lib/python3.6/site-packages/urllib3/util/connection.py", line 73, in create_connection
+[2019-10-08 17:46:30,109] {{base_task_runner.py:101}} INFO - Job 5: Subtask training_data_processing     sock.connect(sa)
+[2019-10-08 17:46:30,109] {{base_task_runner.py:101}} INFO - Job 5: Subtask training_data_processing ConnectionRefusedError: [Errno 111] Connection refused
+[2019-10-08 17:46:30,109] {{base_task_runner.py:101}} INFO - Job 5: Subtask training_data_processing 
+[2019-10-08 17:46:30,109] {{base_task_runner.py:101}} INFO - Job 5: Subtask training_data_processing During handling of the above exception, another exception occurred:
+[2019-10-08 17:46:30,109] {{base_task_runner.py:101}} INFO - Job 5: Subtask training_data_processing 
+[2019-10-08 17:46:30,109] {{base_task_runner.py:101}} INFO - Job 5: Subtask training_data_processing Traceback (most recent call last):
+[2019-10-08 17:46:30,109] {{base_task_runner.py:101}} INFO - Job 5: Subtask training_data_processing   File "/usr/local/airflow/.local/lib/python3.6/site-packages/urllib3/connectionpool.py", line 601, in urlopen
+[2019-10-08 17:46:30,109] {{base_task_runner.py:101}} INFO - Job 5: Subtask training_data_processing     chunked=chunked)
+[2019-10-08 17:46:30,109] {{base_task_runner.py:101}} INFO - Job 5: Subtask training_data_processing   File "/usr/local/airflow/.local/lib/python3.6/site-packages/urllib3/connectionpool.py", line 357, in _make_request
+[2019-10-08 17:46:30,109] {{base_task_runner.py:101}} INFO - Job 5: Subtask training_data_processing     conn.request(method, url, **httplib_request_kw)
+[2019-10-08 17:46:30,109] {{base_task_runner.py:101}} INFO - Job 5: Subtask training_data_processing   File "/usr/local/lib/python3.6/http/client.py", line 1254, in request
+[2019-10-08 17:46:30,109] {{base_task_runner.py:101}} INFO - Job 5: Subtask training_data_processing     self._send_request(method, url, body, headers, encode_chunked)
+[2019-10-08 17:46:30,109] {{base_task_runner.py:101}} INFO - Job 5: Subtask training_data_processing   File "/usr/local/lib/python3.6/http/client.py", line 1300, in _send_request
+[2019-10-08 17:46:30,109] {{base_task_runner.py:101}} INFO - Job 5: Subtask training_data_processing     self.endheaders(body, encode_chunked=encode_chunked)
+[2019-10-08 17:46:30,109] {{base_task_runner.py:101}} INFO - Job 5: Subtask training_data_processing   File "/usr/local/lib/python3.6/http/client.py", line 1249, in endheaders
+[2019-10-08 17:46:30,110] {{base_task_runner.py:101}} INFO - Job 5: Subtask training_data_processing     self._send_output(message_body, encode_chunked=encode_chunked)
+[2019-10-08 17:46:30,110] {{base_task_runner.py:101}} INFO - Job 5: Subtask training_data_processing   File "/usr/local/lib/python3.6/http/client.py", line 1036, in _send_output
+[2019-10-08 17:46:30,110] {{base_task_runner.py:101}} INFO - Job 5: Subtask training_data_processing     self.send(msg)
+[2019-10-08 17:46:30,110] {{base_task_runner.py:101}} INFO - Job 5: Subtask training_data_processing   File "/usr/local/lib/python3.6/http/client.py", line 974, in send
+[2019-10-08 17:46:30,110] {{base_task_runner.py:101}} INFO - Job 5: Subtask training_data_processing     self.connect()
+[2019-10-08 17:46:30,110] {{base_task_runner.py:101}} INFO - Job 5: Subtask training_data_processing   File "/usr/local/airflow/.local/lib/python3.6/site-packages/urllib3/connection.py", line 166, in connect
+[2019-10-08 17:46:30,110] {{base_task_runner.py:101}} INFO - Job 5: Subtask training_data_processing     conn = self._new_conn()
+[2019-10-08 17:46:30,110] {{base_task_runner.py:101}} INFO - Job 5: Subtask training_data_processing   File "/usr/local/airflow/.local/lib/python3.6/site-packages/urllib3/connection.py", line 150, in _new_conn
+[2019-10-08 17:46:30,110] {{base_task_runner.py:101}} INFO - Job 5: Subtask training_data_processing     self, "Failed to establish a new connection: %s" % e)
+[2019-10-08 17:46:30,110] {{base_task_runner.py:101}} INFO - Job 5: Subtask training_data_processing urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x7fb998783940>: Failed to establish a new connection: [Errno 111] Connection refused
+[2019-10-08 17:46:30,110] {{base_task_runner.py:101}} INFO - Job 5: Subtask training_data_processing 
+[2019-10-08 17:46:30,110] {{base_task_runner.py:101}} INFO - Job 5: Subtask training_data_processing During handling of the above exception, another exception occurred:
+[2019-10-08 17:46:30,110] {{base_task_runner.py:101}} INFO - Job 5: Subtask training_data_processing 
+[2019-10-08 17:46:30,110] {{base_task_runner.py:101}} INFO - Job 5: Subtask training_data_processing Traceback (most recent call last):
+[2019-10-08 17:46:30,110] {{base_task_runner.py:101}} INFO - Job 5: Subtask training_data_processing   File "/usr/local/airflow/.local/lib/python3.6/site-packages/requests/adapters.py", line 440, in send
+[2019-10-08 17:46:30,110] {{base_task_runner.py:101}} INFO - Job 5: Subtask training_data_processing     timeout=timeout
+[2019-10-08 17:46:30,110] {{base_task_runner.py:101}} INFO - Job 5: Subtask training_data_processing   File "/usr/local/airflow/.local/lib/python3.6/site-packages/urllib3/connectionpool.py", line 639, in urlopen
+[2019-10-08 17:46:30,110] {{base_task_runner.py:101}} INFO - Job 5: Subtask training_data_processing     _stacktrace=sys.exc_info()[2])
+[2019-10-08 17:46:30,110] {{base_task_runner.py:101}} INFO - Job 5: Subtask training_data_processing   File "/usr/local/airflow/.local/lib/python3.6/site-packages/urllib3/util/retry.py", line 388, in increment
+[2019-10-08 17:46:30,110] {{base_task_runner.py:101}} INFO - Job 5: Subtask training_data_processing     raise MaxRetryError(_pool, url, error or ResponseError(cause))
+[2019-10-08 17:46:30,110] {{base_task_runner.py:101}} INFO - Job 5: Subtask training_data_processing urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='localhost', port=5001): Max retries exceeded with url: /mlAutomation (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fb998783940>: Failed to establish a new connection: [Errno 111] Connection refused',))
+[2019-10-08 17:46:30,110] {{base_task_runner.py:101}} INFO - Job 5: Subtask training_data_processing 
+[2019-10-08 17:46:30,111] {{base_task_runner.py:101}} INFO - Job 5: Subtask training_data_processing During handling of the above exception, another exception occurred:
+[2019-10-08 17:46:30,111] {{base_task_runner.py:101}} INFO - Job 5: Subtask training_data_processing 
+[2019-10-08 17:46:30,111] {{base_task_runner.py:101}} INFO - Job 5: Subtask training_data_processing Traceback (most recent call last):
+[2019-10-08 17:46:30,111] {{base_task_runner.py:101}} INFO - Job 5: Subtask training_data_processing   File "/usr/local/bin/airflow", line 32, in <module>
+[2019-10-08 17:46:30,111] {{base_task_runner.py:101}} INFO - Job 5: Subtask training_data_processing     args.func(args)
+[2019-10-08 17:46:30,111] {{base_task_runner.py:101}} INFO - Job 5: Subtask training_data_processing   File "/usr/local/lib/python3.6/site-packages/airflow/utils/cli.py", line 74, in wrapper
+[2019-10-08 17:46:30,111] {{base_task_runner.py:101}} INFO - Job 5: Subtask training_data_processing     return f(*args, **kwargs)
+[2019-10-08 17:46:30,111] {{base_task_runner.py:101}} INFO - Job 5: Subtask training_data_processing   File "/usr/local/lib/python3.6/site-packages/airflow/bin/cli.py", line 490, in run
+[2019-10-08 17:46:30,111] {{base_task_runner.py:101}} INFO - Job 5: Subtask training_data_processing     _run(args, dag, ti)
+[2019-10-08 17:46:30,111] {{base_task_runner.py:101}} INFO - Job 5: Subtask training_data_processing   File "/usr/local/lib/python3.6/site-packages/airflow/bin/cli.py", line 406, in _run
+[2019-10-08 17:46:30,111] {{base_task_runner.py:101}} INFO - Job 5: Subtask training_data_processing     pool=args.pool,
+[2019-10-08 17:46:30,111] {{base_task_runner.py:101}} INFO - Job 5: Subtask training_data_processing   File "/usr/local/lib/python3.6/site-packages/airflow/utils/db.py", line 74, in wrapper
+[2019-10-08 17:46:30,111] {{base_task_runner.py:101}} INFO - Job 5: Subtask training_data_processing     return func(*args, **kwargs)
+[2019-10-08 17:46:30,111] {{base_task_runner.py:101}} INFO - Job 5: Subtask training_data_processing   File "/usr/local/lib/python3.6/site-packages/airflow/models.py", line 1659, in _run_raw_task
+[2019-10-08 17:46:30,111] {{base_task_runner.py:101}} INFO - Job 5: Subtask training_data_processing     result = task_copy.execute(context=context)
+[2019-10-08 17:46:30,111] {{base_task_runner.py:101}} INFO - Job 5: Subtask training_data_processing   File "/usr/local/lib/python3.6/site-packages/airflow/operators/python_operator.py", line 95, in execute
+[2019-10-08 17:46:30,111] {{base_task_runner.py:101}} INFO - Job 5: Subtask training_data_processing     return_value = self.execute_callable()
+[2019-10-08 17:46:30,111] {{base_task_runner.py:101}} INFO - Job 5: Subtask training_data_processing   File "/usr/local/lib/python3.6/site-packages/airflow/operators/python_operator.py", line 100, in execute_callable
+[2019-10-08 17:46:30,111] {{base_task_runner.py:101}} INFO - Job 5: Subtask training_data_processing     return self.python_callable(*self.op_args, **self.op_kwargs)
+[2019-10-08 17:46:30,111] {{base_task_runner.py:101}} INFO - Job 5: Subtask training_data_processing   File "/usr/local/airflow/dags/housing_price_prediction_training.py", line 27, in training_data_processing
+[2019-10-08 17:46:30,111] {{base_task_runner.py:101}} INFO - Job 5: Subtask training_data_processing     response=requests.post('http://localhost:5001/mlAutomation', json=training_data_processing_config)
+[2019-10-08 17:46:30,111] {{base_task_runner.py:101}} INFO - Job 5: Subtask training_data_processing   File "/usr/local/airflow/.local/lib/python3.6/site-packages/requests/api.py", line 112, in post
+[2019-10-08 17:46:30,111] {{base_task_runner.py:101}} INFO - Job 5: Subtask training_data_processing     return request('post', url, data=data, json=json, **kwargs)
+[2019-10-08 17:46:30,112] {{base_task_runner.py:101}} INFO - Job 5: Subtask training_data_processing   File "/usr/local/airflow/.local/lib/python3.6/site-packages/requests/api.py", line 58, in request
+[2019-10-08 17:46:30,112] {{base_task_runner.py:101}} INFO - Job 5: Subtask training_data_processing     return session.request(method=method, url=url, **kwargs)
+[2019-10-08 17:46:30,112] {{base_task_runner.py:101}} INFO - Job 5: Subtask training_data_processing   File "/usr/local/airflow/.local/lib/python3.6/site-packages/requests/sessions.py", line 508, in request
+[2019-10-08 17:46:30,112] {{base_task_runner.py:101}} INFO - Job 5: Subtask training_data_processing     resp = self.send(prep, **send_kwargs)
+[2019-10-08 17:46:30,112] {{base_task_runner.py:101}} INFO - Job 5: Subtask training_data_processing   File "/usr/local/airflow/.local/lib/python3.6/site-packages/requests/sessions.py", line 618, in send
+[2019-10-08 17:46:30,112] {{base_task_runner.py:101}} INFO - Job 5: Subtask training_data_processing     r = adapter.send(request, **kwargs)
+[2019-10-08 17:46:30,112] {{base_task_runner.py:101}} INFO - Job 5: Subtask training_data_processing   File "/usr/local/airflow/.local/lib/python3.6/site-packages/requests/adapters.py", line 508, in send
+[2019-10-08 17:46:30,112] {{base_task_runner.py:101}} INFO - Job 5: Subtask training_data_processing     raise ConnectionError(e, request=request)
+[2019-10-08 17:46:30,112] {{base_task_runner.py:101}} INFO - Job 5: Subtask training_data_processing requests.exceptions.ConnectionError: HTTPConnectionPool(host='localhost', port=5001): Max retries exceeded with url: /mlAutomation (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fb998783940>: Failed to establish a new connection: [Errno 111] Connection refused',))
+[2019-10-08 17:46:32,965] {{logging_mixin.py:95}} INFO - [2019-10-08 17:46:32,964] {{jobs.py:2627}} INFO - Task exited with return code 1

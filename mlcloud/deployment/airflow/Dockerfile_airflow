@@ -1,0 +1,14 @@
+FROM puckel/docker-airflow:1.10.1
+USER root
+RUN apt-get update && apt-get install -y wget
+USER airflow
+RUN wget http://monalisa.cern.ch/MONALISA/download/java/jre-8u172-linux-x64.tar.gz
+RUN mkdir /usr/local/airflow/java
+RUN tar -C /usr/local/airflow/java -xvf jre-8u172-linux-x64.tar.gz && \
+echo 'JAVA_HOME=/usr/local/airflow/java/jdk1.8.0_172' >> ~/.bashrc && \
+echo 'PATH=$PATH:$HOME/bin:$JAVA_HOME/bin' >> ~/.bashrc && \
+echo 'export JAVA_HOME' >> ~/.bashrc && \
+echo 'export JRE_HOME' >> ~/.bashrc && \
+echo 'export PATH' >> ~/.bashrc
+
+RUN /bin/bash -c "source ~/.bashrc"

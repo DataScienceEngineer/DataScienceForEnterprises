@@ -1,0 +1,134 @@
+[2019-10-08 18:16:47,134] {{models.py:1361}} INFO - Dependencies all met for <TaskInstance: housing_price_prediction_training.training_data_processing 2019-10-08T17:43:32.113975+00:00 [queued]>
+[2019-10-08 18:16:47,162] {{models.py:1361}} INFO - Dependencies all met for <TaskInstance: housing_price_prediction_training.training_data_processing 2019-10-08T17:43:32.113975+00:00 [queued]>
+[2019-10-08 18:16:47,163] {{models.py:1573}} INFO - 
+--------------------------------------------------------------------------------
+Starting attempt 12 of 13
+--------------------------------------------------------------------------------
+
+[2019-10-08 18:16:47,200] {{models.py:1595}} INFO - Executing <Task(PythonOperator): training_data_processing> on 2019-10-08T17:43:32.113975+00:00
+[2019-10-08 18:16:47,200] {{base_task_runner.py:118}} INFO - Running: ['bash', '-c', 'airflow run housing_price_prediction_training training_data_processing 2019-10-08T17:43:32.113975+00:00 --job_id 15 --raw -sd DAGS_FOLDER/housing_price_prediction_training.py --cfg_path /tmp/tmpi5f0j86z']
+[2019-10-08 18:16:47,752] {{base_task_runner.py:101}} INFO - Job 15: Subtask training_data_processing [2019-10-08 18:16:47,751] {{settings.py:174}} INFO - setting.configure_orm(): Using pool settings. pool_size=5, pool_recycle=1800
+[2019-10-08 18:16:47,978] {{base_task_runner.py:101}} INFO - Job 15: Subtask training_data_processing [2019-10-08 18:16:47,976] {{__init__.py:51}} INFO - Using executor LocalExecutor
+[2019-10-08 18:16:48,469] {{base_task_runner.py:101}} INFO - Job 15: Subtask training_data_processing [2019-10-08 18:16:48,468] {{models.py:271}} INFO - Filling up the DagBag from /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-08 18:16:48,534] {{base_task_runner.py:101}} INFO - Job 15: Subtask training_data_processing [2019-10-08 18:16:48,534] {{cli.py:484}} INFO - Running <TaskInstance: housing_price_prediction_training.training_data_processing 2019-10-08T17:43:32.113975+00:00 [running]> on host 63734ffeb1b4
+[2019-10-08 18:16:48,628] {{logging_mixin.py:95}} INFO - 47578aef-e301-48c6-a868-bbbd5dd43d0c
+[2019-10-08 18:16:48,628] {{logging_mixin.py:95}} INFO - http://192.168.0.102:5001/check/47578aef-e301-48c6-a868-bbbd5dd43d0c
+[2019-10-08 18:16:48,651] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:48,662] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:48,678] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:48,699] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:48,713] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:48,729] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:48,741] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:48,772] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:48,787] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:48,807] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:48,838] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:48,858] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:48,876] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:48,910] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:48,925] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:48,949] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:48,969] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:48,978] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:48,997] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:49,008] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:49,025] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:49,048] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:49,060] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:49,072] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:49,086] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:49,110] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:49,124] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:49,149] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:49,163] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:49,193] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:49,205] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:49,217] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:49,227] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:49,247] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:49,270] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:49,283] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:49,303] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:49,320] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:49,331] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:49,354] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:49,373] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:49,389] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:49,405] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:49,414] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:49,427] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:49,446] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:49,462] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:49,486] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:49,505] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:49,529] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:49,541] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:49,550] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:49,570] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:49,585] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:49,606] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:49,628] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:49,639] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:49,650] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:49,665] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:49,688] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:49,708] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:49,728] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:49,755] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:49,809] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:49,822] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:49,836] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:49,852] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:49,878] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:49,909] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:49,921] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:49,935] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:49,961] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:49,975] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:49,992] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:50,011] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:50,039] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:50,052] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:50,074] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:50,089] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:50,109] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:50,145] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:50,174] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:50,193] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:50,211] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:50,233] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:50,252] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:50,273] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:50,293] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:50,309] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:50,342] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:50,359] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:50,399] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:50,421] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:50,455] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:50,473] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:50,501] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:50,520] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:50,538] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:50,577] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:50,617] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:50,627] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:50,646] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:50,662] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:50,677] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:50,694] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:50,736] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:50,754] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:50,767] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:50,791] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:50,805] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:50,825] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:50,837] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:50,870] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:50,889] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:50,906] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:50,936] {{logging_mixin.py:95}} INFO - Waiting..
+[2019-10-08 18:16:50,969] {{logging_mixin.py:95}} INFO - {'1:House Price Predictions Training Data Processing': {'status': 'Success', 'message': 'Preprocessing Completed'}}
+[2019-10-08 18:16:50,969] {{python_operator.py:96}} INFO - Done. Returned value was: None
+[2019-10-08 18:16:52,160] {{logging_mixin.py:95}} INFO - [2019-10-08 18:16:52,159] {{jobs.py:2627}} INFO - Task exited with return code 0

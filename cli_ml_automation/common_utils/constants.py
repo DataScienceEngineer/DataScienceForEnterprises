@@ -1,0 +1,6 @@
+class Constants:
+    VM_ENVIRONMENT_VARIABLE='DEPLOY_ENV'
+    CONFIGURATION_FOLDER='configs/'
+    CREDENTIALS_PROPERTIES_FILENAME='credentials.properties'
+    CONTAINER_ID="HOSTNAME"
+    PROJECT_PROPERTIES_FILENAME = 'project.properties'

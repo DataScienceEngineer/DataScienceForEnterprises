@@ -1,0 +1,52 @@
+[2019-10-08 18:33:13,865] {{models.py:1361}} INFO - Dependencies all met for <TaskInstance: housing_price_prediction_training.training_data_processing 2019-10-08T17:43:32.113975+00:00 [queued]>
+[2019-10-08 18:33:13,922] {{models.py:1361}} INFO - Dependencies all met for <TaskInstance: housing_price_prediction_training.training_data_processing 2019-10-08T17:43:32.113975+00:00 [queued]>
+[2019-10-08 18:33:13,923] {{models.py:1573}} INFO - 
+--------------------------------------------------------------------------------
+Starting attempt 18 of 19
+--------------------------------------------------------------------------------
+
+[2019-10-08 18:33:13,981] {{models.py:1595}} INFO - Executing <Task(PythonOperator): training_data_processing> on 2019-10-08T17:43:32.113975+00:00
+[2019-10-08 18:33:13,981] {{base_task_runner.py:118}} INFO - Running: ['bash', '-c', 'airflow run housing_price_prediction_training training_data_processing 2019-10-08T17:43:32.113975+00:00 --job_id 21 --raw -sd DAGS_FOLDER/housing_price_prediction_training.py --cfg_path /tmp/tmpq0wo9kqs']
+[2019-10-08 18:33:14,638] {{base_task_runner.py:101}} INFO - Job 21: Subtask training_data_processing [2019-10-08 18:33:14,637] {{settings.py:174}} INFO - setting.configure_orm(): Using pool settings. pool_size=5, pool_recycle=1800
+[2019-10-08 18:33:14,859] {{base_task_runner.py:101}} INFO - Job 21: Subtask training_data_processing [2019-10-08 18:33:14,858] {{__init__.py:51}} INFO - Using executor LocalExecutor
+[2019-10-08 18:33:15,307] {{base_task_runner.py:101}} INFO - Job 21: Subtask training_data_processing [2019-10-08 18:33:15,307] {{models.py:271}} INFO - Filling up the DagBag from /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-08 18:33:15,385] {{base_task_runner.py:101}} INFO - Job 21: Subtask training_data_processing [2019-10-08 18:33:15,384] {{cli.py:484}} INFO - Running <TaskInstance: housing_price_prediction_training.training_data_processing 2019-10-08T17:43:32.113975+00:00 [running]> on host 63734ffeb1b4
+[2019-10-08 18:33:15,770] {{logging_mixin.py:95}} INFO - b64b880c-0253-487f-af8d-c469dbd6995f
+[2019-10-08 18:33:15,770] {{logging_mixin.py:95}} INFO - http://192.168.0.102:5001/check/b64b880c-0253-487f-af8d-c469dbd6995f
+[2019-10-08 18:33:18,905] {{models.py:1760}} ERROR - literal_eval() missing 1 required positional argument: 'node_or_string'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/airflow/models.py", line 1659, in _run_raw_task
+    result = task_copy.execute(context=context)
+  File "/usr/local/lib/python3.6/site-packages/airflow/operators/python_operator.py", line 95, in execute
+    return_value = self.execute_callable()
+  File "/usr/local/lib/python3.6/site-packages/airflow/operators/python_operator.py", line 100, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/usr/local/airflow/dags/housing_price_prediction_training.py", line 44, in training_data_processing
+    print(invoke_endpoint(training_data_processing_config))
+  File "/usr/local/airflow/dags/housing_price_prediction_training.py", line 36, in invoke_endpoint
+    response=ast.literal_eval()
+TypeError: literal_eval() missing 1 required positional argument: 'node_or_string'
+[2019-10-08 18:33:18,909] {{models.py:1783}} INFO - Marking task as UP_FOR_RETRY
+[2019-10-08 18:33:19,006] {{base_task_runner.py:101}} INFO - Job 21: Subtask training_data_processing Traceback (most recent call last):
+[2019-10-08 18:33:19,006] {{base_task_runner.py:101}} INFO - Job 21: Subtask training_data_processing   File "/usr/local/bin/airflow", line 32, in <module>
+[2019-10-08 18:33:19,006] {{base_task_runner.py:101}} INFO - Job 21: Subtask training_data_processing     args.func(args)
+[2019-10-08 18:33:19,006] {{base_task_runner.py:101}} INFO - Job 21: Subtask training_data_processing   File "/usr/local/lib/python3.6/site-packages/airflow/utils/cli.py", line 74, in wrapper
+[2019-10-08 18:33:19,006] {{base_task_runner.py:101}} INFO - Job 21: Subtask training_data_processing     return f(*args, **kwargs)
+[2019-10-08 18:33:19,006] {{base_task_runner.py:101}} INFO - Job 21: Subtask training_data_processing   File "/usr/local/lib/python3.6/site-packages/airflow/bin/cli.py", line 490, in run
+[2019-10-08 18:33:19,006] {{base_task_runner.py:101}} INFO - Job 21: Subtask training_data_processing     _run(args, dag, ti)
+[2019-10-08 18:33:19,007] {{base_task_runner.py:101}} INFO - Job 21: Subtask training_data_processing   File "/usr/local/lib/python3.6/site-packages/airflow/bin/cli.py", line 406, in _run
+[2019-10-08 18:33:19,007] {{base_task_runner.py:101}} INFO - Job 21: Subtask training_data_processing     pool=args.pool,
+[2019-10-08 18:33:19,007] {{base_task_runner.py:101}} INFO - Job 21: Subtask training_data_processing   File "/usr/local/lib/python3.6/site-packages/airflow/utils/db.py", line 74, in wrapper
+[2019-10-08 18:33:19,007] {{base_task_runner.py:101}} INFO - Job 21: Subtask training_data_processing     return func(*args, **kwargs)
+[2019-10-08 18:33:19,007] {{base_task_runner.py:101}} INFO - Job 21: Subtask training_data_processing   File "/usr/local/lib/python3.6/site-packages/airflow/models.py", line 1659, in _run_raw_task
+[2019-10-08 18:33:19,007] {{base_task_runner.py:101}} INFO - Job 21: Subtask training_data_processing     result = task_copy.execute(context=context)
+[2019-10-08 18:33:19,007] {{base_task_runner.py:101}} INFO - Job 21: Subtask training_data_processing   File "/usr/local/lib/python3.6/site-packages/airflow/operators/python_operator.py", line 95, in execute
+[2019-10-08 18:33:19,007] {{base_task_runner.py:101}} INFO - Job 21: Subtask training_data_processing     return_value = self.execute_callable()
+[2019-10-08 18:33:19,007] {{base_task_runner.py:101}} INFO - Job 21: Subtask training_data_processing   File "/usr/local/lib/python3.6/site-packages/airflow/operators/python_operator.py", line 100, in execute_callable
+[2019-10-08 18:33:19,013] {{base_task_runner.py:101}} INFO - Job 21: Subtask training_data_processing     return self.python_callable(*self.op_args, **self.op_kwargs)
+[2019-10-08 18:33:19,013] {{base_task_runner.py:101}} INFO - Job 21: Subtask training_data_processing   File "/usr/local/airflow/dags/housing_price_prediction_training.py", line 44, in training_data_processing
+[2019-10-08 18:33:19,013] {{base_task_runner.py:101}} INFO - Job 21: Subtask training_data_processing     print(invoke_endpoint(training_data_processing_config))
+[2019-10-08 18:33:19,013] {{base_task_runner.py:101}} INFO - Job 21: Subtask training_data_processing   File "/usr/local/airflow/dags/housing_price_prediction_training.py", line 36, in invoke_endpoint
+[2019-10-08 18:33:19,013] {{base_task_runner.py:101}} INFO - Job 21: Subtask training_data_processing     response=ast.literal_eval()
+[2019-10-08 18:33:19,013] {{base_task_runner.py:101}} INFO - Job 21: Subtask training_data_processing TypeError: literal_eval() missing 1 required positional argument: 'node_or_string'
+[2019-10-08 18:33:23,683] {{logging_mixin.py:95}} INFO - [2019-10-08 18:33:23,682] {{jobs.py:2627}} INFO - Task exited with return code 1

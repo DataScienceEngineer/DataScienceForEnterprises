@@ -1,0 +1,87 @@
+import configparser
+import os
+from filelock import Timeout, FileLock
+from threading import Lock
+class Constants:
+    ALGORITHM_NAME= 'algorithm'
+    PAYLOAD= 'payload'
+    PIPELINE_FILE_NAME= 'pipelineFilename'
+    MODEL_FILE_NAME= 'modelFilename'
+    PREDICTIONS= 'predictions'
+    PREDICTIONS_PROBABILITIES='predictions_prob'
+    REMOTE_S3_ERROR_CODE='Failed to process the request !!!'
+    WS_ENVIRONMENT_VARIABLE='HR_ENV'
+    CONFIGURATION_FOLDER='configs/'
+    SERVER_PROPERTIES_FILENAME='server.properties'
+    PROJECT_PROPERTIES_FILENAME = 'project.properties'
+    CREDENTIALS_PROPERTIES_FILENAME='credentials.properties'
+    LEAF_NUMBER='leaf_number'
+    CONTAINER_ID='HOSTNAME'
+    CLASSES='classes'
+    PIPELINE_NAMED_STEP_MODEL='model'
+    PIPELINE_NAMED_STEP_MAPPER='mapper'
+    REQUEST_ARGUMENTS='requestArguments'
+    RESPONSE_ARGUMENTS='responseArguments'
+
+
+def getEnv():
+    if Constants.WS_ENVIRONMENT_VARIABLE not in os.environ.keys() or os.environ[Constants.WS_ENVIRONMENT_VARIABLE] is None:
+        return "default"
+    else: return os.environ[Constants.WS_ENVIRONMENT_VARIABLE]
+
+class Singleton(type):
+    _instances = {}
+    def __call__(cls, *args, **kwargs):
+        if cls not in cls._instances:
+            cls._instances[cls] = super(Singleton, cls).__call__(*args, **kwargs)
+        return cls._instances[cls]
+
+class CredentialsConfigurations(metaclass=Singleton):
+    def __init__(self):
+        self.config=configparser.ConfigParser()
+        self.config.read(Constants.CONFIGURATION_FOLDER+'/'+Constants.CREDENTIALS_PROPERTIES_FILENAME)
+
+class ServerConfigurations(metaclass=Singleton):
+    def __init__(self):
+        self.config = configparser.ConfigParser()
+        self.config.read(Constants.CONFIGURATION_FOLDER+getEnv()+'/'+Constants.SERVER_PROPERTIES_FILENAME)
+
+class ProjectConfigurations(metaclass=Singleton):
+    def __init__(self):
+        self.config = configparser.ConfigParser()
+        self.config.read(Constants.CONFIGURATION_FOLDER+getEnv()+'/'+ Constants.PROJECT_PROPERTIES_FILENAME)
+
+class InitializeServer(metaclass=Singleton):
+    def __init__(self,serverConfigurations,projectConfigurations):
+        """
+        Initiliaze the server by changing directory to the root directory of the project
+        and set the working directory for file storage
+        :param serverConfigurations:
+        :param projectConfigurations:
+        """
+        work_dir = os.path.join(os.getcwd(), serverConfigurations.config['Server']['local_storage'])
+        if not os.path.exists(work_dir):
+            os.makedirs(work_dir)
+        os.chdir(serverConfigurations.config['Server']['local_storage'])
+        print("Server Configured for: "+str(getEnv())+" Environment")
+        print("Setting Local Directory: "+serverConfigurations.config['Server']['local_storage'])
+
+
+
+class GlobalVariable(metaclass=Singleton):
+     ThreadLock=Lock()
+     def ProcessLock(localFileLocation):
+        return FileLock(str(localFileLocation)+".lock")
+
+
+
+####Initialize server and project configurations from init properties.
+## 1. Resolve Environment Location to load respective properties file
+## 2. Load Server and Project properties
+## 3. Initialize Server with configurations
+
+
+serverConfigurations=ServerConfigurations()
+projectConfigurations=ProjectConfigurations()
+credentialsConfiguration=CredentialsConfigurations()
+InitializeServer(serverConfigurations,projectConfigurations)

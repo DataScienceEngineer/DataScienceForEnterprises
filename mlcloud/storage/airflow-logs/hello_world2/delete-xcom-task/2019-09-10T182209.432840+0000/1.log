@@ -1,0 +1,69 @@
+[2019-09-10 18:23:13,377] {{models.py:1361}} INFO - Dependencies all met for <TaskInstance: hello_world2.delete-xcom-task 2019-09-10T18:22:09.432840+00:00 [queued]>
+[2019-09-10 18:23:13,452] {{models.py:1361}} INFO - Dependencies all met for <TaskInstance: hello_world2.delete-xcom-task 2019-09-10T18:22:09.432840+00:00 [queued]>
+[2019-09-10 18:23:13,453] {{models.py:1573}} INFO - 
+--------------------------------------------------------------------------------
+Starting attempt 1 of 2
+--------------------------------------------------------------------------------
+
+[2019-09-10 18:23:13,537] {{models.py:1595}} INFO - Executing <Task(PostgresOperator): delete-xcom-task> on 2019-09-10T18:22:09.432840+00:00
+[2019-09-10 18:23:13,537] {{base_task_runner.py:118}} INFO - Running: ['bash', '-c', 'airflow run hello_world2 delete-xcom-task 2019-09-10T18:22:09.432840+00:00 --job_id 12 --raw -sd DAGS_FOLDER/Hello_world2.py --cfg_path /tmp/tmpxozbjve8']
+[2019-09-10 18:23:14,026] {{base_task_runner.py:101}} INFO - Job 12: Subtask delete-xcom-task [2019-09-10 18:23:14,026] {{settings.py:174}} INFO - setting.configure_orm(): Using pool settings. pool_size=5, pool_recycle=1800
+[2019-09-10 18:23:14,224] {{base_task_runner.py:101}} INFO - Job 12: Subtask delete-xcom-task [2019-09-10 18:23:14,223] {{__init__.py:51}} INFO - Using executor LocalExecutor
+[2019-09-10 18:23:14,697] {{base_task_runner.py:101}} INFO - Job 12: Subtask delete-xcom-task [2019-09-10 18:23:14,697] {{models.py:271}} INFO - Filling up the DagBag from /usr/local/airflow/dags/Hello_world2.py
+[2019-09-10 18:23:14,751] {{base_task_runner.py:101}} INFO - Job 12: Subtask delete-xcom-task [2019-09-10 18:23:14,751] {{cli.py:484}} INFO - Running <TaskInstance: hello_world2.delete-xcom-task 2019-09-10T18:22:09.432840+00:00 [running]> on host 4614e9db4b87
+[2019-09-10 18:23:14,798] {{postgres_operator.py:57}} INFO - Executing: delete from xcom where dag_id='hello_world2'
+[2019-09-10 18:23:14,807] {{logging_mixin.py:95}} INFO - [2019-09-10 18:23:14,807] {{base_hook.py:83}} INFO - Using connection to: localhost
+[2019-09-10 18:23:14,870] {{models.py:1760}} ERROR - could not connect to server: Connection refused
+	Is the server running on host "localhost" (127.0.0.1) and accepting
+	TCP/IP connections on port 5432?
+could not connect to server: Cannot assign requested address
+	Is the server running on host "localhost" (::1) and accepting
+	TCP/IP connections on port 5432?
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/airflow/models.py", line 1659, in _run_raw_task
+    result = task_copy.execute(context=context)
+  File "/usr/local/lib/python3.6/site-packages/airflow/operators/postgres_operator.py", line 60, in execute
+    self.hook.run(self.sql, self.autocommit, parameters=self.parameters)
+  File "/usr/local/lib/python3.6/site-packages/airflow/hooks/dbapi_hook.py", line 158, in run
+    with closing(self.get_conn()) as conn:
+  File "/usr/local/lib/python3.6/site-packages/airflow/hooks/postgres_hook.py", line 60, in get_conn
+    self.conn = psycopg2.connect(**conn_args)
+  File "/usr/local/lib/python3.6/site-packages/psycopg2/__init__.py", line 126, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: could not connect to server: Connection refused
+	Is the server running on host "localhost" (127.0.0.1) and accepting
+	TCP/IP connections on port 5432?
+could not connect to server: Cannot assign requested address
+	Is the server running on host "localhost" (::1) and accepting
+	TCP/IP connections on port 5432?
+
+[2019-09-10 18:23:14,932] {{models.py:1783}} INFO - Marking task as UP_FOR_RETRY
+[2019-09-10 18:23:14,995] {{base_task_runner.py:101}} INFO - Job 12: Subtask delete-xcom-task Traceback (most recent call last):
+[2019-09-10 18:23:14,995] {{base_task_runner.py:101}} INFO - Job 12: Subtask delete-xcom-task   File "/usr/local/bin/airflow", line 32, in <module>
+[2019-09-10 18:23:14,995] {{base_task_runner.py:101}} INFO - Job 12: Subtask delete-xcom-task     args.func(args)
+[2019-09-10 18:23:14,995] {{base_task_runner.py:101}} INFO - Job 12: Subtask delete-xcom-task   File "/usr/local/lib/python3.6/site-packages/airflow/utils/cli.py", line 74, in wrapper
+[2019-09-10 18:23:14,995] {{base_task_runner.py:101}} INFO - Job 12: Subtask delete-xcom-task     return f(*args, **kwargs)
+[2019-09-10 18:23:14,995] {{base_task_runner.py:101}} INFO - Job 12: Subtask delete-xcom-task   File "/usr/local/lib/python3.6/site-packages/airflow/bin/cli.py", line 490, in run
+[2019-09-10 18:23:14,995] {{base_task_runner.py:101}} INFO - Job 12: Subtask delete-xcom-task     _run(args, dag, ti)
+[2019-09-10 18:23:14,995] {{base_task_runner.py:101}} INFO - Job 12: Subtask delete-xcom-task   File "/usr/local/lib/python3.6/site-packages/airflow/bin/cli.py", line 406, in _run
+[2019-09-10 18:23:14,995] {{base_task_runner.py:101}} INFO - Job 12: Subtask delete-xcom-task     pool=args.pool,
+[2019-09-10 18:23:14,995] {{base_task_runner.py:101}} INFO - Job 12: Subtask delete-xcom-task   File "/usr/local/lib/python3.6/site-packages/airflow/utils/db.py", line 74, in wrapper
+[2019-09-10 18:23:14,995] {{base_task_runner.py:101}} INFO - Job 12: Subtask delete-xcom-task     return func(*args, **kwargs)
+[2019-09-10 18:23:14,995] {{base_task_runner.py:101}} INFO - Job 12: Subtask delete-xcom-task   File "/usr/local/lib/python3.6/site-packages/airflow/models.py", line 1659, in _run_raw_task
+[2019-09-10 18:23:14,995] {{base_task_runner.py:101}} INFO - Job 12: Subtask delete-xcom-task     result = task_copy.execute(context=context)
+[2019-09-10 18:23:14,995] {{base_task_runner.py:101}} INFO - Job 12: Subtask delete-xcom-task   File "/usr/local/lib/python3.6/site-packages/airflow/operators/postgres_operator.py", line 60, in execute
+[2019-09-10 18:23:14,995] {{base_task_runner.py:101}} INFO - Job 12: Subtask delete-xcom-task     self.hook.run(self.sql, self.autocommit, parameters=self.parameters)
+[2019-09-10 18:23:14,996] {{base_task_runner.py:101}} INFO - Job 12: Subtask delete-xcom-task   File "/usr/local/lib/python3.6/site-packages/airflow/hooks/dbapi_hook.py", line 158, in run
+[2019-09-10 18:23:14,996] {{base_task_runner.py:101}} INFO - Job 12: Subtask delete-xcom-task     with closing(self.get_conn()) as conn:
+[2019-09-10 18:23:14,996] {{base_task_runner.py:101}} INFO - Job 12: Subtask delete-xcom-task   File "/usr/local/lib/python3.6/site-packages/airflow/hooks/postgres_hook.py", line 60, in get_conn
+[2019-09-10 18:23:14,996] {{base_task_runner.py:101}} INFO - Job 12: Subtask delete-xcom-task     self.conn = psycopg2.connect(**conn_args)
+[2019-09-10 18:23:14,996] {{base_task_runner.py:101}} INFO - Job 12: Subtask delete-xcom-task   File "/usr/local/lib/python3.6/site-packages/psycopg2/__init__.py", line 126, in connect
+[2019-09-10 18:23:14,996] {{base_task_runner.py:101}} INFO - Job 12: Subtask delete-xcom-task     conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+[2019-09-10 18:23:14,996] {{base_task_runner.py:101}} INFO - Job 12: Subtask delete-xcom-task psycopg2.OperationalError: could not connect to server: Connection refused
+[2019-09-10 18:23:14,996] {{base_task_runner.py:101}} INFO - Job 12: Subtask delete-xcom-task 	Is the server running on host "localhost" (127.0.0.1) and accepting
+[2019-09-10 18:23:14,996] {{base_task_runner.py:101}} INFO - Job 12: Subtask delete-xcom-task 	TCP/IP connections on port 5432?
+[2019-09-10 18:23:14,996] {{base_task_runner.py:101}} INFO - Job 12: Subtask delete-xcom-task could not connect to server: Cannot assign requested address
+[2019-09-10 18:23:14,996] {{base_task_runner.py:101}} INFO - Job 12: Subtask delete-xcom-task 	Is the server running on host "localhost" (::1) and accepting
+[2019-09-10 18:23:14,996] {{base_task_runner.py:101}} INFO - Job 12: Subtask delete-xcom-task 	TCP/IP connections on port 5432?
+[2019-09-10 18:23:14,996] {{base_task_runner.py:101}} INFO - Job 12: Subtask delete-xcom-task 
+[2019-09-10 18:23:18,367] {{logging_mixin.py:95}} INFO - [2019-09-10 18:23:18,366] {{jobs.py:2627}} INFO - Task exited with return code 1

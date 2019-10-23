@@ -1,0 +1,36 @@
+from com.highradius.prediction_service.service_helper import ServiceHelper
+from com.highradius.prediction_service.configurations import Constants
+class PipelinePredictionContext(object):
+    """Perform Basic Load,Predict Labels and get probabilities distributions from a Pipeline.
+     Override this class to perform predictions on a pipeline"""
+    def __init__(self):
+        self.pipeLineFileName=None
+        self.loadedPipeLine=None
+        self.predictionLabels=None
+        self.predictionProbabilities=None
+    def pipeline_load(self):
+        """
+        Load the Pipeline via a LRU cache
+        :return: Pickle Object
+        """
+        self.loadedPipeLine=ServiceHelper.load_pipeline_cache(self.pipeLineFileName)
+    def pipeline_predictLabels(self,dataFrame):
+        """
+        Perform Predictions based on the dataFrame
+        :param dataFrame: feature list
+        :return: Prediction lables
+        """
+        self.predictionLabels=self.loadedPipeLine.predict(dataFrame)
+    def pipeline_probabilityDistribution(self,dataFrame):
+        """
+        Fetch Prediction Probababilities
+        :param dataFrame: feature list
+        :return: Prediction Probabilities
+        """
+        try:
+            self.predictionProbabilities = self.loadedPipeLine.predict_proba(dataFrame)
+            self.classes=self.loadedPipeLine.named_steps[Constants.PIPELINE_NAMED_STEP_MODEL].classes_
+        except Exception as e:
+            self.predictionProbabilities = None
+            self.classes = None
+            pass

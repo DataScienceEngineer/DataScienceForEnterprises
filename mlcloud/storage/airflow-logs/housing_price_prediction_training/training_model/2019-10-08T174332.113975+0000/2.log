@@ -1,0 +1,16 @@
+[2019-10-09 07:20:14,860] {{models.py:1361}} INFO - Dependencies all met for <TaskInstance: housing_price_prediction_training.training_model 2019-10-08T17:43:32.113975+00:00 [queued]>
+[2019-10-09 07:20:14,913] {{models.py:1361}} INFO - Dependencies all met for <TaskInstance: housing_price_prediction_training.training_model 2019-10-08T17:43:32.113975+00:00 [queued]>
+[2019-10-09 07:20:14,913] {{models.py:1573}} INFO - 
+--------------------------------------------------------------------------------
+Starting attempt 2 of 3
+--------------------------------------------------------------------------------
+
+[2019-10-09 07:20:15,020] {{models.py:1595}} INFO - Executing <Task(PythonOperator): training_model> on 2019-10-08T17:43:32.113975+00:00
+[2019-10-09 07:20:15,020] {{base_task_runner.py:118}} INFO - Running: ['bash', '-c', 'airflow run housing_price_prediction_training training_model 2019-10-08T17:43:32.113975+00:00 --job_id 42 --raw -sd DAGS_FOLDER/housing_price_prediction_training.py --cfg_path /tmp/tmpk0hwicir']
+[2019-10-09 07:20:15,373] {{base_task_runner.py:101}} INFO - Job 42: Subtask training_model [2019-10-09 07:20:15,373] {{settings.py:174}} INFO - setting.configure_orm(): Using pool settings. pool_size=5, pool_recycle=1800
+[2019-10-09 07:20:15,613] {{base_task_runner.py:101}} INFO - Job 42: Subtask training_model [2019-10-09 07:20:15,611] {{__init__.py:51}} INFO - Using executor LocalExecutor
+[2019-10-09 07:20:16,095] {{base_task_runner.py:101}} INFO - Job 42: Subtask training_model [2019-10-09 07:20:16,094] {{models.py:271}} INFO - Filling up the DagBag from /usr/local/airflow/dags/housing_price_prediction_training.py
+[2019-10-09 07:20:16,153] {{base_task_runner.py:101}} INFO - Job 42: Subtask training_model [2019-10-09 07:20:16,153] {{cli.py:484}} INFO - Running <TaskInstance: housing_price_prediction_training.training_model 2019-10-08T17:43:32.113975+00:00 [running]> on host 63734ffeb1b4
+[2019-10-09 07:20:17,316] {{logging_mixin.py:95}} INFO - {'1:House Price Predictions Training': {'status': 'Success', 'message': 'Model Successfully Saved'}}
+[2019-10-09 07:20:17,316] {{python_operator.py:96}} INFO - Done. Returned value was: None
+[2019-10-09 07:20:19,603] {{logging_mixin.py:95}} INFO - [2019-10-09 07:20:19,602] {{jobs.py:2627}} INFO - Task exited with return code 0

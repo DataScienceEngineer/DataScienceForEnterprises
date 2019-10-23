@@ -1,0 +1,18 @@
+[2019-09-10 18:23:04,850] {{models.py:1361}} INFO - Dependencies all met for <TaskInstance: hello_world2.joinTask 2019-09-10T18:22:09.432840+00:00 [queued]>
+[2019-09-10 18:23:04,887] {{models.py:1361}} INFO - Dependencies all met for <TaskInstance: hello_world2.joinTask 2019-09-10T18:22:09.432840+00:00 [queued]>
+[2019-09-10 18:23:04,887] {{models.py:1573}} INFO - 
+--------------------------------------------------------------------------------
+Starting attempt 1 of 2
+--------------------------------------------------------------------------------
+
+[2019-09-10 18:23:04,928] {{models.py:1595}} INFO - Executing <Task(PythonOperator): joinTask> on 2019-09-10T18:22:09.432840+00:00
+[2019-09-10 18:23:04,928] {{base_task_runner.py:118}} INFO - Running: ['bash', '-c', 'airflow run hello_world2 joinTask 2019-09-10T18:22:09.432840+00:00 --job_id 11 --raw -sd DAGS_FOLDER/Hello_world2.py --cfg_path /tmp/tmp0rvh5mvd']
+[2019-09-10 18:23:05,433] {{base_task_runner.py:101}} INFO - Job 11: Subtask joinTask [2019-09-10 18:23:05,433] {{settings.py:174}} INFO - setting.configure_orm(): Using pool settings. pool_size=5, pool_recycle=1800
+[2019-09-10 18:23:05,637] {{base_task_runner.py:101}} INFO - Job 11: Subtask joinTask [2019-09-10 18:23:05,637] {{__init__.py:51}} INFO - Using executor LocalExecutor
+[2019-09-10 18:23:06,041] {{base_task_runner.py:101}} INFO - Job 11: Subtask joinTask [2019-09-10 18:23:06,040] {{models.py:271}} INFO - Filling up the DagBag from /usr/local/airflow/dags/Hello_world2.py
+[2019-09-10 18:23:06,093] {{base_task_runner.py:101}} INFO - Job 11: Subtask joinTask [2019-09-10 18:23:06,093] {{cli.py:484}} INFO - Running <TaskInstance: hello_world2.joinTask 2019-09-10T18:22:09.432840+00:00 [running]> on host 4614e9db4b87
+[2019-09-10 18:23:06,121] {{logging_mixin.py:95}} INFO - Hi
+[2019-09-10 18:23:06,129] {{logging_mixin.py:95}} INFO - task1:  task1
+[2019-09-10 18:23:06,138] {{logging_mixin.py:95}} INFO - task2:  task2
+[2019-09-10 18:23:06,138] {{python_operator.py:96}} INFO - Done. Returned value was: None
+[2019-09-10 18:23:09,796] {{logging_mixin.py:95}} INFO - [2019-09-10 18:23:09,796] {{jobs.py:2627}} INFO - Task exited with return code 0

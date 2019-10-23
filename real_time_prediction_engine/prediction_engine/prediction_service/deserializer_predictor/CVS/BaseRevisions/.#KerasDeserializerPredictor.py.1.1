@@ -1,0 +1,58 @@
+import keras
+import tensorflow as tf
+from com.highradius.prediction_service.configurations import Constants
+from com.highradius.common_utils.HRCLogger import HRCLogFactory
+from com.highradius.prediction_service.deserializer_predictor.context.PipelinePredictionContext import PipelinePredictionContext
+from com.highradius.prediction_service.service_helper import ServiceHelper
+from com.highradius.common_utils import S3Util
+from com.highradius.prediction_service import configurations
+s3Config= S3Util.S3Configuration()
+logger=HRCLogFactory.getLog()
+
+class KerasDeserializerPredictor(PipelinePredictionContext):
+    """
+    Keras Algorithms Deserializer and Predictor
+    """
+    def __init__(self):
+        self.dataFrame=None
+    def performPredictions(self,dataFrame,pipelineFilename,modelFileName):
+        try:
+            keras.backend.clear_session()
+            self.dataFrame = dataFrame
+            predContext = PipelinePredictionContext()
+            predContext.pipeLineFileName = pipelineFilename
+            predContext.modelFileName = modelFileName
+            ServiceHelper.fetchFileviaRemoteAPI(predContext.pipeLineFileName)
+            ServiceHelper.fetchFileviaRemoteAPI(predContext.modelFileName)
+            predContext.pipeline_load()
+            logger.debug("Wait")
+            with configurations.GlobalVariable.ThreadLock:
+                logger.debug("Acquired Lock")
+                session = keras.backend.get_session()
+                graph = tf.get_default_graph()
+                with session.as_default():
+                        with graph.as_default():
+                            predContext.loadedPipeLine.named_steps[Constants.PIPELINE_NAMED_STEP_MODEL].model = ServiceHelper.load_h5_file(predContext.modelFileName)
+                            predContext.pipeline_predictLabels(dataFrame)
+                            predContext.pipeline_probabilityDistribution(dataFrame)
+                tf.reset_default_graph()
+                keras.backend.clear_session()
+                logger.debug("Caching pipeline: " + str(ServiceHelper.load_pipeline_cache.cache_info()))
+                return predContext
+        except KeyError as e:
+            msg = "Missing key in the model file. Please check the input features or modify the file. Prediction failed due to: " + str(type(e).__name__)+" "+str(e)
+            logger.error(msg)
+            raise Exception(msg)
+        except ValueError as e:
+            msg = "Null/NAN/infinity or incompatible data. Prediction failed due to: " + str(type(e).__name__)+" "+str(e)
+            logger.error(msg)
+            raise Exception(msg)
+        except Exception as e:
+            msg = "Failed to deserialize or Predict Keras Based Models: " +str(type(e).__name__)+" "+str(e)
+            logger.error(msg)
+            raise Exception(msg)
+        finally:
+            tf.reset_default_graph()
+            keras.backend.clear_session()
+            logger.debug("Released Lock")
+

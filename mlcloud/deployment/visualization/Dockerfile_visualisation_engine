@@ -1,0 +1,14 @@
+FROM python:3.6
+
+
+WORKDIR /visualisation_engine
+
+
+COPY requirements_visualisation_engine.txt /visualisation_engine
+
+RUN pip install -r ./requirements_visualisation_engine.txt
+COPY visualisation_engine /visualisation_engine
+
+EXPOSE 8050
+ENTRYPOINT python ./app.py
+

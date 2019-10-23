@@ -1,0 +1,15 @@
+[2019-09-10 18:22:13,835] {{models.py:1361}} INFO - Dependencies all met for <TaskInstance: hello_world2.print_the_context 2019-09-10T18:22:09.432840+00:00 [queued]>
+[2019-09-10 18:22:13,863] {{models.py:1361}} INFO - Dependencies all met for <TaskInstance: hello_world2.print_the_context 2019-09-10T18:22:09.432840+00:00 [queued]>
+[2019-09-10 18:22:13,863] {{models.py:1573}} INFO - 
+--------------------------------------------------------------------------------
+Starting attempt 1 of 2
+--------------------------------------------------------------------------------
+
+[2019-09-10 18:22:13,905] {{models.py:1595}} INFO - Executing <Task(PythonOperator): print_the_context> on 2019-09-10T18:22:09.432840+00:00
+[2019-09-10 18:22:13,906] {{base_task_runner.py:118}} INFO - Running: ['bash', '-c', 'airflow run hello_world2 print_the_context 2019-09-10T18:22:09.432840+00:00 --job_id 8 --raw -sd DAGS_FOLDER/Hello_world2.py --cfg_path /tmp/tmp0cit3lla']
+[2019-09-10 18:22:14,437] {{base_task_runner.py:101}} INFO - Job 8: Subtask print_the_context [2019-09-10 18:22:14,437] {{settings.py:174}} INFO - setting.configure_orm(): Using pool settings. pool_size=5, pool_recycle=1800
+[2019-09-10 18:22:14,720] {{base_task_runner.py:101}} INFO - Job 8: Subtask print_the_context [2019-09-10 18:22:14,720] {{__init__.py:51}} INFO - Using executor LocalExecutor
+[2019-09-10 18:22:15,233] {{base_task_runner.py:101}} INFO - Job 8: Subtask print_the_context [2019-09-10 18:22:15,232] {{models.py:271}} INFO - Filling up the DagBag from /usr/local/airflow/dags/Hello_world2.py
+[2019-09-10 18:22:15,304] {{base_task_runner.py:101}} INFO - Job 8: Subtask print_the_context [2019-09-10 18:22:15,304] {{cli.py:484}} INFO - Running <TaskInstance: hello_world2.print_the_context 2019-09-10T18:22:09.432840+00:00 [running]> on host 4614e9db4b87
+[2019-09-10 18:22:15,341] {{python_operator.py:96}} INFO - Done. Returned value was: Whatever you return gets printed in the logs
+[2019-09-10 18:22:18,857] {{logging_mixin.py:95}} INFO - [2019-09-10 18:22:18,856] {{jobs.py:2627}} INFO - Task exited with return code 0

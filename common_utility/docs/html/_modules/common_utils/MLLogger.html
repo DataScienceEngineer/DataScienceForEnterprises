@@ -1,0 +1,188 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>common_utils.MLLogger &#8212; common_utils 0.0.1 documentation</title>
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for common_utils.MLLogger</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">from</span> <span class="nn">logging.handlers</span> <span class="k">import</span> <span class="n">TimedRotatingFileHandler</span>
+
+<span class="kn">import</span> <span class="nn">common_utils.ConfigurationSetups</span>
+
+<span class="kn">import</span> <span class="nn">common_utils.constants</span>
+<span class="kn">import</span> <span class="nn">configurations</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+
+<div class="viewcode-block" id="LoggingConfig"><a class="viewcode-back" href="../../index.html#common_utils.MLLogger.LoggingConfig">[docs]</a><span class="k">class</span> <span class="nc">LoggingConfig</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Retrieve the Logger Configurations from the project properties&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">config</span> <span class="o">=</span> <span class="n">configurations</span><span class="o">.</span><span class="n">projectConfigurations</span><span class="o">.</span><span class="n">config</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">loggerName</span><span class="o">=</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;Logs&#39;</span><span class="p">][</span><span class="s1">&#39;logger_default_name&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logFilePath</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;Logs&#39;</span><span class="p">][</span><span class="s1">&#39;log_file_path&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logFilePrefix</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;Logs&#39;</span><span class="p">][</span><span class="s1">&#39;log_file_prefix&#39;</span><span class="p">]</span><span class="o">+</span><span class="s1">&#39;-id-&#39;</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">getUniqueId</span><span class="p">()</span><span class="o">+</span><span class="s1">&#39;.log&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logFormatterString</span><span class="o">=</span><span class="s1">&#39;[</span><span class="si">%(asctime)s</span><span class="s1">] </span><span class="si">%(levelname)s</span><span class="s1"> in </span><span class="si">%(module)s</span><span class="s1">: </span><span class="si">%(message)s</span><span class="s1">&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logTimeRotator</span><span class="o">=</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;Logs&#39;</span><span class="p">][</span><span class="s1">&#39;log_time_rotator&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logTimeInterval</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;Logs&#39;</span><span class="p">][</span><span class="s1">&#39;log_time_interval&#39;</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logFileHandlerLevel</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">__logMapper</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;Logs&#39;</span><span class="p">][</span><span class="s1">&#39;log_level_file&#39;</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logStreamHandlerLevel</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__logMapper</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;Logs&#39;</span><span class="p">][</span><span class="s1">&#39;log_level_console&#39;</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logType</span> <span class="o">=</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;Logs&#39;</span><span class="p">][</span><span class="s1">&#39;logger_type&#39;</span><span class="p">]</span>
+
+<div class="viewcode-block" id="LoggingConfig.getUniqueId"><a class="viewcode-back" href="../../index.html#common_utils.MLLogger.LoggingConfig.getUniqueId">[docs]</a>    <span class="k">def</span> <span class="nf">getUniqueId</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get the container Id from docker runtime. If not running on Docker get the process id</span>
+
+<span class="sd">        :return: unique Id for logger name</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">common_utils</span><span class="o">.</span><span class="n">constants</span><span class="o">.</span><span class="n">Constants</span><span class="o">.</span><span class="n">CONTAINER_ID</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="ow">or</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span>
+            <span class="n">common_utils</span><span class="o">.</span><span class="n">constants</span><span class="o">.</span><span class="n">Constants</span><span class="o">.</span><span class="n">CONTAINER_ID</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">())</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="n">common_utils</span><span class="o">.</span><span class="n">constants</span><span class="o">.</span><span class="n">Constants</span><span class="o">.</span><span class="n">CONTAINER_ID</span><span class="p">])</span> <span class="o">+</span> <span class="s1">&#39;_&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">())</span></div>
+
+    <span class="k">def</span> <span class="nf">__logMapper</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">logLevel_str</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Set different logging level according to the given string</span>
+
+<span class="sd">        :param logLevel_str: Given String for logging levl</span>
+
+<span class="sd">        :return: logging level</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">logLevel_str</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;CRITICAL&quot;</span> <span class="ow">or</span> <span class="n">logLevel_str</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;FATAL&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">logging</span><span class="o">.</span><span class="n">CRITICAL</span>
+        <span class="k">elif</span> <span class="n">logLevel_str</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;ERROR&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">logging</span><span class="o">.</span><span class="n">ERROR</span>
+        <span class="k">elif</span> <span class="n">logLevel_str</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;WARNING&quot;</span> <span class="ow">or</span> <span class="n">logLevel_str</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;WARN&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">logging</span><span class="o">.</span><span class="n">WARNING</span>
+        <span class="k">elif</span> <span class="n">logLevel_str</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;INFO&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">logging</span><span class="o">.</span><span class="n">INFO</span>
+        <span class="k">elif</span> <span class="n">logLevel_str</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;DEBUG&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">logging</span><span class="o">.</span><span class="n">NOTSET</span></div>
+
+<div class="viewcode-block" id="MLLogging"><a class="viewcode-back" href="../../index.html#common_utils.MLLogger.MLLogging">[docs]</a><span class="k">class</span> <span class="nc">MLLogging</span><span class="p">(</span><span class="n">metaclass</span><span class="o">=</span><span class="n">common_utils</span><span class="o">.</span><span class="n">ConfigurationSetups</span><span class="o">.</span><span class="n">Singleton</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;A Singleton Class to initialize Logger which is to be used the project modules&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize Logging Module with all the given configurations for this environment</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">MLLogging</span><span class="o">.</span><span class="n">loggerConfig</span> <span class="o">=</span> <span class="n">LoggingConfig</span><span class="p">()</span>
+        <span class="n">MLLogging</span><span class="o">.</span><span class="n">logger</span> <span class="o">=</span> <span class="n">initloggerConfiguration</span><span class="p">(</span><span class="n">logConfig</span><span class="o">=</span><span class="n">MLLogging</span><span class="o">.</span><span class="n">loggerConfig</span><span class="p">)</span>
+
+<div class="viewcode-block" id="MLLogging.getLog"><a class="viewcode-back" href="../../index.html#common_utils.MLLogger.MLLogging.getLog">[docs]</a>    <span class="k">def</span> <span class="nf">getLog</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns the logger that was created</span>
+
+<span class="sd">        :return: return the created logger object</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">MLLogging</span><span class="o">.</span><span class="n">logger</span></div></div>
+
+<div class="viewcode-block" id="initloggerConfiguration"><a class="viewcode-back" href="../../index.html#common_utils.MLLogger.initloggerConfiguration">[docs]</a><span class="k">def</span> <span class="nf">initloggerConfiguration</span><span class="p">(</span><span class="n">logConfig</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Initialize a logger object from the configuration properties</span>
+
+<span class="sd">    :param logConfig: logger configurations</span>
+
+<span class="sd">    :return: logger object</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">logConfig</span><span class="o">.</span><span class="n">loggerName</span><span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">logConfig</span><span class="o">.</span><span class="n">logFilePath</span><span class="p">):</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">logConfig</span><span class="o">.</span><span class="n">logFilePath</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">logConfig</span><span class="o">.</span><span class="n">logType</span> <span class="o">==</span> <span class="s2">&quot;TimedRotatingFileHandler&quot;</span><span class="p">:</span>
+        <span class="n">fh</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">handlers</span><span class="o">.</span><span class="n">TimedRotatingFileHandler</span><span class="p">(</span><span class="n">logConfig</span><span class="o">.</span><span class="n">logFilePath</span> <span class="o">+</span> <span class="n">logConfig</span><span class="o">.</span><span class="n">logFilePrefix</span><span class="p">,</span><span class="n">when</span><span class="o">=</span><span class="n">logConfig</span><span class="o">.</span><span class="n">logTimeRotator</span><span class="p">,</span><span class="n">interval</span><span class="o">=</span><span class="n">logConfig</span><span class="o">.</span><span class="n">logTimeInterval</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">fh</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">FileHandler</span><span class="p">(</span><span class="n">logConfig</span><span class="o">.</span><span class="n">logFilePath</span> <span class="o">+</span> <span class="n">logConfig</span><span class="o">.</span><span class="n">logFilePrefix</span><span class="p">)</span>
+    <span class="n">fh</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logConfig</span><span class="o">.</span><span class="n">logFileHandlerLevel</span><span class="p">)</span>
+    <span class="n">ch</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">StreamHandler</span><span class="p">()</span>
+    <span class="n">ch</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logConfig</span><span class="o">.</span><span class="n">logStreamHandlerLevel</span><span class="p">)</span>
+    <span class="n">formatter</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">Formatter</span><span class="p">(</span><span class="n">logConfig</span><span class="o">.</span><span class="n">logFormatterString</span><span class="p">)</span>
+    <span class="n">fh</span><span class="o">.</span><span class="n">setFormatter</span><span class="p">(</span><span class="n">formatter</span><span class="p">)</span>
+    <span class="n">ch</span><span class="o">.</span><span class="n">setFormatter</span><span class="p">(</span><span class="n">formatter</span><span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">fh</span><span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">ch</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">logger</span></div>
+
+
+<span class="n">MLLogging</span><span class="p">()</span>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">common_utils</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Data Science Engineer.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.1.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>
