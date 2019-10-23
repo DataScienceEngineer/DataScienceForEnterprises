@@ -6,32 +6,41 @@
 #
 absl-py==0.6.1            # via tensorflow
 asn1crypto==0.24.0        # via cryptography
+astor==0.8.0              # via tensorflow
+backports.weakref==1.0.post1  # via tensorflow
 bcrypt==3.1.4             # via flask-bcrypt, paramiko
-bleach==1.5.0             # via tensorflow-tensorboard
 catboost==0.7
 certifi==2018.8.24        # via requests
 cffi==1.11.5              # via bcrypt, cryptography, pynacl
 chardet==3.0.4            # via requests
 click==7.0                # via flask
-colorama==0.4.0           # via pytest
 cryptography==2.3.1       # via paramiko, pymysql
+enum34==1.1.6             # via absl-py, cryptography, grpcio, tensorflow
 filelock==3.0.4
 flask-bcrypt==0.7.1
 flask==1.0.2              # via flask-bcrypt
+flatten_json==0.1.6
+funcsigs==1.0.2           # via mock
+futures==3.3.0            # via grpcio, tensorboard
+gast==0.3.2               # via tensorflow
+grpcio==1.24.3            # via tensorboard, tensorflow
 h5py==2.6.0
-html5lib==0.9999999       # via bleach, tensorflow-tensorboard
 idna==2.6                 # via cryptography, requests
+ipaddress==1.0.23         # via cryptography
 itsdangerous==1.1.0       # via flask
 jinja2==2.10              # via flask
 joblib==0.12.5
+keras-applications==1.0.8  # via tensorflow
+keras-preprocessing==1.1.0  # via tensorflow
 keras==2.1.5
 lightgbm==2.1.2
-markdown==3.0.1           # via tensorflow-tensorboard
+markdown==3.0.1           # via tensorboard
 markupsafe==1.0           # via jinja2
+mock==3.0.5               # via tensorflow
 numpy==1.14.5
 pandas==0.23.0
 paramiko==2.4.2           # via sshtunnel
-protobuf==3.6.1           # via tensorflow, tensorflow-tensorboard
+protobuf==3.6.1           # via tensorboard, tensorflow
 py==1.7.0                 # via pytest
 pyasn1==0.4.4             # via paramiko
 pycparser==2.19           # via cffi
@@ -44,14 +53,14 @@ pyyaml==3.13              # via keras
 requests==2.18.4
 scikit-learn==0.19.1
 scipy==1.1.0
-six==1.11.0               # via absl-py, bcrypt, bleach, catboost, cryptography, h5py, html5lib, keras, protobuf, pynacl, python-dateutil, tensorflow, tensorflow-tensorboard
+six==1.11.0               # via absl-py, bcrypt, catboost, cryptography, grpcio, h5py, keras, keras-preprocessing, mock, protobuf, pynacl, python-dateutil, tensorboard, tensorflow
 sklearn-pandas==1.6.0
 sklearn2pmml==0.36.1
 sshtunnel==0.1.4
-tensorflow-tensorboard==1.5.1  # via tensorflow
-tensorflow==1.5.0
+tensorboard==1.12.2       # via tensorflow
+tensorflow==1.12.2
+termcolor==1.1.0          # via tensorflow
 urllib3==1.22
-werkzeug==0.14.1          # via flask, tensorflow-tensorboard
-wheel==0.32.2             # via tensorflow, tensorflow-tensorboard
+werkzeug==0.14.1          # via flask, tensorboard
+wheel==0.32.2             # via tensorboard, tensorflow
 xgboost==0.80
-flatten_json==0.1.6
