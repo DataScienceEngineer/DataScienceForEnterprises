@@ -46,5 +46,5 @@ six==1.11.0               # via bcrypt, cryptography, plotly, pynacl, python-dat
 sklearn_pandas==1.6.0
 sshtunnel==0.1.4
 traitlets==4.3.2          # via jupyter-core, nbformat
-urllib3==1.24.1           # via requests
+urllib3==1.24.2           # via requests
 werkzeug==0.14.1          # via flask
